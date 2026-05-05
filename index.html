@@ -62,8 +62,8 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;ba
 .hbg svg{width:260px;height:260px;display:block}
 
 /* ── TAB NAV ── */
-.tab-nav{background:var(--forest);border-bottom:1px solid rgba(255,255,255,.08);padding:0 40px;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.tab-nav::-webkit-scrollbar{height:0}
+.tab-nav{background:var(--forest);border-bottom:1px solid rgba(255,255,255,.08);padding:0 40px;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
 .tbtn{background:none;border:none;border-bottom:3px solid transparent;color:rgba(245,240,226,.45);font-family:var(--f-body);font-size:.87rem;font-style:italic;padding:14px 22px 11px;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-1px}
 .tbtn:hover{color:var(--cream)}
 .tbtn.active{color:var(--sun);border-bottom-color:var(--amber)}
@@ -115,7 +115,6 @@ main{min-height:70vh}
 .closing em{color:var(--sun);font-style:normal;font-weight:600}
 
 /* ── TAB F1: STIMMEN ── */
-#tab-b{max-width:720px;margin:0 auto;padding:60px 32px 88px}
 .found-intro{max-width:680px;margin:0 auto 56px;text-align:center}
 .found-intro h1{font-family:var(--f-display);font-size:2.1rem;font-weight:400;color:var(--moss);margin-bottom:14px}
 .found-intro p{font-size:.98rem;color:var(--stone);font-style:italic;line-height:1.75}
@@ -244,7 +243,7 @@ cite[data-ref],cite{font-style:normal}
   .h-inner{padding-right:80px}
   .hbg svg{width:220px;height:220px}
   .tab-nav{padding:0 20px}
-  #tab-a,#tab-b,#tab-c{padding-left:20px;padding-right:20px}
+  #tab-a,#tab-c{padding-left:20px;padding-right:20px}
   .tbtn{padding:12px 12px 9px;font-size:.82rem}
   .closing{padding:28px 24px}
   .cgrid{grid-template-columns:1fr}
@@ -260,34 +259,32 @@ cite[data-ref],cite{font-style:normal}
 /* ── HEADER META ── */
 .site-meta{font-family:var(--f-mono);font-size:.62rem;color:rgba(245,240,226,.32);margin-top:8px;letter-spacing:.06em;line-height:1.55}
 
-/* ── TOC SIDEBAR ── */
-#toc-sidebar{position:fixed;top:var(--toc-top,140px);bottom:32px;left:0;width:210px;z-index:40;display:flex;flex-direction:column;transition:width .22s ease,top .15s ease;pointer-events:none}
-#toc-sidebar.toc-hidden{display:none!important}
-#toc-sidebar.toc-collapsed{width:28px}
-#toc-toggle{width:28px;height:36px;background:var(--moss);border:none;color:var(--cream);font-size:.85rem;cursor:pointer;border-radius:0 6px 6px 0;flex-shrink:0;transition:background .2s;display:flex;align-items:center;justify-content:center;padding:0;margin-bottom:8px;pointer-events:all}
-#toc-toggle:hover{background:var(--leaf)}
-#toc-nav{flex:1;overflow:hidden;background:rgba(25,45,12,.93);border-radius:0 8px 8px 0;border:1px solid rgba(78,130,32,.28);border-left:none;display:flex;flex-direction:column;pointer-events:all}
-#toc-sidebar.toc-collapsed #toc-nav{display:none}
-.toc-tabs{display:flex;flex-direction:column;gap:2px;padding:8px 8px 6px;border-bottom:1px solid rgba(245,240,226,.1);flex-shrink:0}
-.toc-tab-btn{background:none;border:none;text-align:left;font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(245,240,226,.38);padding:4px 6px;border-radius:4px;cursor:pointer;transition:all .18s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.toc-tab-btn:hover{color:rgba(245,240,226,.75);background:rgba(255,255,255,.06)}
-.toc-tab-btn.toc-tab-active{color:var(--sun);background:rgba(240,192,56,.12)}
-#toc-list{list-style:none;padding:6px 0 10px;margin:0;overflow-y:auto;flex:1}
-#toc-list::-webkit-scrollbar{width:3px}
-#toc-list::-webkit-scrollbar-thumb{background:var(--bud);border-radius:2px;opacity:.7}
-.toc-item{padding:0}
-.toc-item>span{display:block;font-family:var(--f-body);font-size:.77rem;color:rgba(245,240,226,.5);padding:5px 12px;cursor:pointer;line-height:1.35;transition:color .2s}
-.toc-item>span:hover{color:var(--cream)}
-.toc-item.toc-active>span{color:var(--sun);font-style:italic}
-.toc-subs{list-style:none;padding:2px 0 4px;margin:0;display:none}
-.toc-item.toc-active .toc-subs{display:block}
-.toc-subs li{font-family:var(--f-mono);font-size:.65rem;color:rgba(245,240,226,.35);padding:3px 12px 3px 22px;cursor:pointer;line-height:1.3;transition:color .18s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.toc-subs li:hover{color:rgba(245,240,226,.75)}
-.toc-subs li.toc-sub-active{color:var(--ochre)}
-.toc-bib-divider{height:1px;background:rgba(245,240,226,.12);margin:6px 8px 4px}
-.toc-bib-item>span{font-family:var(--f-mono)!important;font-size:.67rem!important;text-transform:uppercase;letter-spacing:.1em;color:rgba(240,192,56,.5)!important}
-.toc-bib-item>span:hover{color:rgba(240,192,56,.9)!important}
-.toc-bib-item.toc-active>span{color:var(--amber)!important;font-style:normal!important}
+/* ── ZURÜCK-NACH-OBEN-BUTTON ──
+   Ersetzt die frühere TOC-Sidebar. Dezent in der unteren rechten Ecke,
+   in der Designsprache der Seite (moss-grün, kreisförmig wie ein Naturzeichen).
+   Wird erst nach Scrollen sichtbar — opt-in statt aufdringlich. */
+#to-top{position:fixed;right:24px;bottom:24px;z-index:50;
+  width:44px;height:44px;padding:0;
+  background:rgba(42,84,48,.88);color:var(--cream);
+  border:1px solid rgba(125,186,82,.3);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;
+  cursor:pointer;opacity:0;visibility:hidden;
+  transition:opacity .35s ease,visibility .35s ease,background .2s,transform .2s,width .25s ease,border-radius .25s ease;
+  box-shadow:0 2px 10px rgba(22,45,24,.18);
+  font-family:var(--f-mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;
+  overflow:hidden;white-space:nowrap}
+#to-top.visible{opacity:.82;visibility:visible}
+#to-top:hover{opacity:1;background:var(--moss);transform:translateY(-2px);width:128px;border-radius:22px}
+#to-top svg{width:18px;height:18px;flex-shrink:0;transition:margin .25s ease}
+#to-top:hover svg{margin-right:6px}
+#to-top .tt-label{max-width:0;opacity:0;transition:max-width .25s ease,opacity .2s ease .05s;color:var(--cream)}
+#to-top:hover .tt-label{max-width:80px;opacity:1}
+@media (max-width:640px){
+  #to-top{right:14px;bottom:14px;width:40px;height:40px}
+  #to-top:hover{width:40px;border-radius:50%}
+  #to-top:hover svg{margin-right:0}
+  #to-top:hover .tt-label{max-width:0;opacity:0}
+}
 
 /* ════════════════════════════════════════════════════════
    ROADMAP-SPEZIFISCHES CSS
@@ -499,12 +496,6 @@ body.roadmap .site-divider{background:var(--leaf);opacity:.65}
 body.roadmap .lbtn.active{background:var(--leaf)}
 body.roadmap header::after{background:var(--bud);opacity:.45}
 body.roadmap .tbtn.active{color:var(--sprout);border-bottom-color:var(--leaf)}
-body.roadmap .toc-tab-btn.toc-tab-active{color:var(--sprout);background:rgba(95,160,36,.12)}
-body.roadmap .toc-item.toc-active>span{color:var(--sprout)}
-body.roadmap .toc-subs li.toc-sub-active{color:var(--leaf)}
-body.roadmap .toc-bib-item>span{color:rgba(154,218,60,.5)!important}
-body.roadmap .toc-bib-item>span:hover{color:rgba(154,218,60,.9)!important}
-body.roadmap .toc-bib-item.toc-active>span{color:var(--sprout)!important}
 
 /* ════════════════════════════════════════════════════════
    FOUNDATIONS-MODUS: Bark/Amber-Akzent
@@ -514,9 +505,6 @@ body.foundations .site-divider{background:var(--bark);opacity:.65}
 body.foundations .lbtn.active{background:var(--bark)}
 body.foundations header::after{background:var(--bud);opacity:.45}
 body.foundations .tbtn.active{color:var(--sun);border-bottom-color:var(--bark)}
-body.foundations .toc-tab-btn.toc-tab-active{color:var(--bark);background:rgba(116,82,40,.1)}
-body.foundations .toc-item.toc-active>span{color:var(--bark)}
-body.foundations .toc-subs li.toc-sub-active{color:var(--amber)}
 body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(240,192,56,.45)}
 </style>
 </head>
@@ -623,9 +611,13 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
     <span class="de-text">A — Die Geschichte</span>
     <span class="en-text">A — The Story</span>
   </button>
+  <button class="tbtn story-only" data-tab="b" onclick="showTab('b')">
+    <span class="de-text">B — Schwellen-Jahr</span>
+    <span class="en-text">B — Threshold Year</span>
+  </button>
   <button class="tbtn story-only" data-tab="c" onclick="showTab('c')">
-    <span class="de-text">C — Kurzgeschichte</span>
-    <span class="en-text">C — Short Story</span>
+    <span class="de-text">C — Großmutters Wissen</span>
+    <span class="en-text">C — Grandmother's Knowing</span>
   </button>
   <button class="tbtn story-only" data-tab="d" onclick="showTab('d')">
     <span class="de-text">D — Der Atemzug</span>
@@ -983,6 +975,199 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 
 </div><!-- /tab-a -->
 
+<!-- ══════════════════════ TAB B — DIE WELT NACH DEM SCHWELLEN-JAHR ══════════════════════ -->
+<div id="tab-b" class="tab-content">
+
+<!-- ── DEUTSCH ── -->
+<div class="de-text">
+<div style="max-width:660px;margin:0 auto;padding:68px 32px 96px">
+  <div class="sf">
+    <div class="flabel">Geschichte · Aus dem Jahr 2047 · Tab B</div>
+    <h1>Die Welt nach<br>dem Schwellen-Jahr</h1>
+  </div>
+
+  <div class="disclaimer-box" style="max-width:660px;margin:0 auto 24px auto;font-size:.95rem">
+    <p>Diese Erzählung ist eine fiktive Geschichte aus dem Jahr 2047. Personen und Institutionen sind erdacht; die philosophischen, ökonomischen und politischen Bezüge — Whitehead, Becker, Quinn, Vermögenssteuer, Grundeinkommen, Death-Positive — sind real und im <a href="#" onclick="showTab(&#39;f2&#39;); return false;" style="color:var(--clay);font-weight:600">Literaturverzeichnis (Tab F2)</a> dokumentiert.</p>
+  </div>
+
+  <div class="stext">
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">I. Was vorher war</h2>
+    <p>Niemand kann genau sagen, wann die Wende kam. Es gab kein einzelnes Ereignis, keinen Kongress, keine Revolution im alten Sinne. Rückblickend erscheint es eher wie das Erwachen aus einem langen, seltsamen Traum — nicht mit einem Schrei, sondern mit dem langsamen Öffnen der Augen.</p>
+
+    <p>Was man sagen kann: Die Dreißiger Jahre waren das Jahrzehnt der Erschöpfung. Nicht nur der Ressourcen, der Böden, der Artenvielfalt — sondern der Erschöpfung des Versprechens. Das Versprechen, dass mehr Wachstum irgendwann zu mehr Leben führen würde. Mehr Sicherheit. Mehr Würde. Mehr Sinn.</p>
+
+    <p>Stattdessen: Hitzewellen, die Ernten vernichteten. Küstenlinien, die ins Meer glitten. Und — leiser, aber vielleicht entscheidender — eine generationsübergreifende Erschöpfung des Geistes. Eine Generation junger Menschen, die nicht mehr glaubte, dass die Zukunft besser sein würde als die Gegenwart. Die zum ersten Mal seit Jahrhunderten wieder wusste, was ihre Urgroßeltern immer gewusst hatten: dass das Leben endlich ist. Dass die Erde nicht gehört. Dass man Teil von etwas ist, das vor einem da war und nach einem weitergeht.</p>
+
+    <p>Aus dieser Erschöpfung entstand, unerwartet, eine neue Energie.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">II. Das Geld bewegt sich</h2>
+    <p>Die erste große Verschiebung war fiskalisch — und damit, für viele überraschend, die unromantischste und praktisch bedeutsamste.</p>
+
+    <p>Im Jahr 2031 verabschiedete eine Koalition aus zwölf europäischen Staaten — zunächst belächelt, dann imitiert — die <em>Erbschafts- und Vermögenskonzentrations-Steuer</em>, intern schlicht „der Boden" genannt. Vermögen über 50 Millionen wurden mit einer jährlichen Abgabe von 2% belegt. Über 500 Millionen mit 5%. Über einer Milliarde mit 8%.</p>
+
+    <p>Was damit geschah, war nicht primär Umverteilung im alten Sinne. Es war Entkonzentrierung. Die entstehenden Mittel flossen nicht in den Staatsapparat — sondern in eine neue Institution: die <em>Commons Bank</em>, eine dezentrale, demokratisch verwaltete Infrastruktur für drei Dinge: ökologische Restaurierung, lokale Energieautonomie und — das Radikalste — bedingungsloses Grundeinkommen für alle, die aktiv in gemeinschaftlichen „Lebens-Projekten" mitwirkten.</p>
+
+    <p>Wichtig: Es war kein universelles Grundeinkommen im alten Sinne, das Menschen in ihrer vereinzelten Konsumenten-Existenz beließ. Es war ein <em>relationales</em> Einkommen — gebunden an Teilnahme an dem, was man damals „Tribe-Projekte" nannte. Kleine, fluide Gemeinschaften von 30 bis 150 Menschen, die gemeinsam wohnten, arbeiteten, aßen, trauerten, feierten.</p>
+
+    <p>Die Reichen klagten. Einige zogen weg. Aber das Vermögen, das geblieben war, war mehr als genug — und die Mittelschicht, die jahrzehntelang zwischen Abstiegsangst und moralischem Anspruch zerrieben worden war, atmete zum ersten Mal auf.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">III. Eine andere Schule</h2>
+    <p>Lena ist neun Jahre alt und wächst in einem der ersten „Lebens-Projekte" im Mittelland auf, auf dem Gelände einer ehemaligen Pharmafirma, deren Gebäude nun von Kletterpflanzen überzogen werden.</p>
+
+    <p>In ihrer Schule gibt es kein Fach, das „Biologie" heißt. Stattdessen: <em>Beziehungskunde</em>. Der Lehrer, Herr Özdemir, erklärt ihr am ersten Tag, warum die Schule keinen Zaun hat.</p>
+
+    <p><span class="dial">„Weil ein Zaun sagt: hier ist das Leben, und da draußen ist die Natur. Aber das ist eine Lüge. Du bist die Natur. Dieser Regenwurm ist die Natur. Der Pilz unter dem Boden, der mit dieser Buche spricht — auch Natur. Und sie alle fühlen etwas. Nicht wie du fühlst. Aber etwas."</span></p>
+
+    <p>Er zeigt ihr Whiteheads Idee — nicht den Text, der ist schwer — sondern das Bild dahinter: dass die Welt nicht aus toten Dingen besteht, die wir bewegen, sondern aus Erfahrungen, die sich berühren. Dass der Baum nicht stumm ist. Dass das Sterben des letzten Exemplars einer Schmetterlingsart nicht nur ein statistischer Verlust ist — sondern das Ende einer Perspektive auf die Welt. Einer Weise des Erlebens, die es nie wieder geben wird.</p>
+
+    <p>Lena weint, als sie das versteht. Nicht aus Sentimentalität. Aus Erkenntnis.</p>
+
+    <p>Das ist der Moment, in dem die Philosophie aufhört, Philosophie zu sein — und zu Empathie wird. Und Empathie, wie Herr Özdemir sagt, ist das einzige Fundament, auf dem man eine Welt bauen kann, die hält.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">IV. Der Tod kommt zurück ins Wohnzimmer</h2>
+    <p>In der Welt von 2047 gibt es in den meisten Lebens-Projekten einen Raum, den man schlicht „den Raum" nennt. Er ist nicht morbide eingerichtet. Er hat Fenster, Holz, Pflanzen. Aber sein Zweck ist unverkennbar: Hier sterben Menschen. Hier werden sie gewaschen, aufgebahrt, betrauert. Hier verbringen Kinder die Nacht neben dem Körper der Großmutter. Hier singen die Nachbarn.</p>
+
+    <p>Das klingt düster. Es ist das Gegenteil.</p>
+
+    <p>Die Rückkehr des Todes ins Gemeinschaftsleben war vielleicht die unerwartete Kraft der ganzen Bewegung. Denn was Becker — und vor ihm die Hopi, die Māori, die Ainu — verstanden hatten: Eine Gesellschaft, die den Tod versteckt, muss ihn anderswo austreiben. In Konsum. In Status. In der manischen Überzeugung, dass man unsterblich sein könnte, wenn man nur genug hätte.<cite data-ref="becker-denial"></cite></p>
+
+    <p>Die Enttabuisierung begann in den Dreißigern mit der <em>Death Positive</em>-Bewegung, den Sterbehilfereformen, den „Death Cafés", die sich in Kleinstädten ausbreiteten. Aber sie vertiefte sich erst, als sie sich mit der Prozessphilosophie verband.</p>
+
+    <p>Wenn alles Werden ist — wenn Sterben nicht Auslöschung bedeutet, sondern Transformation, Rückkehr in den Fluss der Kreativität des Kosmos —, dann verliert der Tod seinen absoluten Schrecken. Nicht durch Verdrängung. Nicht durch religiöses Versprechen eines Jenseits. Sondern durch das Verstehen, dass das Selbst nie so hart abgegrenzt war, wie die Moderne behauptet hatte.<cite data-ref="whitehead-pr"></cite></p>
+
+    <p>Lenas Großvater stirbt, als sie dreizehn ist. Sie hält seine Hand. Sie spürt, wie er geht. Und sie ist traurig — tief, echt, lange. Aber sie hat keine Angst. Sie weiß, dass etwas von ihm im Pilzgeflecht unter dem Boden weiterwirkt. Dass die Geschichten, die er ihr erzählt hat, in ihr weiterleben und in denen, denen sie sie erzählen wird. Dass Sterben nicht Versagen ist.</p>
+
+    <p>Diese Erfahrung macht sie zu einer anderen Person. Zu jemandem, der keine fünf Autos braucht, um sich sicher zu fühlen.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">V. Die Stadt, die atmet</h2>
+    <p>Zürich im Jahr 2047 ist nicht wiederzuerkennen — und doch erkennbar. Die Seeuferstraße existiert noch. Die Bahnhofstraße auch. Aber zwischen den Gebäuden wachsen Gärten, die nicht dekorativ sind, sondern produktiv. Auf jedem Dach Photovoltaik und Gemüse. In jedem Quartier eine Commons-Küche, ein Geburtshaus, ein Sterberaum.</p>
+
+    <p>Die Autos sind nicht verschwunden — aber es gibt viel weniger davon, und sie fahren langsam durch Räume, die primär für Menschen und Tiere entworfen wurden. Die Limmat führt wieder klares Wasser, weil die Landwirtschaft im Einzugsgebiet auf Regeneration umgestellt hat — finanziert durch die Commons Bank, begleitet von Dutzenden lokalen Tribes, die ihren Lebensunterhalt damit verdienen, Böden zu heilen.</p>
+
+    <p>Es ist nicht perfekt. Es gibt Konflikte über Ressourcen, über Grenzen zwischen Projekten, über Entscheidungsrechte. Die Commons Bank ist manchmal bürokratisch. Manche Menschen vermissen die Einsamkeit des privaten Lebens. Die Transition war für viele brutal — besonders für ältere Menschen, die ihr Selbstwertgefühl an Besitz geknüpft hatten.</p>
+
+    <p>Aber die Biodiversität erholt sich. Messbar, belegbar, sichtbar. Der Eisvogel ist zurück an der Limmat. Der Luchs im Jura. Und — das vielleicht Merkwürdigste — die psychische Gesundheit der Bevölkerung hat sich in zwei Jahrzehnten stärker verbessert als in den zwanzig Jahren davor, trotz weniger materiellem Wohlstand im klassischen Sinne.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">VI. Was die Geschichte sagt</h2>
+    <p>Diese Geschichte erzählt von keiner Utopie. Sie erzählt von einer Gesellschaft, die endlich aufgehört hat, sich selbst zu belügen.</p>
+
+    <p>Die drei Schlüssel, die Quinn nicht finden konnte, waren:<cite data-ref="quinn-ishmael"></cite></p>
+
+    <p><strong>Das Geld</strong> — nicht als Feind, sondern als Werkzeug, das man umlenken kann, ohne die Zivilisation zu zerstören. Vermögenssteuer nicht als Strafe, sondern als Rückgabe des Gemeinguts an die Gemeinschaft.</p>
+
+    <p><strong>Die Ontologie</strong> — Whiteheads Erkenntnis, dass Wert nicht verliehen wird, sondern überall ist. Dass Empathie keine sentimentale Schwäche, sondern eine präzise Wahrnehmung der Wirklichkeit ist. Diese Idee kann in der westlichen Wissenschafts- und Bildungstradition wachsen, ohne von außen aufgezwungen zu werden.</p>
+
+    <p><strong>Der Tod</strong> — zurück ins Leben geholt. Nicht als Feind, der mit Konsum besiegt werden muss. Als der selbstverständliche Teil des Prozesses, der wir alle sind.</p>
+
+    <p>Quinn hatte recht: Es geht nicht darum, die Mutter Kultur frontal anzugreifen. Es geht darum, ihr eine andere Geschichte zu erzählen — eine, die in ihrer eigenen Sprache spricht, aber zu einem anderen Ende kommt. Einer Geschichte, in der das Sterben des letzten Exemplars einer Schmetterlingsart jemanden zum Weinen bringt. Nicht aus Pflicht. Aus Liebe.</p>
+
+    <p>Und in einer Welt, in der das geschieht — in der das Sterben der Welt so gefühlt wird wie das Sterben eines Menschen, den man liebt — in dieser Welt braucht man keine Gesetze, um die Natur zu schützen. Man schützt, was man liebt. Man lässt nicht sterben, was man erkennt.</p>
+  </div>
+
+  <div class="sending">
+    Das ist die Geschichte,<br>die noch nicht geschrieben ist.<br>Oder vielleicht: die gerade<br>anfängt, geschrieben zu werden.
+  </div>
+
+  <div class="anote">Diese Erzählung ist fiktiv und prospektiv: Sie blickt aus dem Jahr 2047 auf eine Wende zurück, die wir noch nicht kennen, aber erarbeiten können. Konkrete Zahlen (Steuerstaffel, Tribe-Größen) sind illustrativ, nicht prognostisch. Die philosophischen Bezüge — Whitehead, Becker, Quinn, Death-Positive — sind real und in <a href="#" onclick="showTab(&#39;f2&#39;); return false;" style="color:var(--clay);font-weight:600">Tab F2</a> dokumentiert.</div>
+</div>
+</div>
+
+<!-- ── ENGLISH ── -->
+<div class="en-text">
+<div style="max-width:660px;margin:0 auto;padding:68px 32px 96px">
+  <div class="sf">
+    <div class="flabel">Story · From the Year 2047 · Tab B</div>
+    <h1>The World After<br>the Threshold Year</h1>
+  </div>
+
+  <div class="disclaimer-box" style="max-width:660px;margin:0 auto 24px auto;font-size:.95rem">
+    <p>This is a fictional story set in the year 2047. Characters and institutions are imagined; the philosophical, economic and political references — Whitehead, Becker, Quinn, wealth taxation, basic income, the Death-Positive movement — are real and documented in the <a href="#" onclick="showTab(&#39;f2&#39;); return false;" style="color:var(--clay);font-weight:600">bibliography (Tab F2)</a>.</p>
+  </div>
+
+  <div class="stext">
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">I. What Came Before</h2>
+    <p>No one can say exactly when the turning came. There was no single event, no congress, no revolution in the old sense. In retrospect it appears more like waking from a long and strange dream — not with a cry but with the slow opening of one's eyes.</p>
+
+    <p>What can be said: the 2030s were the decade of exhaustion. Not only of resources, of soils, of biodiversity — but the exhaustion of the promise. The promise that more growth would, eventually, lead to more life. More security. More dignity. More meaning.</p>
+
+    <p>Instead: heatwaves that destroyed harvests. Coastlines that slid into the sea. And — quieter, but perhaps more decisive — a generation-spanning exhaustion of spirit. A generation of young people who no longer believed the future would be better than the present. Who knew, for the first time in centuries, what their great-grandparents had always known: that life is finite. That the earth is not owned. That one is part of something that was here before and will continue after.</p>
+
+    <p>From this exhaustion, unexpectedly, a new energy emerged.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">II. The Money Moves</h2>
+    <p>The first great shift was fiscal — and therefore, surprisingly to many, the most unromantic and the most practically consequential.</p>
+
+    <p>In 2031, a coalition of twelve European states — first ridiculed, then imitated — passed the <em>Inheritance and Wealth-Concentration Tax</em>, internally just called "the floor". Wealth above 50 million was charged an annual levy of 2%. Above 500 million, 5%. Above one billion, 8%.</p>
+
+    <p>What happened was not primarily redistribution in the old sense. It was deconcentration. The funds did not flow into state apparatus — but into a new institution: the <em>Commons Bank</em>, a decentralised, democratically governed infrastructure for three things: ecological restoration, local energy autonomy, and — most radical of all — an unconditional basic income for everyone actively participating in communal "Life-Projects".</p>
+
+    <p>Crucially: it was not a universal basic income in the old sense, leaving people in their isolated consumer existence. It was a <em>relational</em> income — tied to participation in what people then called "Tribe-Projects". Small, fluid communities of 30 to 150 people, who lived, worked, ate, mourned and celebrated together.</p>
+
+    <p>The wealthy complained. Some left. But the wealth that remained was more than enough — and the middle class, ground for decades between fear of decline and moral demand, exhaled for the first time.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">III. A Different School</h2>
+    <p>Lena is nine years old and grows up in one of the first "Life-Projects" on the Swiss plateau, on the grounds of a former pharmaceutical company, whose buildings are now overgrown with climbing plants.</p>
+
+    <p>In her school there is no subject called "biology". Instead: <em>relationship studies</em>. Her teacher, Mr Özdemir, explains to her on the first day why the school has no fence.</p>
+
+    <p><span class="dial">"Because a fence says: here is life, and out there is nature. But that is a lie. You are nature. This earthworm is nature. The fungus beneath the soil that speaks with this beech — also nature. And they all feel something. Not the way you feel. But something."</span></p>
+
+    <p>He shows her Whitehead's idea — not the text, that's hard — but the picture behind it: that the world does not consist of dead things we move, but of experiences that touch one another. That the tree is not mute. That the death of the last specimen of a butterfly species is not just a statistical loss — but the end of a perspective on the world. A way of experiencing that will never exist again.</p>
+
+    <p>Lena weeps when she understands this. Not from sentimentality. From recognition.</p>
+
+    <p>That is the moment philosophy stops being philosophy — and becomes empathy. And empathy, as Mr Özdemir says, is the only foundation on which one can build a world that holds.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">IV. Death Returns to the Living Room</h2>
+    <p>In the world of 2047, most Life-Projects have a room they simply call "the room". It is not morbidly furnished. It has windows, wood, plants. But its purpose is unmistakable: people die here. They are washed, laid out, mourned here. Children spend the night here next to the body of their grandmother. Neighbours sing here.</p>
+
+    <p>That sounds dark. It is the opposite.</p>
+
+    <p>The return of death to communal life was perhaps the unexpected force of the whole movement. For what Becker — and before him the Hopi, the Māori, the Ainu — had understood: a society that hides death must drive it out elsewhere. Into consumption. Into status. Into the manic conviction that one could be immortal if only one had enough.<cite data-ref="becker-denial"></cite></p>
+
+    <p>The de-tabooing began in the 2030s with the <em>Death Positive</em> movement, with assisted-dying reforms, with the "Death Cafés" that spread through small towns. But it deepened only when it joined with process philosophy.</p>
+
+    <p>If everything is becoming — if dying does not mean extinction but transformation, return into the flow of the cosmos's creativity — then death loses its absolute terror. Not through repression. Not through the religious promise of an afterlife. But through understanding that the self was never as hard-edged as modernity had claimed.<cite data-ref="whitehead-pr"></cite></p>
+
+    <p>Lena's grandfather dies when she is thirteen. She holds his hand. She feels him going. And she is sad — deep, real, long. But she is not afraid. She knows that something of him goes on in the mycelium beneath the soil. That the stories he told her live on in her, and in those to whom she will tell them. That dying is not failure.</p>
+
+    <p>This experience makes her a different person. Someone who does not need five cars to feel safe.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">V. The City That Breathes</h2>
+    <p>Zurich in 2047 is unrecognisable — and yet recognisable. The lakeside road still exists. So does Bahnhofstrasse. But between the buildings grow gardens that are not decorative but productive. On every roof, photovoltaic panels and vegetables. In every neighbourhood a Commons kitchen, a birthing house, a death-room.</p>
+
+    <p>Cars have not disappeared — but there are far fewer of them, and they move slowly through spaces designed primarily for people and animals. The Limmat carries clear water again, because agriculture in the catchment has shifted to regeneration — financed by the Commons Bank, accompanied by dozens of local Tribes who make their living healing soils.</p>
+
+    <p>It is not perfect. There are conflicts over resources, over boundaries between projects, over decision-rights. The Commons Bank is sometimes bureaucratic. Some people miss the solitude of private life. The transition was brutal for many — especially for older people who had tied their self-worth to possessions.</p>
+
+    <p>But biodiversity is recovering. Measurably, demonstrably, visibly. The kingfisher is back on the Limmat. The lynx in the Jura. And — perhaps most remarkable — the mental health of the population has improved more in two decades than in the twenty years before, despite less material wealth in the classical sense.</p>
+
+    <h2 style="font-family:var(--f-display);font-size:1.45rem;font-weight:400;color:var(--moss);margin:48px 0 20px">VI. What the Story Says</h2>
+    <p>This story is not about a utopia. It is about a society that has finally stopped lying to itself.</p>
+
+    <p>The three keys Quinn could not find were:<cite data-ref="quinn-ishmael"></cite></p>
+
+    <p><strong>Money</strong> — not as enemy, but as a tool that can be redirected without destroying civilisation. Wealth tax not as punishment, but as the return of the commons to the commons.</p>
+
+    <p><strong>Ontology</strong> — Whitehead's insight that value is not bestowed but everywhere. That empathy is not sentimental weakness but a precise perception of reality. This idea can grow within the Western tradition of science and education, without being imposed from outside.</p>
+
+    <p><strong>Death</strong> — brought back into life. Not as enemy to be vanquished by consumption. But as the self-evident part of the process we all are.</p>
+
+    <p>Quinn was right: it is not about attacking Mother Culture frontally. It is about telling her a different story — one that speaks in her own language, but arrives at a different ending. A story in which the dying of the last specimen of a butterfly species moves someone to tears. Not from duty. From love.</p>
+
+    <p>And in a world where this happens — where the dying of the world is felt as one feels the dying of a person one loves — in such a world one needs no laws to protect nature. One protects what one loves. One does not let die what one recognises.</p>
+  </div>
+
+  <div class="sending">
+    This is the story<br>that has not yet been written.<br>Or perhaps: the one that<br>is just beginning to be written.
+  </div>
+
+  <div class="anote">This story is fictional and prospective: it looks back from 2047 onto a turning we do not yet know but can work toward. Specific figures (tax brackets, tribe sizes) are illustrative, not predictive. The philosophical references — Whitehead, Becker, Quinn, the Death-Positive movement — are real and documented in <a href="#" onclick="showTab(&#39;f2&#39;); return false;" style="color:var(--clay);font-weight:600">Tab F2</a>.</div>
+</div>
+</div>
+
+</div><!-- /tab-b -->
+
 <!-- ══════════════════════ TAB F1 — STIMMEN (vormals Tab B) ══════════════════════ -->
 <div id="tab-f1" class="tab-content">
 
@@ -1015,12 +1200,13 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <div class="cb"><div class="cbi">
           <p class="cdesc">Whiteheads „Philosophie des Organismus" ist das westliche philosophische Fundament der neuen Geschichte. In <em>Process and Reality</em> (1929) argumentiert er, dass die Grundeinheiten der Wirklichkeit keine leblosen Materie-Atome, sondern „aktuale Ereignisse" (actual occasions) — Momente des Fühlens und Werdens — sind. Jedes Ereignis hat intrinsischen Wert. Jeder Augenblick trägt seine Bedeutung in sich selbst.</p>
           <div class="ckl">Schlüsselkonzepte</div>
-          <ul class="cks"><li>Prehension / Fühlen</li><li>Aktuale Ereignisse</li><li>Konkreszenz</li><li>Satisfaction</li><li>Bifurkation der Natur</li><li>Schönheit als Wert</li></ul>
+          <ul class="cks"><li>Prehension / Fühlen</li><li>Aktuale Ereignisse</li><li>Konkreszenz</li><li>Satisfaction</li><li>Bifurkation der Natur</li><li>Dipolarer Charakter</li><li>Objective Immortality</li><li>Schönheit als Wert</li></ul>
           <div class="verified-quote">„The creativity of the world is the throbbing emotion of the past hurling itself into a new transcendent fact."<cite data-ref="whitehead-ai"></cite>
             <span class="paraphrase-note">— A. N. Whitehead, <em>Adventures of Ideas</em> (1933), Kap. 11 „Objects and Subjects", S. 227</span>
           </div>
           <p class="cdesc">In <em>The Concept of Nature</em> (1920) kritisiert Whitehead die „Bifurkation der Natur": die moderne Spaltung von „objektiver" toter Materie und „subjektiver" menschlicher Erfahrung.<cite data-ref="whitehead-cn"></cite> Er besteht darauf, dass Farbe, Klang, Wert und Gefühl zur Natur selbst gehören — nicht bloß zu unserer Wahrnehmung davon. Dies heilt den philosophischen Riss, der Naturbeherrschung erst rechtfertigte.</p>
-          <div class="crel">Relevanz: Whitehead löst Beckers Todesangst-Problem ontologisch. Wenn jeder Augenblick des Fühlens seinen eigenen intrinsischen Wert hat, braucht Bedeutung kein Unsterblichkeitsprojekt.</div>
+          <p class="cdesc">Jeder Anlass realisiert sich durch <em>Konkreszenz</em> — ein Werden, in dem subjektive Unmittelbarkeit und objektive Unsterblichkeit zusammenfallen. Jedes Ereignis trägt einen <em>physikalischen Pol</em>, der die Daten der Vergangenheit prähendiert, und einen <em>mentalen Pol</em>, der innerhalb gesetzter Grenzen neue Möglichkeiten antizipiert. Quantenmechanik, Bewusstsein und biologische Organisation erscheinen so nicht als drei getrennte Probleme, sondern als drei Skalen einer einzigen Bewegung — das universelle Streben nach Selbstrealisierung.<cite data-ref="whitehead-pr"></cite></p>
+          <div class="crel">Relevanz: Whitehead löst Beckers Todesangst-Problem ontologisch. Wenn jeder Augenblick des Fühlens seinen eigenen intrinsischen Wert hat und seine Spur als <em>objective immortality</em> in die Welt einschreibt, braucht Bedeutung kein Unsterblichkeitsprojekt.</div>
           <div class="csrc">Hauptwerke: <em>Process and Reality</em> (Macmillan, 1929; Corr. Ed. The Free Press, 1978) · <em>Adventures of Ideas</em> (Macmillan, 1933) · <em>The Concept of Nature</em> (Cambridge UP, 1920)</div>
         </div></div>
       </div>
@@ -1037,8 +1223,9 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <div class="cb"><div class="cbi">
           <p class="cdesc">Segall ist Professor am California Institute of Integral Studies und einer der aktivsten zeitgenössischen Vermittler von Whiteheads Prozessphilosophie in ökologischen und kosmologischen Zusammenhängen. Sein Blog <em>Footnotes2Plato</em> läuft seit 2006; sein Buch <em>Physics of the World-Soul</em> (3. Aufl. 2021) bringt Whitehead in Dialog mit Relativitätstheorie, Quantenmechanik und der deutschen Idealismus-Tradition (Schelling, Goethe).</p>
           <div class="ckl">Schlüsselbeiträge</div>
-          <ul class="cks"><li>Kosmologische Ökologie</li><li>Anima mundi</li><li>Whitehead-Schelling-Verbindung</li><li>Bedeutungskrise + Ontologie</li></ul>
+          <ul class="cks"><li>Kosmologische Ökologie</li><li>Anima mundi</li><li>Wellenfunktionskollaps als Konkreszenz</li><li>Whitehead-Schelling-Verbindung</li><li>Bedeutungskrise + Ontologie</li></ul>
           <p class="cdesc"><em>Sinngemäß nach Segall:</em> Eine rein „objektive" und „rationale" Beschreibung der Welt stößt an eine Grenze. Menschen suchen nach Bedeutung in einer Kultur, die viele der traditionellen Wege dazu abgeschnitten hat.<cite data-ref="segall-worldsoul"></cite></p>
+          <p class="cdesc">Segall liest den Kollaps der Wellenfunktion als natürlichen Akt der Konkreszenz: Eine Entität realisiert ihre Existenz im Austausch mit der Umgebung, indem sie aus einem Feld von Möglichkeiten ein konkretes Ereignis werden lässt. Zwischen subatomaren Prozessen und komplexen Organismen liegen so keine kategorialen, sondern nur graduelle Unterschiede im Organisationsgrad und im inhärenten Spielraum.<cite data-ref="segall-worldsoul"></cite></p>
           <p class="cdesc">Segall diagnostiziert die Bedeutungskrise als ontologisches Problem: Wir haben uns in eine Welt verabschiedet, die keine Bedeutung mehr enthält. Seine Antwort ist eine erneuerte <em>anima mundi</em>-Kosmologie: die Welt als lebendiger Organismus, nicht als tote Maschinerie.</p>
           <div class="crel">Relevanz: Segall ist eine zugängliche Brücke zwischen Whiteheads anspruchsvoller Prozessphilosophie und zeitgenössischen Fragen nach Sinn, Ökologie und Kosmologie.</div>
           <div class="csrc"><a href="https://footnotes2plato.com" target="_blank">footnotes2plato.com</a> · <em>Physics of the World-Soul</em> (3. Aufl., SacraSage Press, 2021)</div>
@@ -1086,29 +1273,6 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         </div></div>
       </div>
 
-      <!-- PROZESSONTOLOGIE — SYNTHESE -->
-      <div class="card wc" onclick="toggleCard(this)">
-        <div class="ch">
-          <div>
-            <div class="ct">Prozessontologie — eine wissenschaftlich tragende Synthese</div>
-            <div class="cm">Whitehead · Heisenberg · Deacon · Segall · Lanfranconi</div>
-          </div>
-          <div class="ctog">▾</div>
-        </div>
-        <div class="cb"><div class="cbi">
-          <p class="cdesc">Die physikalische Realität ist, in dieser Synthese, nicht eine Ansammlung statischer Objekte in einem passiven Raum-Zeit-Kontinuum, sondern eine kontinuierliche Abfolge von <em>tatsächlichen Anlässen</em> (actual occasions). Jeder solche Anlass realisiert sich durch <em>Konkreszenz</em> — ein Werden, in dem subjektive Unmittelbarkeit und objektive Unsterblichkeit zusammenfallen.<cite data-ref="whitehead-pr"></cite> Quantenmechanik, Bewusstsein und biologische Organisation erscheinen hier nicht als drei getrennte Probleme, sondern als drei Skalen ein und derselben Bewegung: das universelle Streben nach Selbstrealisierung.</p>
-          <div class="ckl">Schlüsselkonzepte</div>
-          <ul class="cks"><li>Actual occasion · Konkreszenz · Prähension</li><li>Bifurkation der Natur als Abstraktionsfehler</li><li>Aristotelische <em>potentia</em> — wissenschaftlich rehabilitiert</li><li>Dipolarer Charakter jedes Ereignisses</li><li>Wellenfunktionskollaps als Akt der Konkreszenz</li></ul>
-          <p class="cdesc">Die Newtonsche Mechanik scheitert dort, wo sie das Phänomen des Bewusstseins und die nichtlineare Dynamik lebender Systeme widerspruchsfrei integrieren müsste. Die saubere Trennung in objektiv-physische Fakten und subjektiv-psychische Werte — Whitehead nennt sie die <em>Bifurkation der Natur</em> — erweist sich als folgenschwerer Abstraktionsfehler der Moderne. Eine konsistente Interpretation der Quantentheorie erfordert die Rückkehr zur aristotelischen Kategorie der <em>potentia</em>: Elementarteilchen sind keine fixen Substanzen, sondern Tendenzstrukturen, Möglichkeiten des Seins.<cite data-ref="heisenberg-physics"></cite></p>
-          <p class="cdesc">Jedes Ereignis im Universum hat einen <em>physikalischen Pol</em>, der die Daten der Vergangenheit prähendiert, und einen <em>mentalen Pol</em>, der innerhalb der durch Gesetze gesetzten Grenzen neue Möglichkeiten antizipiert. Der Kollaps der Wellenfunktion lässt sich so als natürlicher Akt der Konkreszenz lesen, in dem eine Entität ihre Existenz im Austausch mit der Umgebung realisiert.<cite data-ref="segall-worldsoul"></cite> Zwischen subatomaren Prozessen und komplexen Organismen liegen keine kategorialen, sondern graduelle Unterschiede im Organisationsgrad und im inhärenten Spielraum (<em>wiggle room</em>). Lebendigkeit erscheint als emergente Eigenschaft komplexer Systeme, stabilisiert fernab des thermodynamischen Gleichgewichts.<cite data-ref="deacon-incomplete"></cite></p>
-          <div class="verified-quote">„We must feel! Intensely. And precisely. The fate of the universe depends on it."<cite data-ref="lanfranconi-pr001"></cite>
-            <span class="paraphrase-note">— F. Lanfranconi, <em>Processing Reality 001 — Metaphysical Speculations</em> (2024), S. 10</span>
-          </div>
-          <div class="crel">Relevanz: Diese Karte ist die wissenschaftliche Verankerung der „neuen Geschichte". Sie zeigt, dass die in Tab A erzählte Ontologie keine spirituelle Spekulation ist, sondern eine konsequente Antwort auf die Befunde der Quantenmechanik, der Emergenztheorie und der Lebenswissenschaft. Die menschliche Entfremdung von der Natur überwindet sich nicht durch Sentimentalität, sondern durch eine Ontologie, die die tiefe Verbundenheit aller Entitäten in der gemeinsam geteilten Geschichte der kosmischen Evolution begründet.</div>
-          <div class="csrc">A. N. Whitehead, <em>Process and Reality</em> (Free Press, korr. Aufl. 1978) · W. Heisenberg, <em>Physics and Philosophy</em> (Allen &amp; Unwin, 1959) · T. W. Deacon, <em>Incomplete Nature</em> (Norton, 2012) · M. T. Segall, <em>Physics of the World-Soul</em> (3. Aufl. Footnotes2Plato, 2018) · F. Lanfranconi, <em>Processing Reality 001</em> (2024)</div>
-        </div></div>
-      </div>
-
     </div>
   </div>
 
@@ -1120,6 +1284,26 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
     </div>
     <p class="gsum">Was diese Stimmen verbindet: Sie zeigen, dass die <em>Naturwissenschaft selbst</em> — Physik, Biologie, Kosmologie — an Punkten angekommen ist, an denen die alte „objektive, beobachterunabhängige Welt" nicht mehr trägt. Die Quantenmechanik beschreibt Beziehungen, nicht beobachterfreie Substanzen. Die Biologie findet Zellen, die Sinn-Konstrukteure sind, keine bloßen Maschinen. Und im Herzen jeder Beobachtung kehrt die gelebte Erfahrung zurück, ohne die kein Messen möglich wäre. Das ist keine Absage an die Wissenschaft — es ist ihre Reifung. Whitehead hatte diese Bewegung vor fast hundert Jahren antizipiert; heute schreiben Physikerinnen, Biologen und Philosophen sie weiter.</p>
     <div class="cgrid">
+
+      <!-- HEISENBERG -->
+      <div class="card sc" onclick="toggleCard(this)">
+        <div class="ch">
+          <div>
+            <div class="ct">Werner Heisenberg</div>
+            <div class="cm">1901–1976 · Quantenphysik</div>
+          </div>
+          <div class="ctog">▾</div>
+        </div>
+        <div class="cb"><div class="cbi">
+          <p class="cdesc">Heisenberg ist einer der Begründer der Quantenmechanik (Nobelpreis 1932) — und in <em>Physics and Philosophy</em> (1959) zugleich einer ihrer hellsten philosophischen Interpreten. Die Unschärferelation, die Nichtlokalität und der Welle-Teilchen-Dualismus erschüttern den klassischen Begriff des „Objekts" so tief, dass sich für ihn die Grundkategorien der Naturbeschreibung verschieben: weg von festen Substanzen, hin zu <em>Möglichkeitsstrukturen</em>.<cite data-ref="heisenberg-physics"></cite></p>
+          <div class="ckl">Schlüsselkonzepte</div>
+          <ul class="cks"><li>Unschärferelation</li><li>Aristotelische <em>potentia</em></li><li>Tendenzstrukturen statt Substanzen</li><li>Welle-Teilchen-Dualismus</li><li>Nicht-Beeinflussende-Beobachtung als Illusion</li></ul>
+          <p class="cdesc">Eine konsistente Interpretation der Quantentheorie verlangt für Heisenberg die Rückkehr zu einer alten Kategorie: der aristotelischen <em>potentia</em>. Elementarteilchen sind demnach keine fixen Substanzen, sondern Tendenzstrukturen — Möglichkeiten des Seins, die erst in der Interaktion mit ihrer Umgebung zu konkreten Tatsachen werden.<cite data-ref="heisenberg-physics"></cite> Damit verliert die saubere Trennung in „objektive" Materie und „subjektive" Beobachtung — Whiteheads Bifurkation der Natur — auf der grundlegendsten Ebene der Physik ihre Selbstverständlichkeit.</p>
+          <p class="cdesc">Diese Sicht öffnet eine Brücke: Was Whitehead als <em>Konkreszenz</em> aktualer Anlässe beschreibt, lässt sich physikalisch als jenen Übergang lesen, in dem aus einem Feld von Möglichkeiten ein konkretes Ereignis wird. Quantenmechanik und Prozessmetaphysik konvergieren — nicht durch Spekulation, sondern weil beide das gleiche Phänomen unter verschiedenen Beschreibungssprachen behandeln.</p>
+          <div class="crel">Relevanz: Heisenberg ist die Verankerung der neuen Geschichte in der Grundlagenphysik des 20. Jahrhunderts. Wo die Quantenmechanik recht behält, kann die mechanistisch-bifurkierte Weltsicht des 19. Jahrhunderts nicht mehr beanspruchen, „die Wirklichkeit" zu beschreiben.</div>
+          <div class="csrc">W. Heisenberg, <em>Physics and Philosophy: The Revolution in Modern Science</em> (Allen &amp; Unwin, 1959) · <em>Der Teil und das Ganze</em> (Piper, 1969)</div>
+        </div></div>
+      </div>
 
       <!-- FRANK · GLEISER · THOMPSON -->
       <div class="card sc" onclick="toggleCard(this)">
@@ -1525,12 +1709,13 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <div class="cb"><div class="cbi">
           <p class="cdesc">Whitehead's "philosophy of organism" is the Western philosophical foundation of the new story. In <em>Process and Reality</em> (1929) he argues that the basic units of reality are not dead particles of matter but "actual occasions" — moments of feeling and becoming. Every occasion has intrinsic value. Every moment carries its meaning within itself.</p>
           <div class="ckl">Key Concepts</div>
-          <ul class="cks"><li>Prehension / Feeling</li><li>Actual Occasions</li><li>Concrescence</li><li>Satisfaction</li><li>Bifurcation of Nature</li><li>Beauty as Value</li></ul>
+          <ul class="cks"><li>Prehension / Feeling</li><li>Actual Occasions</li><li>Concrescence</li><li>Satisfaction</li><li>Bifurcation of Nature</li><li>Dipolar character</li><li>Objective Immortality</li><li>Beauty as Value</li></ul>
           <div class="verified-quote">"The creativity of the world is the throbbing emotion of the past hurling itself into a new transcendent fact."<cite data-ref="whitehead-ai"></cite>
             <span class="paraphrase-note">— A. N. Whitehead, <em>Adventures of Ideas</em> (1933), ch. 11 "Objects and Subjects", p. 227</span>
           </div>
           <p class="cdesc">In <em>The Concept of Nature</em> (1920) Whitehead attacks the "bifurcation of nature": the modern split between "objective" dead matter and "subjective" human experience.<cite data-ref="whitehead-cn"></cite> He insists that color, sound, value and feeling belong to nature itself. This heals the philosophical split that justified the domination of nature.</p>
-          <div class="crel">Relevance: Whitehead resolves Becker's death-anxiety problem ontologically. If every moment of feeling has its own intrinsic value, meaning requires no immortality project.</div>
+          <p class="cdesc">Each occasion realises itself through <em>concrescence</em> — a becoming in which subjective immediacy and objective immortality coincide. Every event carries a <em>physical pole</em>, which prehends the data of the past, and a <em>mental pole</em>, which anticipates new possibilities within the limits set by lawful regularity. Quantum mechanics, consciousness and biological organisation appear here not as three separate problems but as three scales of a single movement: the universal striving toward self-realisation.<cite data-ref="whitehead-pr"></cite></p>
+          <div class="crel">Relevance: Whitehead resolves Becker's death-anxiety problem ontologically. If every moment of feeling has its own intrinsic value and inscribes its trace into the world as <em>objective immortality</em>, meaning requires no immortality project.</div>
           <div class="csrc">Major works: <em>Process and Reality</em> (Macmillan, 1929; Corr. Ed. The Free Press, 1978) · <em>Adventures of Ideas</em> (Macmillan, 1933) · <em>The Concept of Nature</em> (Cambridge UP, 1920)</div>
         </div></div>
       </div>
@@ -1539,8 +1724,9 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <div class="cb"><div class="cbi">
           <p class="cdesc">Segall is Professor at the California Institute of Integral Studies and one of the most active contemporary articulators of Whiteheadian process-relational thought. His blog <em>Footnotes2Plato</em> has run since 2006; his book <em>Physics of the World-Soul</em> (3rd ed., SacraSage, 2021) brings Whitehead into dialogue with relativity theory, quantum mechanics, and the German Idealist–Romantic tradition (Schelling, Goethe).</p>
           <div class="ckl">Key Contributions</div>
-          <ul class="cks"><li>Cosmological Ecology</li><li>Anima mundi</li><li>Whitehead-Schelling connection</li><li>Meaning crisis + ontology</li></ul>
+          <ul class="cks"><li>Cosmological Ecology</li><li>Anima mundi</li><li>Wave-function collapse as concrescence</li><li>Whitehead-Schelling connection</li><li>Meaning crisis + ontology</li></ul>
           <p class="cdesc"><em>Following Segall (paraphrase):</em> a purely "objective" and "rational" account of the world has its limits; people are searching for meaning in a culture that has cut off many of the traditional ways of doing so.<cite data-ref="segall-worldsoul"></cite></p>
+          <p class="cdesc">Segall reads the collapse of the wave function as a natural act of concrescence: an entity realises its existence in exchange with its environment by letting a field of possibilities become a concrete event. Between subatomic processes and complex organisms there are no categorial but only gradual differences — in degree of organisation and in the wiggle room available to each.<cite data-ref="segall-worldsoul"></cite></p>
           <div class="crel">Relevance: Segall is an accessible bridge between Whitehead's demanding process philosophy and contemporary questions of meaning, ecology, and cosmology.</div>
           <div class="csrc"><a href="https://footnotes2plato.com" target="_blank">footnotes2plato.com</a> · <em>Physics of the World-Soul</em> (3rd ed., SacraSage Press, 2021)</div>
         </div></div>
@@ -1570,28 +1756,6 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         </div></div>
       </div>
 
-      <!-- PROCESS ONTOLOGY — SYNTHESIS -->
-      <div class="card wc" onclick="toggleCard(this)">
-        <div class="ch">
-          <div>
-            <div class="ct">Process Ontology — A Scientifically Sustained Synthesis</div>
-            <div class="cm">Whitehead · Heisenberg · Deacon · Segall · Lanfranconi</div>
-          </div>
-          <div class="ctog">▾</div>
-        </div>
-        <div class="cb"><div class="cbi">
-          <p class="cdesc">Physical reality, on this synthesis, is not an aggregate of static objects within a passive space-time continuum but a continuous succession of <em>actual occasions</em>. Each occasion realises itself through <em>concrescence</em> — a becoming in which subjective immediacy and objective immortality coincide.<cite data-ref="whitehead-pr"></cite> Quantum mechanics, consciousness and biological organisation appear here not as three separate problems but as three scales of a single movement: the universal striving toward self-realisation.</p>
-          <div class="ckl">Key Concepts</div>
-          <ul class="cks"><li>Actual occasion · concrescence · prehension</li><li>Bifurcation of nature as a category mistake</li><li>Aristotelian <em>potentia</em> — scientifically rehabilitated</li><li>Dipolar character of every event</li><li>Wave-function collapse as an act of concrescence</li></ul>
-          <p class="cdesc">Newtonian mechanics fails where it must integrate, without contradiction, both consciousness and the non-linear dynamics of living systems. The clean split between objective physical facts and subjective psychic values — what Whitehead names the <em>bifurcation of nature</em> — reveals itself as a consequential category mistake of the modern era. A consistent interpretation of quantum theory requires the return of Aristotle's <em>potentia</em>: elementary particles are not fixed substances but tendency-structures, possibilities of being.<cite data-ref="heisenberg-physics"></cite></p>
-          <p class="cdesc">Every event in the universe carries a <em>physical pole</em>, which prehends the data of the past, and a <em>mental pole</em>, which anticipates new possibilities within the limits set by lawful regularity. Wave-function collapse can then be read as a natural act of concrescence in which an entity realises its existence in exchange with its environment.<cite data-ref="segall-worldsoul"></cite> Between subatomic processes and complex organisms there are no categorial but only gradual differences — in degree of organisation and in the <em>wiggle room</em> available to each. Aliveness appears as an emergent property of complex systems stabilised far from thermodynamic equilibrium.<cite data-ref="deacon-incomplete"></cite></p>
-          <div class="verified-quote">"We must feel! Intensely. And precisely. The fate of the universe depends on it."<cite data-ref="lanfranconi-pr001"></cite>
-            <span class="paraphrase-note">— F. Lanfranconi, <em>Processing Reality 001 — Metaphysical Speculations</em> (2024), p. 10</span>
-          </div>
-          <div class="crel">Relevance: This card is the scientific anchor of the new story. It shows that the ontology narrated in Tab A is not spiritual speculation but a consistent response to the findings of quantum mechanics, emergence theory and the life sciences. Human estrangement from nature is not overcome by sentiment but by an ontology that grounds the deep connectedness of all entities within their shared history of cosmic evolution.</div>
-          <div class="csrc">A. N. Whitehead, <em>Process and Reality</em> (Free Press, corrected ed. 1978) · W. Heisenberg, <em>Physics and Philosophy</em> (Allen &amp; Unwin, 1959) · T. W. Deacon, <em>Incomplete Nature</em> (Norton, 2012) · M. T. Segall, <em>Physics of the World-Soul</em> (3rd ed. Footnotes2Plato, 2018) · F. Lanfranconi, <em>Processing Reality 001</em> (2024)</div>
-        </div></div>
-      </div>
     </div>
   </div>
 
@@ -1603,6 +1767,26 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
     </div>
     <p class="gsum">What these voices share: they show that <em>natural science itself</em> — from quantum physics to evolutionary biology — has reached points where the old picture of an observer-independent, dead-matter world no longer holds. Bell proved non-locality experimentally; Bohm formulated the implicate order; Wheeler read the universe as participatory; Rovelli put relation before substance. Anderson showed that new levels of complexity generate irreducibly new properties. Margulis turned the evolutionary story from competition to symbiosis; Prigogine recovered irreversible time and creative structure. Frank, Gleiser and Thompson have named the blind spot that connects all of these: science presupposes the experience it has never been able to explain. This is not a rejection of science — it is its maturation. Whitehead anticipated this movement nearly a century ago.</p>
     <div class="cgrid">
+
+      <!-- HEISENBERG -->
+      <div class="card sc" onclick="toggleCard(this)">
+        <div class="ch">
+          <div>
+            <div class="ct">Werner Heisenberg</div>
+            <div class="cm">1901–1976 · Quantum Physics</div>
+          </div>
+          <div class="ctog">▾</div>
+        </div>
+        <div class="cb"><div class="cbi">
+          <p class="cdesc">Heisenberg is one of the founders of quantum mechanics (Nobel Prize 1932) — and, in <em>Physics and Philosophy</em> (1959), one of its most lucid philosophical interpreters. The uncertainty relation, non-locality and wave-particle duality unsettle the classical concept of the "object" so profoundly that, for him, the basic categories of natural description must shift: away from fixed substances toward <em>structures of possibility</em>.<cite data-ref="heisenberg-physics"></cite></p>
+          <div class="ckl">Key Concepts</div>
+          <ul class="cks"><li>Uncertainty relation</li><li>Aristotelian <em>potentia</em></li><li>Tendency-structures, not substances</li><li>Wave-particle duality</li><li>Non-influencing observation as an illusion</li></ul>
+          <p class="cdesc">A consistent interpretation of quantum theory, Heisenberg argues, requires the return of an old category: Aristotle's <em>potentia</em>. Elementary particles are not fixed substances but tendency-structures — possibilities of being which become concrete facts only in interaction with their environment.<cite data-ref="heisenberg-physics"></cite> The clean split between "objective" matter and "subjective" observation — Whitehead's bifurcation of nature — thereby loses its self-evidence at the most fundamental level of physics.</p>
+          <p class="cdesc">This view opens a bridge: what Whitehead describes as <em>concrescence</em> of actual occasions can be read, physically, as that transition in which a field of possibilities becomes a concrete event. Quantum mechanics and process metaphysics converge — not by speculation, but because both describe the same phenomenon in different languages.</p>
+          <div class="crel">Relevance: Heisenberg anchors the new story in the foundational physics of the 20th century. Where quantum mechanics holds, the mechanistic, bifurcated worldview of the 19th century can no longer claim to describe "reality."</div>
+          <div class="csrc">W. Heisenberg, <em>Physics and Philosophy: The Revolution in Modern Science</em> (Allen &amp; Unwin, 1959) · <em>Der Teil und das Ganze</em> (Piper, 1969)</div>
+        </div></div>
+      </div>
 
       <!-- FRANK · GLEISER · THOMPSON -->
       <div class="card sc" onclick="toggleCard(this)">
@@ -3240,47 +3424,18 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   </div>
 </footer>
 
-<!-- ══════════════════════ TOC SIDEBAR ══════════════════════ -->
-<div id="toc-sidebar">
-  <button id="toc-toggle" onclick="toggleTOC()" title="Inhaltsverzeichnis">‹</button>
-  <nav id="toc-nav">
-    <div class="toc-tabs" id="toc-tabs">
-      <button class="toc-tab-btn story-only" data-toc-tab="a" onclick="showTab('a')">
-        <span class="de-text">A — Geschichte</span>
-        <span class="en-text">A — Story</span>
-      </button>
-      <button class="toc-tab-btn story-only" data-toc-tab="c" onclick="showTab('c')">
-        <span class="de-text">C — Kurzgeschichte</span>
-        <span class="en-text">C — Short Story</span>
-      </button>
-      <button class="toc-tab-btn story-only" data-toc-tab="d" onclick="showTab('d')">
-        <span class="de-text">D — Der Atemzug</span>
-        <span class="en-text">D — The Breath</span>
-      </button>
-      <button class="toc-tab-btn roadmap-only" data-toc-tab="i" onclick="showTab('i')">
-        <span class="de-text">I — Ausrichtung</span>
-        <span class="en-text">I — Alignment</span>
-      </button>
-      <button class="toc-tab-btn roadmap-only" data-toc-tab="ii" onclick="showTab('ii')">
-        <span class="de-text">II — Schichten</span>
-        <span class="en-text">II — Layers</span>
-      </button>
-      <button class="toc-tab-btn roadmap-only" data-toc-tab="iii" onclick="showTab('iii')">
-        <span class="de-text">III — Wege</span>
-        <span class="en-text">III — Pathways</span>
-      </button>
-      <button class="toc-tab-btn foundations-only" data-toc-tab="f1" onclick="showTab('f1')">
-        <span class="de-text">F1 — Stimmen</span>
-        <span class="en-text">F1 — Voices</span>
-      </button>
-      <button class="toc-tab-btn foundations-only" data-toc-tab="f2" onclick="showTab('f2')">
-        <span class="de-text">F2 — Literatur</span>
-        <span class="en-text">F2 — Bibliography</span>
-      </button>
-    </div>
-    <ul id="toc-list"></ul>
-  </nav>
-</div>
+<!-- ══════════════════════ ZURÜCK-NACH-OBEN-BUTTON ══════════════════════ -->
+<!-- Ersetzt die frühere TOC-Sidebar — minimal, sektionsneutral, immer da -->
+<button id="to-top" onclick="scrollToTop()" aria-label="Zurück nach oben">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5"/>
+    <path d="M5 12l7-7 7 7"/>
+  </svg>
+  <span class="tt-label">
+    <span class="de-text">nach oben</span>
+    <span class="en-text">to top</span>
+  </span>
+</button>
 
 <script>
 function setLang(lang) {
@@ -3288,10 +3443,7 @@ function setLang(lang) {
   document.getElementById('btn-de').classList.toggle('active', lang==='de');
   document.getElementById('btn-en').classList.toggle('active', lang==='en');
   try{localStorage.setItem('lang',lang);}catch(e){}
-  buildTOC();
   if (typeof _renderBibAfterLang === 'function') _renderBibAfterLang(lang);
-  // Header-Texte sind sprachabhängig und können die Höhe verändern
-  if (typeof updateTocTop === 'function') updateTocTop();
 }
 
 // ── Tabs ──
@@ -3315,8 +3467,6 @@ function showTab(id) {
   document.getElementById('tab-'+id).classList.add('active');
   document.querySelector('[data-tab="'+id+'"]').classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
-  buildTOC();
-  if (typeof updateTocTop === 'function') updateTocTop();
 }
 
 // ── Sektion wechseln (Cross-Nav-Klick) ──
@@ -3362,187 +3512,18 @@ function bibJump(targetId) {
   return false; // verhindert default-Anchor-Sprung
 }
 
-// ── TOC ──
-let _tocObs = null;
-
-function buildTOC() {
-  const lang = document.body.classList.contains('en') ? 'en' : 'de';
-  const activeTab = document.querySelector('.tab-content.active');
-  const sidebar = document.getElementById('toc-sidebar');
-  const list = document.getElementById('toc-list');
-  if (!activeTab || !list || !sidebar) return;
-
-  const tabId = activeTab.id;
-
-  // Aktiven Tab-Button in Sidebar hervorheben
-  document.querySelectorAll('.toc-tab-btn').forEach(btn => {
-    btn.classList.toggle('toc-tab-active', btn.dataset.tocTab === tabId.replace('tab-',''));
-  });
-
-  // Observer abräumen
-  if (_tocObs) { _tocObs.disconnect(); _tocObs = null; }
-  list.innerHTML = '';
-
-  // Sidebar immer sichtbar (kein toc-hidden mehr)
-  sidebar.classList.remove('toc-hidden');
-
-  // Sichtbare Sprach-Div finden
-  const langDiv = activeTab.querySelector('.' + lang + '-text') || activeTab;
-
-  // Abschnitte je Tab
-  let sections = [];
-  if (tabId === 'tab-a') {
-    sections = Array.from(langDiv.querySelectorAll('.story-block, .s-section'));
-  } else if (tabId === 'tab-c' || tabId === 'tab-d') {
-    // Jede Geschichte = ein .sf-Block (story front matter)
-    sections = Array.from(langDiv.querySelectorAll('.sf'));
-  } else if (tabId === 'tab-f1') {
-    sections = Array.from(langDiv.querySelectorAll('.fg'));
-  } else if (tabId === 'tab-f2') {
-    sections = Array.from(langDiv.querySelectorAll('.biblio-section, .verif-collapse'));
-  } else if (tabId === 'tab-i') {
-    sections = Array.from(langDiv.querySelectorAll('.r-section'));
-  } else if (tabId === 'tab-ii') {
-    sections = Array.from(langDiv.querySelectorAll('.layer'));
-  } else if (tabId === 'tab-iii') {
-    sections = Array.from(langDiv.querySelectorAll('.r-section, .phase'));
-  }
-  if (!sections.length) return;
-
-  let allObsEls = [];
-
-  sections.forEach((sec, i) => {
-    // ID sicherstellen
-    if (!sec.id) sec.id = tabId + '-sec-' + i;
-
-    // Label: h2 → sb-label → h1 (für Tab C)
-    let label = '—';
-    const h2 = sec.querySelector('h2');
-    if (h2) {
-      label = h2.textContent.trim();
-    } else {
-      const sbLabel = sec.querySelector('.sb-label');
-      const h1 = sec.querySelector('h1');
-      if (sbLabel) label = sbLabel.textContent.trim();
-      else if (h1) label = h1.textContent.replace(/\n/g,' ').trim();
-    }
-
-    // Sub-Items
-    let subs = [];
-    if (tabId === 'tab-a' && sec.classList.contains('s-section')) {
-      subs = Array.from(sec.querySelectorAll('.indig-box, .insight'));
-    } else if (tabId === 'tab-f1') {
-      subs = Array.from(sec.querySelectorAll('.card'));
-    }
-    subs.forEach((s, j) => { if (!s.id) s.id = sec.id + '-sub-' + j; });
-
-    // List-Item bauen
-    const li = document.createElement('li');
-    li.className = 'toc-item';
-    li.dataset.secId = sec.id;
-
-    const sp = document.createElement('span');
-    sp.textContent = label;
-    sp.addEventListener('click', () => tocScrollTo(sec));
-    li.appendChild(sp);
-
-    // Sub-Liste
-    if (subs.length) {
-      const ul = document.createElement('ul');
-      ul.className = 'toc-subs';
-      subs.forEach(sub => {
-        const sli = document.createElement('li');
-        const labelEl = sub.querySelector('.ib-label, h3, .ct');
-        sli.textContent = labelEl ? labelEl.textContent.trim() : '';
-        sli.dataset.subId = sub.id;
-        sli.addEventListener('click', () => tocScrollTo(sub));
-        ul.appendChild(sli);
-      });
-      li.appendChild(ul);
-    }
-
-    list.appendChild(li);
-    allObsEls.push(sec);
-    allObsEls = allObsEls.concat(subs);
-  });
-
-  // ScrollSpy via IntersectionObserver
-  _tocObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const id = e.target.id;
-
-      // Haupt-Abschnitt?
-      const mainItem = list.querySelector('[data-sec-id="' + id + '"]');
-      if (mainItem) {
-        list.querySelectorAll('.toc-item').forEach(it => it.classList.remove('toc-active'));
-        mainItem.classList.add('toc-active');
-      }
-
-      // Sub-Item?
-      const subItem = list.querySelector('[data-sub-id="' + id + '"]');
-      if (subItem) {
-        subItem.closest('.toc-subs').querySelectorAll('li').forEach(s => s.classList.remove('toc-sub-active'));
-        subItem.classList.add('toc-sub-active');
-        // Eltern-Abschnitt aktivieren
-        const parentLi = subItem.closest('.toc-item');
-        if (parentLi) {
-          list.querySelectorAll('.toc-item').forEach(it => it.classList.remove('toc-active'));
-          parentLi.classList.add('toc-active');
-        }
-      }
-    });
-  }, { rootMargin: '-12% 0px -65% 0px', threshold: 0 });
-
-  allObsEls.forEach(el => _tocObs.observe(el));
-
-  // ── Bibliographie-Eintrag in Sidebar (Tab A; in F2 ist die Bibliographie selbst) ──
-  const biblioId = lang === 'de' ? 'biblio' : 'biblio-en';
-  const biblioEl = document.getElementById(biblioId);
-  if (biblioEl && tabId === 'tab-a') {
-    // Trennlinie
-    const divider = document.createElement('li');
-    divider.className = 'toc-bib-divider';
-    divider.setAttribute('aria-hidden', 'true');
-    list.appendChild(divider);
-
-    // Bib-Eintrag
-    const bibLi = document.createElement('li');
-    bibLi.className = 'toc-item toc-bib-item';
-    bibLi.dataset.secId = biblioId;
-    const bibSpan = document.createElement('span');
-    bibSpan.textContent = lang === 'de' ? '· Literaturverzeichnis' : '· Bibliography';
-    bibSpan.addEventListener('click', () => tocScrollTo(biblioEl));
-    bibLi.appendChild(bibSpan);
-    list.appendChild(bibLi);
-
-    // Bibliographie im ScrollSpy mitbeobachten
-    _tocObs.observe(biblioEl);
-  }
+// ── Zurück-nach-oben-Button ──
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function tocScrollTo(el) {
-  const top = el.getBoundingClientRect().top + window.scrollY - 88;
-  window.scrollTo({ top, behavior: 'smooth' });
-}
-
-function toggleTOC() {
-  const sb = document.getElementById('toc-sidebar');
-  const btn = document.getElementById('toc-toggle');
-  sb.classList.toggle('toc-collapsed');
-  btn.textContent = sb.classList.contains('toc-collapsed') ? '›' : '‹';
-}
-
-// ── Sidebar-Position dynamisch (Header + TabNav + Puffer) ──
-function updateTocTop() {
-  const header = document.querySelector('header');
-  const tabNav = document.querySelector('.tab-nav');
-  if (!header || !tabNav) return;
-  const top = header.offsetHeight + tabNav.offsetHeight + 12;
-  document.documentElement.style.setProperty('--toc-top', top + 'px');
-}
-window.addEventListener('resize', updateTocTop);
-window.addEventListener('load', updateTocTop);
+// Button erst einblenden, wenn der Nutzer ein Stück gescrollt hat
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('to-top');
+  if (!btn) return;
+  if (window.scrollY > 320) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
 
 // ── Init ──
 (function(){
@@ -3579,15 +3560,8 @@ window.addEventListener('load', updateTocTop);
     if (btnF) btnF.classList.add('active');
   }
 
-  // Auf schmalen Screens Sidebar eingeklappt starten
-  if (window.innerWidth < 900) {
-    const sb = document.getElementById('toc-sidebar');
-    const btn = document.getElementById('toc-toggle');
-    if (sb) sb.classList.add('toc-collapsed');
-    if (btn) btn.textContent = '›';
-  }
-  setLang(lang); // ruft buildTOC() auf
-  updateTocTop();
+  // Auf schmalen Screens: keine Sidebar mehr — entfällt
+  setLang(lang);
 })();
 </script>
 
