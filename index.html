@@ -410,7 +410,38 @@ cite[data-ref],cite{font-style:normal}
 .phase.p2 .phase-head{background:var(--amber)}
 .phase.p3 .phase-head{background:var(--leaf)}
 
+/* ── Tab I — Ziel-Timeline (Übersicht) ── */
+.goal-phase{margin:0 0 20px;border:1px solid #d8d2c4;border-radius:10px;background:#fff;overflow:hidden}
+.goal-phase-head{padding:14px 20px;color:#fff;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.goal-phase-head .gp-num{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;opacity:.78;text-transform:uppercase}
+.goal-phase-head .gp-title{font-family:var(--f-display);font-size:clamp(1.05rem,2.4vw,1.18rem);font-weight:600;line-height:1.2}
+.goal-phase-head .gp-time{font-family:var(--f-mono);font-size:.7rem;color:rgba(255,255,255,.78);margin-left:auto;letter-spacing:.04em}
+.goal-phase.gp0 .goal-phase-head{background:var(--stone)}
+.goal-phase.gp1 .goal-phase-head{background:var(--clay)}
+.goal-phase.gp2 .goal-phase-head{background:var(--amber)}
+.goal-phase.gp3 .goal-phase-head{background:var(--leaf)}
+.goal-list{list-style:none;padding:10px 16px 16px;margin:0;display:flex;flex-direction:column;gap:5px}
+.goal-list li{font-size:.93rem;line-height:1.6;color:#2e1e0a;padding:6px 12px;border-left:3px solid transparent;border-radius:0 4px 4px 0}
+.goal-list li.l1{border-left-color:var(--sky);background:rgba(70,144,170,.07)}
+.goal-list li.l2{border-left-color:var(--bark);background:rgba(122,84,36,.07)}
+.goal-list li.l3{border-left-color:var(--amber);background:rgba(224,144,32,.07)}
+.goal-list li.l4{border-left-color:var(--leaf);background:rgba(95,160,36,.07)}
+/* Farb-Legende im Einleitungstext */
+.ldot{display:inline-block;width:7px;height:7px;border-radius:50%;vertical-align:middle;margin-right:2px}
+.ldot.l1{background:var(--sky)}
+.ldot.l2{background:var(--bark)}
+.ldot.l3{background:var(--amber)}
+.ldot.l4{background:var(--leaf)}
+.goal-list b{font-weight:600;color:var(--earth)}
+@media (max-width:560px){
+  .goal-phase-head{flex-direction:column;align-items:flex-start;gap:4px}
+  .goal-phase-head .gp-time{margin-left:0}
+}
+
 /* PRINZIPIEN GRID */
+/* Ziel-Gruppen-Titel in Tab II */
+.goal-ref{font-family:var(--f-display);font-size:1rem;font-weight:600;color:var(--earth);margin:22px 0 8px;padding:6px 0 6px 10px;border-left:3px solid var(--amber);line-height:1.25}
+.goal-ref:first-child{margin-top:0}
 .princ-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:28px 0}
 .princ{background:#faf6ec;border:1px solid #e8e2d4;border-radius:10px;padding:18px 20px;border-left:3px solid var(--amber)}
 .princ .pn{font-family:var(--f-mono);font-size:.7rem;color:var(--amber);letter-spacing:.1em;margin-bottom:6px;font-weight:600}
@@ -635,8 +666,8 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   </button>
 
   <button class="tbtn roadmap-only" data-tab="i" onclick="showTab('i')">
-    <span class="de-text">I — Ausrichtung</span>
-    <span class="en-text">I — Alignment</span>
+    <span class="de-text">I — Übersicht</span>
+    <span class="en-text">I — Overview</span>
   </button>
   <button class="tbtn roadmap-only" data-tab="ii" onclick="showTab('ii')">
     <span class="de-text">II — Vier Schichten</span>
@@ -2582,87 +2613,139 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 <div class="de-text">
 <div class="rmap-tab">
   <div class="t-hero">
-    <span class="tlabel">Tab I · Ausrichtung</span>
-    <h1>Was eine Roadmap leisten muss —<br>und was sie nicht leisten kann</h1>
-    <p class="hero-sub">Bevor wir Maßnahmen aufzählen, müssen wir klären, in welcher Reihenfolge sie wirken können — und warum die meisten gescheiterten Reformversuche an dieser Frage gescheitert sind.</p>
+    <span class="tlabel">Tab I · Übersicht</span>
+    <h1>Was diese Roadmap anstrebt —<br>geordnet nach der Zeit</h1>
+    <p class="hero-sub">Eine stichwortartige Ziel-Übersicht entlang der vier Phasen. Die Anordnung markiert Schwerpunkt-Verschiebungen, keine strikte Sequenz — alle vier Schichten arbeiten gleichzeitig, in unterschiedlichen Geschwindigkeiten und durch unterschiedliche Akteure.</p>
   </div>
 
   <!-- ── ORIENTIERUNGSBOX ── -->
   <div class="orientation">
     <span class="tlabel">Wo Sie sind</span>
-    <p>Diese Roadmap denkt nicht von Maßnahmen her, sondern von <strong>Voraussetzungen</strong>. Vier Schichten — was wir glauben, was wir fühlen, wie wir gemeinsam handeln, wie wir politisch entscheiden — müssen zusammenwirken, sonst trägt nichts. Die Schichten arbeiten gleichzeitig, in unterschiedlichen Geschwindigkeiten und durch unterschiedliche Akteure.</p>
     <div class="o-tabs">
-      <div class="o-tab"><b>Tab I — hier</b>Warum vier Schichten? Welches Erfolgsmaß? Was die Roadmap nicht ist.</div>
+      <div class="o-tab"><b>Tab I — hier</b>Übersicht aller Ziele, timeline-geordnet.</div>
       <div class="o-tab"><b>Tab II</b>Jede Schicht im Detail: Aufgabe, konkrete Maßnahmen, Akteure, Zeitprofil.</div>
       <div class="o-tab"><b>Tab III</b>Vier Phasen über sechs Jahrzehnte. Drei Querthemen. Acht Leitprinzipien.</div>
     </div>
   </div>
 
-  <!-- ── DAS SEQUENZPROBLEM ── -->
+  <!-- ── 1.1 ZIELE IM ÜBERBLICK ── -->
   <div class="r-section">
-    <h2><span class="num">1.1</span> Das Sequenzproblem</h2>
-    <p>Die Geschichte des sozialen und ökologischen Wandels der letzten zweihundert Jahre ist eine Geschichte gut gemeinter Reformen, die strukturell richtig waren, kulturell aber leerliefen oder in ihr Gegenteil umschlugen. Das Bedingungslose Grundeinkommen wurde mehrfach modellhaft erprobt — Mincome in Manitoba (1974–1979), die negative Einkommenssteuer-Experimente in den USA, finnische Pilotprogramme — und die quantitativen Ergebnisse waren überwiegend positiv. Politisch tragfähig wurden sie dennoch nicht. Eine progressive Vermögensbesteuerung ließe sich technisch in jedem OECD-Staat implementieren; sie scheitert nicht an der Mathematik, sondern an einer Selbstverständlichkeit, die jenseits der Mathematik liegt: dass Eigentum auf eine bestimmte, historisch spezifische Weise verstanden wird.</p>
-    <p>Diese Beobachtung lässt sich verallgemeinern. Strukturelle Reformen können nicht erfolgreich gegen die kulturelle Geschichte arbeiten, in der sie stattfinden. Wenn die zugrundeliegende Erzählung weiterhin lautet, dass Wert sich in akkumulierter Materie ausdrückt, dann werden Eigentumsbeschränkungen als Diebstahl empfunden, auch wenn sie rechtlich legitim sind. Wenn die zugrundeliegende Psyche weiterhin Wachstum als Schutz vor Endlichkeit benötigt, dann wird jede Suffizienzpolitik als Bedrohung erfahren, nicht als Befreiung.</p>
-    <div class="r-pull"><p>Eine Reform, die ihre eigene kulturelle Voraussetzung nicht mitdenkt, wird in eine Welt eingeführt, in der niemand sie braucht.</p></div>
-    <p>Daraus folgt: Eine Roadmap muss in der richtigen Reihenfolge wirken. Nicht im Sinne einer strikten Sequenz, in der Schicht 1 abgeschlossen sein müsste, bevor Schicht 4 beginnen darf. Sondern im Sinne einer durchgängigen Architektur, in der die ontologische, psychische, institutionelle und strukturelle Ebene einander stützen, anstatt einander zu unterlaufen.</p>
+    <h2><span class="num">1.1</span> Die Ziele im Überblick</h2>
+    <p>Was die Roadmap in der Welt umsetzen will — geordnet nach den vier Phasen aus Tab III. Hintergrundfarbe zeigt die Schicht: <span class="ldot l1"></span>Ontologie · <span class="ldot l2"></span>Psyche · <span class="ldot l3"></span>Institution · <span class="ldot l4"></span>Struktur.</p>
+
+    <div class="goal-phase gp0">
+      <div class="goal-phase-head">
+        <span class="gp-num">Phase 0</span>
+        <span class="gp-title">Sichtbarmachen und Einüben</span>
+        <span class="gp-time">heute · 0–10 Jahre</span>
+      </div>
+      <ul class="goal-list">
+        <li class="l1"><span><b>Alte „Nehmer"-Erzählung sichtbar machen</b> und ein organismisch-relationales Weltbild kultivieren</span></li>
+        <li class="l1"><span><b>Prozessphilosophie und indigene Ontologien</b> in Bildung und Kultur zugänglich machen; Solarpunk als ästhetische Sprache</span></li>
+        <li class="l2"><span><b>Eigenen Tod akzeptieren lernen</b> — Death Cafés, Work That Reconnects, kommunale Trauerformate</span></li>
+        <li class="l3"><span><b>Doughnut-Pilotstädte und Bürgerräte</b> (Klima, Verfassung) etablieren</span></li>
+        <li class="l3"><span><b>Kommunale Commons</b> als erste gelebte Modelle</span></li>
+        <li class="l4"><span><b>Bedingungsloses Grundeinkommen</b> in Pilotprojekten erproben und ausweiten</span></li>
+        <li class="l4"><span><b>„Tax Wealth, not Work"</b> — Vermögenssteuer-Diskurs politisch anschlussfähig machen</span></li>
+        <li class="l4"><span><b>Demokratie schützen</b> (Kampagnenfinanzierung, Medienkonzentration); Commons-Bank-Prototyp</span></li>
+      </ul>
+    </div>
+
+    <div class="goal-phase gp1">
+      <div class="goal-phase-head">
+        <span class="gp-num">Phase 1</span>
+        <span class="gp-title">Skalieren und Verzahnen</span>
+        <span class="gp-time">10–25 Jahre</span>
+      </div>
+      <ul class="goal-list">
+        <li class="l1"><span><b>Place-based Bildung als Standard</b> in Vorreiterregionen</span></li>
+        <li class="l1"><span><b>Indigene Souveränität</b> rechtlich und wirtschaftlich konsolidieren</span></li>
+        <li class="l2"><span><b>Mortalitätskompetenz im Lehrplan</b></span></li>
+        <li class="l3"><span><b>Doughnut-Logik in vielen Kommunen</b>; Bürgerräte mit verbindlicher Wirkung</span></li>
+        <li class="l3"><span><b>Commons in Wasser, Wohnen, Energie</b></span></li>
+        <li class="l4"><span><b>BGE-Einführung in mehreren Staaten</b> (kaufkraftbereinigt, kommunal flexibel)</span></li>
+        <li class="l4"><span><b>Progressive Vermögenssteuer</b> mit substanziellen Stufen — europäische Pioniergruppe</span></li>
+        <li class="l4"><span><b>Worker-owned cooperatives</b> / Stakeholder-Modelle für Großunternehmen; Commons Banks operativ</span></li>
+      </ul>
+    </div>
+
+    <div class="goal-phase gp2">
+      <div class="goal-phase-head">
+        <span class="gp-num">Phase 2</span>
+        <span class="gp-title">Konsolidieren und Vertiefen</span>
+        <span class="gp-time">25–45 Jahre</span>
+      </div>
+      <ul class="goal-list">
+        <li class="l1"><span><b>Prozess-relationale Naturwissenschaft</b> als Lehrstandard wissenschaftlich etablieren</span></li>
+        <li class="l1"><span><b>Pluriversale Wissensordnungen</b> anerkannt — Pluralität statt Synthese</span></li>
+        <li class="l2"><span><b>Ausdifferenzierte Trauerkulturen</b>; intergenerationale Sinnpraktiken</span></li>
+        <li class="l3"><span><b>Polyzentrische Klimagovernance</b>; transnationale Bürgerräte regulär</span></li>
+        <li class="l4"><span><b>BGE und progressive Steuerstrukturen</b> als OECD-Standard</span></li>
+        <li class="l4"><span><b>Boden, Wasser und Energie als Commons</b>; öffentliches Bankwesen als Norm</span></li>
+        <li class="l4"><span><b>Lebens-Projekte (Tribes von 30–150 Menschen)</b> als anerkannte Wohn- und Arbeitsform</span></li>
+      </ul>
+    </div>
+
+    <div class="goal-phase gp3">
+      <div class="goal-phase-head">
+        <span class="gp-num">Phase 3</span>
+        <span class="gp-title">Symbiozän</span>
+        <span class="gp-time">45–60+ Jahre · Zielzustand</span>
+      </div>
+      <ul class="goal-list">
+        <li><span><b>Sieben von neun planetaren Grenzen</b> wieder im sicheren Raum — oder klar in dieser Richtung</span></li>
+        <li><span><b>Konsumlogik durch Beziehungs- und Konkreszenzlogik</b> ersetzt</span></li>
+        <li><span><b>Indigene Souveränität</b> als selbstverständlicher Teil multilateraler Ordnungen</span></li>
+        <li><span><b>Demokratie auf mehreren Skalen</b> funktionsfähig — Quartier bis transnational</span></li>
+      </ul>
+    </div>
   </div>
 
-  <!-- ── WARUM VIER SCHICHTEN ── -->
+  <!-- ── 1.2 VIER SCHICHTEN ── -->
   <div class="r-section">
-    <h2><span class="num">1.2</span> Warum vier Schichten</h2>
-    <p>Die in der „neuen Geschichte" entwickelte Diagnose — Quinns Nehmer-Erzählung als kulturelles Programm, Beckers Todesangst als psychischer Antrieb, die ökologische und soziale Wirklichkeit als Ergebnis — verlangt Antworten auf vier Ebenen, die zusammen wirken müssen.</p>
+    <h2><span class="num">1.2</span> Die vier Schichten</h2>
+    <p>Vier Fragen, vier Schichten. <strong>Ontologie</strong> fragt nach der Welt, die unsere Wahrnehmung strukturiert. <strong>Psyche</strong> fragt nach der existenziellen Verfassung, in der Geschichten Halt finden. <strong>Institution</strong> fragt nach den geteilten Räumen, die Möglichkeit verteilen. <strong>Struktur</strong> fragt nach Macht, Recht und Mitteln, die Institutionen erst tragen.</p>
 
     <div class="diagram-frame">
       <div class="diag-stack">
         <div class="diag-row d1">
           <span class="dnum">01</span>
-          <span class="dttl">Ontologisch-narrativ <em>Was ist die Welt? Welche Geschichte erzählen wir?</em></span>
+          <span class="dttl">Ontologie <em>Was ist die Welt? Welche Geschichte erzählen wir?</em></span>
           <span class="dmeta"><b>langsamste</b>Lehrende, Künstler, indigene Souveräne</span>
         </div>
         <div class="diag-row d2">
           <span class="dnum">02</span>
-          <span class="dttl">Existenziell-psychologisch <em>Wie gehen wir mit Endlichkeit um?</em></span>
+          <span class="dttl">Psyche <em>Wie gehen wir mit Endlichkeit um?</em></span>
           <span class="dmeta"><b>langsam</b>Therapie, Hospiz, Gemeinden</span>
         </div>
         <div class="diag-row d3">
           <span class="dnum">03</span>
-          <span class="dttl">Institutionell-distributiv <em>Welche Räume schaffen wir für gutes Leben?</em></span>
+          <span class="dttl">Institution <em>Welche Räume schaffen wir für gutes Leben?</em></span>
           <span class="dmeta"><b>mittel</b>Kommunen, Genossenschaften, Bürgerräte</span>
         </div>
         <div class="diag-row d4">
           <span class="dnum">04</span>
-          <span class="dttl">Strukturell-politisch <em>Welche Macht und Mittel ermöglichen den Wandel?</em></span>
+          <span class="dttl">Struktur <em>Welche Macht und Mittel ermöglichen den Wandel?</em></span>
           <span class="dmeta"><b>schnellste</b>Parlamente, Gerichte, Verträge</span>
         </div>
       </div>
-      <div class="diag-cap">Vier Schichten — keine strikte Hierarchie, aber eine Tiefenordnung. Jede Schicht trägt die nächste. Geschwindigkeit nimmt von oben nach unten zu, Tiefe in die andere Richtung.</div>
+      <div class="diag-cap">Vier Schichten — keine strikte Hierarchie, aber eine Tiefenordnung. Geschwindigkeit nimmt von oben nach unten zu, Tiefe in die andere Richtung.</div>
     </div>
 
-    <p>Schicht 1 fragt nach der Ontologie — nach der Geschichte über die Welt, die unsere Wahrnehmung strukturiert. Hier wirken Whiteheads Prozessphilosophie, indigene relationale Ontologien<cite data-ref="kimmerer-bs"></cite> und die heutige Naturwissenschaft konvergent;<cite data-ref="anderson-more"></cite> Donella Meadows hat das systemische Denken, das diese Schicht stützt, in <em>Thinking in Systems</em> pädagogisch zugänglich gemacht.<cite data-ref="meadows-systems"></cite> Schicht 2 fragt nach der Psyche — nach der existenziellen Verfassung, in der diese Geschichte Halt findet. Hier wirken Beckers Diagnose der Todesangst<cite data-ref="becker-denial"></cite> und das Prinzip der objektiven Unsterblichkeit jedes aktualen Ereignisses<cite data-ref="whitehead-pr"></cite> zusammen. Schicht 3 fragt nach den Institutionen — nach den geteilten Räumen und Spielregeln, die die alltägliche Verteilung von Möglichkeit organisieren. Schicht 4 fragt nach der Struktur — nach den makroökonomischen, rechtlichen und politischen Bedingungen, die Schicht 3 erst tragen. Kate Raworths Donut-Ökonomie liefert hier den präzisesten Rahmen: zwischen sozialem Boden und ökologischer Decke einen sicheren und gerechten Raum.<cite data-ref="raworth-doughnut"></cite></p>
-    <p>Die Schichten sind voneinander abhängig, aber nicht streng nacheinander geordnet. Eine Roadmap, die nur Schicht 4 bearbeitet, wird wirkungslos. Eine, die nur Schicht 1 bearbeitet, bleibt im Akademischen. Was funktioniert, ist eine Bewegung, die alle vier Schichten gleichzeitig ansetzt, mit unterschiedlichen Geschwindigkeiten, in unterschiedlichen Orten, durch unterschiedliche Akteure — aber konsistent ausgerichtet.</p>
+    <p>Die Schichten sind voneinander abhängig, aber nicht streng sequenziell — alle vier arbeiten gleichzeitig, in unterschiedlichen Geschwindigkeiten, durch unterschiedliche Akteure, aber konsistent ausgerichtet. (Die ausführliche Begründung mit Quellen findet sich in Tab II und F2.)</p>
   </div>
 
-  <!-- ── DAS ZIEL: INTENSITÄT DES FÜHLENS ── -->
+  <!-- ── 1.3 ERFOLGSMASS ── -->
   <div class="r-section">
-    <h2><span class="num">1.3</span> Das Zielkriterium</h2>
-    <p>Eine Roadmap braucht ein Erfolgskriterium. Im 20. Jahrhundert war es Bruttoinlandsprodukt. Im frühen 21. Jahrhundert wurde es um Indikatoren erweitert — Glücksindex, ökologischer Fußabdruck, soziale Kohäsion. Diese Indikatoren sind nützlich, aber sie greifen das Eigentliche nicht.</p>
-    <p>Wenn die ontologische Grundlegung der „neuen Geschichte" ernst genommen wird, dann ist das Erfolgskriterium der Roadmap nicht die Erreichung eines Zustands, sondern die Häufung intensiver, präziser, geteilter Momente des Fühlens. Whitehead nennt das die Intensität ästhetischer Erfahrung. Die Honorable Harvest Robin Wall Kimmerers nennt es das Erfüllen einer Beziehung. Davi Kopenawas xapiri-Geister sind die Wesen, ohne die ein Wald nicht lebt. In allen drei Sprachen ist gemeint: Das Universum gewinnt durch jede gefühlte Begegnung, jeden bewusst getroffenen Moment, jede Handlung, in der eine Idee tatsächlich realisiert wird.</p>
+    <h2><span class="num">1.3</span> Das Erfolgsmaß</h2>
+    <p>Erfolg ist nicht das Erreichen eines Zustands, sondern die Vermehrung intensiver, präziser, geteilter Momente tatsächlich gefühlten Lebens. Eine Reform, die statistisch „bessere Verhältnisse" schafft, in denen aber niemand Würde, Liebe oder Beziehung erfährt, hat ihr Ziel verfehlt. Politik wird damit nicht weicher, sondern präziser.</p>
     <div class="r-pull"><p>„Wir müssen fühlen — intensiv und präzise. Das Schicksal des Universums hängt davon ab. Es ist sein Ziel und seine Ursache."<cite>Flavio Lanfranconi · Processing Reality (2024)</cite></p></div>
-    <p>Das ist ein ungewöhnlich strenges Kriterium für Politik. Eine Reform, die statistisch „bessere Verhältnisse" schafft, in denen aber niemand tatsächlich Würde, Liebe oder Beziehung erfährt, hat ihr eigentliches Ziel verfehlt. Politik wird damit nicht weicher, sondern präziser. Sie zielt nicht auf abstrakte Sollzustände, sondern auf die Vermehrung tatsächlich realisierter Momente von Verbundenheit, Beitrag, Schönheit, Gemeinschaft.</p>
   </div>
 
-  <!-- ── HABITS ── -->
+  <!-- ── 1.4 WAS DIESE ROADMAP NICHT IST ── -->
   <div class="r-section">
-    <h2><span class="num">1.4</span> Strukturen sind Gewohnheiten</h2>
-    <p>Die ontologische Grundlegung erlaubt eine zweite, für die Roadmap entscheidende Einsicht. Wenn selbst die fundamentalen Konstanten der Physik als „Habits" — Wiederholungsmuster, die durch ihr eigenes Geschehen Stabilität gewinnen — verstanden werden können, dann sind ökonomische, rechtliche und politische Strukturen erst recht keine ehernen Gegebenheiten. Sie sind Wiederholungen, die durch Wiederholung wirklich werden.</p>
-    <p>Daraus folgt zweierlei. Erstens: Veränderung ist ontologisch erlaubt. Nichts in der Struktur des Universums verbietet, dass eine andere Wirtschaftsordnung sich bildet. Zweitens: Die Logik der Veränderung ist nicht die der technokratischen Implementierung, sondern die der Habit-Bildung. Eine neue Praxis muss oft genug, an genug Orten, von genug Menschen wiederholt werden, bis sie ihre eigene Stabilität gewinnt — langsamer als ein Gesetz, schneller als evolutionärer Wandel. Bildung ist Habit-Bildung. Bürgerräte sind eingeübte Konkreszenz. Commons sind geteilte Wiederholung. Bedingungsloses Grundeinkommen ist die zeitliche Voraussetzung dafür, dass Menschen überhaupt frei genug sind, neue Habits einzuüben.</p>
-  </div>
-
-  <!-- ── ABGRENZUNG ── -->
-  <div class="r-section">
-    <h2><span class="num">1.5</span> Was die Roadmap nicht ist</h2>
-    <p>Eine Roadmap im hier vorgeschlagenen Sinn ist kein technokratischer Stufenplan. Sie ist auch keine politische Plattform einer Partei oder Bewegung. Sie ist ein konsistenter Rahmen, der die Ebenen kultureller, psychischer, institutioneller und struktureller Veränderung in eine sinnvolle Beziehung setzt — so dass Akteure auf jeder Ebene erkennen können, ob das, was sie tun, mit dem zusammenwirkt, was andere tun.</p>
-    <p>Die Roadmap behauptet nicht, dass alle vier Schichten in derselben Geschwindigkeit oder von denselben Akteuren bearbeitet werden müssen. Schicht 1 wird primär von Lehrenden, Künstlerinnen, Geschichtenerzählern, indigenen Souveränen und Wissenschaftlern getragen. Schicht 2 wächst in therapeutischen, spirituellen und gemeinschaftlichen Räumen. Schicht 3 entsteht in lokaler Selbstverwaltung, Genossenschaften, Bürgerräten. Schicht 4 ist klassisch politisch — Parlamente, Gerichte, internationale Verträge. Jede dieser Ebenen kann beginnen, ohne auf die anderen zu warten — sie brauchen aber dieselbe Ausrichtung.</p>
+    <h2><span class="num">1.4</span> Was diese Roadmap nicht ist</h2>
+    <p>Diese Roadmap ist kein technokratischer Stufenplan, keine Parteiplattform und kein abschließender Heilsweg — sondern ein konsistenter Rahmen, der die vier Ebenen in Beziehung setzt, damit Akteure auf jeder Ebene erkennen können, ob ihr Tun mit dem zusammenwirkt, was andere tun. Warum die Reihenfolge wichtig ist und woran frühere Reformen scheiterten, entfaltet Tab III.</p>
   </div>
 </div>
 </div>
@@ -2671,82 +2754,139 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 <div class="en-text">
 <div class="rmap-tab">
   <div class="t-hero">
-    <span class="tlabel">Tab I · Alignment</span>
-    <h1>What a Roadmap Must Achieve —<br>and What It Cannot</h1>
-    <p class="hero-sub">Before we list measures, we must clarify the order in which they can take effect — and why most failed reform attempts have failed at this question.</p>
+    <span class="tlabel">Tab I · Overview</span>
+    <h1>What This Roadmap Aims For —<br>ordered across time</h1>
+    <p class="hero-sub">A keyword-style overview of goals along the four phases. The ordering marks shifts of emphasis, not strict sequence — all four layers work simultaneously, at different speeds and through different actors.</p>
   </div>
 
   <!-- ── ORIENTATION ── -->
   <div class="orientation">
     <span class="tlabel">Where you are</span>
-    <p>This roadmap thinks not from measures but from <strong>preconditions</strong>. Four layers — what we believe, what we feel, how we act together, how we decide politically — must work together, or nothing holds. The layers operate simultaneously, at different speeds and through different actors.</p>
     <div class="o-tabs">
-      <div class="o-tab"><b>Tab I — here</b>Why four layers? What success measure? What the roadmap is not.</div>
+      <div class="o-tab"><b>Tab I — here</b>Overview of all goals, ordered along the timeline.</div>
       <div class="o-tab"><b>Tab II</b>Each layer in detail: task, concrete measures, actors, time profile.</div>
       <div class="o-tab"><b>Tab III</b>Four phases across six decades. Three cross-themes. Eight guiding principles.</div>
     </div>
   </div>
 
+  <!-- ── 1.1 GOALS OVERVIEW ── -->
   <div class="r-section">
-    <h2><span class="num">1.1</span> The Sequence Problem</h2>
-    <p>The history of social and ecological reform is not primarily a history of bad ideas — it is a history of good ideas introduced into the wrong cultural soil. Universal basic income has been piloted with consistently positive quantitative results; it has not become politically durable. A progressive wealth tax could technically be implemented in any OECD state; it fails not on the mathematics but on a self-evidence that lies beneath the mathematics: a particular, historically specific understanding of what property is and what its limits may legitimately be.</p>
-    <p>Structural reforms cannot successfully work against the cultural story in which they are embedded. If the underlying narrative continues to hold that value expresses itself in accumulated matter, then restrictions on property will be felt as theft. If the underlying psyche still needs growth as protection against mortality awareness, then any sufficiency policy will be experienced as threat, not liberation. Donella Meadows put it precisely: the goal of a system is revealed not by what it says but by what it does.<cite data-ref="meadows-systems"></cite></p>
-    <div class="r-pull"><p>A reform that does not think its own cultural precondition is introduced into a world where no one needs it.</p></div>
-    <p>It follows: a roadmap must address the right levels in a coherent architecture — not as a strict sequence, but as a consistent alignment in which the ontological, psychological, institutional, and structural dimensions support each other rather than mutually undermining each other.</p>
+    <h2><span class="num">1.1</span> The Goals at a Glance</h2>
+    <p>What the roadmap aims to realise in the world — ordered along the four phases from Tab III. Background colour indicates the layer: <span class="ldot l1"></span>Ontology · <span class="ldot l2"></span>Psyche · <span class="ldot l3"></span>Institution · <span class="ldot l4"></span>Structure.</p>
+
+    <div class="goal-phase gp0">
+      <div class="goal-phase-head">
+        <span class="gp-num">Phase 0</span>
+        <span class="gp-title">Making Visible and Practising</span>
+        <span class="gp-time">today · 0–10 years</span>
+      </div>
+      <ul class="goal-list">
+        <li class="l1"><span><b>Make the old "Taker" narrative visible</b> and cultivate an organismic-relational worldview</span></li>
+        <li class="l1"><span><b>Process philosophy and indigenous ontologies</b> accessible in education and culture; solarpunk as aesthetic language</span></li>
+        <li class="l2"><span><b>Learn to accept one's own death</b> — Death Cafés, Work That Reconnects, communal grief formats</span></li>
+        <li class="l3"><span><b>Doughnut pilot cities and citizens' assemblies</b> (climate, constitution)</span></li>
+        <li class="l3"><span><b>Communal commons</b> as first lived models</span></li>
+        <li class="l4"><span><b>Universal Basic Income</b> piloted and expanded</span></li>
+        <li class="l4"><span><b>"Tax Wealth, not Work"</b> — make wealth-tax discourse politically viable</span></li>
+        <li class="l4"><span><b>Protect democracy</b> (campaign finance, media concentration); Commons-Bank prototype</span></li>
+      </ul>
+    </div>
+
+    <div class="goal-phase gp1">
+      <div class="goal-phase-head">
+        <span class="gp-num">Phase 1</span>
+        <span class="gp-title">Scaling and Interlocking</span>
+        <span class="gp-time">10–25 years</span>
+      </div>
+      <ul class="goal-list">
+        <li class="l1"><span><b>Place-based education as standard</b> in lead regions</span></li>
+        <li class="l1"><span><b>Indigenous sovereignty</b> legally and economically consolidated</span></li>
+        <li class="l2"><span><b>Mortality competence in the curriculum</b></span></li>
+        <li class="l3"><span><b>Doughnut logic in many municipalities</b>; citizens' assemblies with binding effect</span></li>
+        <li class="l3"><span><b>Commons in water, housing, energy</b></span></li>
+        <li class="l4"><span><b>UBI introduction in several states</b> (purchasing-power adjusted, municipally flexible)</span></li>
+        <li class="l4"><span><b>Progressive wealth tax</b> with substantial brackets — European pioneer group</span></li>
+        <li class="l4"><span><b>Worker-owned cooperatives</b> / stakeholder models for large firms; Commons Banks operational</span></li>
+      </ul>
+    </div>
+
+    <div class="goal-phase gp2">
+      <div class="goal-phase-head">
+        <span class="gp-num">Phase 2</span>
+        <span class="gp-title">Consolidating and Deepening</span>
+        <span class="gp-time">25–45 years</span>
+      </div>
+      <ul class="goal-list">
+        <li class="l1"><span><b>Process-relational natural science</b> scientifically established as teaching standard</span></li>
+        <li class="l1"><span><b>Pluriversal knowledge orders</b> recognised — plurality, not synthesis</span></li>
+        <li class="l2"><span><b>Differentiated grief cultures</b>; intergenerational meaning practices</span></li>
+        <li class="l3"><span><b>Polycentric climate governance</b>; transnational citizens' assemblies as regular practice</span></li>
+        <li class="l4"><span><b>UBI and progressive tax structures</b> as OECD standard</span></li>
+        <li class="l4"><span><b>Land, water and energy mostly as commons</b>; public banking as norm</span></li>
+        <li class="l4"><span><b>Life-projects (tribes of 30–150)</b> as a recognised form of living and working</span></li>
+      </ul>
+    </div>
+
+    <div class="goal-phase gp3">
+      <div class="goal-phase-head">
+        <span class="gp-num">Phase 3</span>
+        <span class="gp-title">Symbiocene</span>
+        <span class="gp-time">45–60+ years · target state</span>
+      </div>
+      <ul class="goal-list">
+        <li><span><b>Seven of nine planetary boundaries</b> back within the safe space — or clearly heading there</span></li>
+        <li><span><b>Consumption logic replaced</b> by a logic of relation and concrescence</span></li>
+        <li><span><b>Indigenous sovereignty</b> as a self-evident part of multilateral orders</span></li>
+        <li><span><b>Democracy functional at multiple scales</b> — from neighbourhood to transnational</span></li>
+      </ul>
+    </div>
   </div>
 
+  <!-- ── 1.2 FOUR LAYERS ── -->
   <div class="r-section">
-    <h2><span class="num">1.2</span> Why Four Layers</h2>
-    <p>The diagnosis developed in the new story section — Quinn's Taker narrative as a cultural program, Becker's death anxiety as its psychological engine, the IPCC and IPBES findings as its measurable consequences<cite data-ref="ipcc-ar6-syr"></cite><cite data-ref="ipbes-2019"></cite> — requires answers at four levels, nested: the deeper the layer, the slower the change and the more foundational its effect on every layer above.</p>
+    <h2><span class="num">1.2</span> The Four Layers</h2>
+    <p>Four questions, four layers. <strong>Ontology</strong> asks about the world that structures perception. <strong>Psyche</strong> asks about the existential constitution in which stories take hold. <strong>Institution</strong> asks about the shared spaces that distribute possibility. <strong>Structure</strong> asks about the power, law and means that make institutions possible in the first place.</p>
 
     <div class="diagram-frame">
       <div class="diag-stack">
         <div class="diag-row d1">
           <span class="dnum">01</span>
-          <span class="dttl">Ontological-Narrative <em>What is the world? Which story do we tell?</em></span>
+          <span class="dttl">Ontology <em>What is the world? Which story do we tell?</em></span>
           <span class="dmeta"><b>slowest</b>Teachers, artists, indigenous sovereigns</span>
         </div>
         <div class="diag-row d2">
           <span class="dnum">02</span>
-          <span class="dttl">Existential-Psychological <em>How do we relate to finitude?</em></span>
+          <span class="dttl">Psyche <em>How do we relate to finitude?</em></span>
           <span class="dmeta"><b>slow</b>Therapy, hospice, communities</span>
         </div>
         <div class="diag-row d3">
           <span class="dnum">03</span>
-          <span class="dttl">Institutional-Distributive <em>Which spaces do we create for good life?</em></span>
+          <span class="dttl">Institution <em>Which spaces do we create for good life?</em></span>
           <span class="dmeta"><b>medium</b>Municipalities, cooperatives, citizens' assemblies</span>
         </div>
         <div class="diag-row d4">
           <span class="dnum">04</span>
-          <span class="dttl">Structural-Political <em>Which power and means enable change?</em></span>
+          <span class="dttl">Structure <em>Which power and means enable change?</em></span>
           <span class="dmeta"><b>fastest</b>Parliaments, courts, treaties</span>
         </div>
       </div>
-      <div class="diag-cap">Four layers — no strict hierarchy, but a depth ordering. Each layer carries the next. Speed increases top to bottom; depth runs in the other direction.</div>
+      <div class="diag-cap">Four layers — no strict hierarchy, but a depth ordering. Speed increases top to bottom; depth runs the other way.</div>
     </div>
 
-    <p>Layer 1 asks the ontological question — about the story of the world that structures our perception before we are even conscious of it. Here Whitehead's process philosophy, indigenous relational ontologies,<cite data-ref="kimmerer-bs"></cite> and contemporary natural science work convergently: Philip Anderson showed that each level of complexity generates irreducibly new properties;<cite data-ref="anderson-more"></cite> Carlo Rovelli that quantum mechanics describes relations, not observer-independent substances;<cite data-ref="rovelli-rqm"></cite> Meadows that any system's behaviour is determined by its feedback structure, not just its components.<cite data-ref="meadows-systems"></cite> Layer 2 asks the psychological question — about the existential constitution in which any story must take hold to survive political pressure. Here Becker's diagnosis of death anxiety<cite data-ref="becker-denial"></cite> and Whitehead's principle of the objective immortality of every actual occasion<cite data-ref="whitehead-pr"></cite> work together as problem and answer. Layer 3 asks about institutions — the shared spaces and rules that organise the daily distribution of possibility, opportunity, and care. Layer 4 asks about structure — the macroeconomic, legal, and political conditions that make or unmake the other three. Kate Raworth's doughnut economics provides the most precise positive frame at this level: a safe and just space for humanity between social foundation and ecological ceiling.<cite data-ref="raworth-doughnut"></cite></p>
-    <p>The layers are interdependent, not strictly sequential. A roadmap that addresses only Layer 4 will be washed out by the cultural soil it has not prepared. One that addresses only Layer 1 remains philosophical. What works is a movement that engages all four simultaneously, at their different speeds, in their different places, through their different actors — but with a consistent orientation.</p>
+    <p>The layers are interdependent, not strictly sequential — all four work simultaneously, at different speeds, through different actors, but with a consistent orientation. (The full argument with sources is in Tab II and F2.)</p>
   </div>
 
+  <!-- ── 1.3 SUCCESS CRITERION ── -->
   <div class="r-section">
     <h2><span class="num">1.3</span> The Success Criterion</h2>
-    <p>A roadmap requires a success criterion — and the right one is not obvious. In the twentieth century it was GDP. In the early twenty-first century it was extended with further indices — happiness, ecological footprint, social cohesion. These are all useful lagging indicators: they tell us whether conditions were present in which good moments might have occurred, not whether good moments actually did.</p>
-    <p>If the ontological grounding of the new story is taken seriously — if experience, feeling, and value are real rather than epiphenomenal — then the deepest success criterion is not the achievement of a state but the multiplication of intense, precise, shared moments of actually realised feeling. Whitehead calls this the intensity of aesthetic experience. Robin Wall Kimmerer's Honorable Harvest describes it as the fulfilment of a relation.<cite data-ref="kimmerer-bs"></cite> Joanna Macy's spiral turns grief into a resource for engagement precisely because grief is evidence of caring — and caring is the felt experience of connection.<cite data-ref="macy-activehope"></cite></p>
+    <p>Success is not the achievement of a state but the multiplication of intense, precise, shared moments of actually felt life. A reform that statistically creates "better conditions" in which no one actually experiences dignity, love or belonging has missed what it was for. Politics does not become softer; it becomes more precise.</p>
     <div class="r-pull"><p>"We must feel — intensely and precisely. The fate of the universe depends on it. It is its aim and its cause."<cite>Flavio Lanfranconi · Processing Reality (2024)</cite></p></div>
-    <p>This is an unusually demanding criterion for politics — and a clarifying one. A reform that statistically creates "better conditions" in which no one actually experiences dignity, love, or belonging has missed what it was for. Politics does not become softer; it becomes more precise. It aims not at abstract target states but at the multiplication of actually realised moments of connection, contribution, beauty, and community.</p>
   </div>
 
+  <!-- ── 1.4 WHAT THIS ROADMAP IS NOT ── -->
   <div class="r-section">
-    <h2><span class="num">1.4</span> Structures Are Habits</h2>
-    <p>The process-philosophical grounding allows a second, decisive insight for the practical logic of this roadmap. If Whitehead is right that even the apparently fixed "constants" of the physical world are better understood as deeply entrenched habits — patterns of repetition that gain stability through their own occurrence — then economic, legal, and political structures are, a fortiori, not eternal givens. They are crystallised repetitions. And what crystallised can, in principle, re-crystallise differently.</p>
-    <p>Change is therefore ontologically permitted — the inertia is historical, not metaphysical. The logic of change is not that of technocratic implementation but of habit-formation: a new practice must be repeated often enough, in enough places, by enough people, until it develops its own stability. This is the specific speed of cultural processes — slower than a law, faster than biological evolution, and, as Meadows showed, the most powerful leverage point in any system.<cite data-ref="meadows-systems"></cite> Education is habit-formation. Citizens' assemblies are practised concrescence. Commons are shared repetition. Universal basic income is the temporal precondition for people to have enough slack to practise new habits at all.</p>
-  </div>
-
-  <div class="r-section">
-    <h2><span class="num">1.5</span> What the Roadmap Is Not</h2>
-    <p>This roadmap is not a technocratic step-plan with guaranteed outcomes, not the political platform of a party or movement, and it does not claim to offer the one correct path. It is a consistent framework that places the levels of cultural, psychological, institutional, and structural change in a meaningful relationship — so that actors at every level can recognise whether what they are doing is aligned with what others are doing, or whether they are, without intending to, working against each other.</p>
-    <p>Layer 1 is primarily carried by teachers, artists, storytellers, indigenous sovereigns, and scientists working across disciplinary boundaries. Layer 2 grows in therapeutic, spiritual, and communal spaces. Layer 3 emerges in local self-government, cooperatives, and citizens' assemblies. Layer 4 is classically political — parliaments, courts, international treaties. Each can begin without waiting for the others — but they need the same orientation.</p>
+    <h2><span class="num">1.4</span> What This Roadmap Is Not</h2>
+    <p>This roadmap is not a technocratic step-plan, not a party platform, not a final path to salvation — it is a consistent framework that places the four levels in relation to one another, so that actors at every level can recognise whether what they do aligns with what others do. Why the ordering matters, and why earlier reforms have failed, is unfolded in Tab III.</p>
   </div>
 </div>
 </div>
@@ -2769,7 +2909,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <div class="layer l1">
     <div class="layer-head">
       <span class="lh-num">Schicht 01</span>
-      <h2>Ontologisch-narrativ <em>· die Geschichte über die Welt</em></h2>
+      <h2>Ontologie <em>· die Geschichte über die Welt</em></h2>
       <div class="lh-desc">Die Frage, was die Welt ist, ist keine Frage von Wissen, sondern von Bewohnbarkeit. Wer in einer toten Welt aufwächst, lebt anders als wer in einer lebenden Welt aufwächst.</div>
     </div>
     <div class="layer-body">
@@ -2780,9 +2920,11 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 
       <h3>Konkrete Maßnahmen</h3>
       <div class="measures">
+        <h4 class="goal-ref">Prozessphilosophie und indigene Ontologien</h4>
         <div class="measure"><span class="measure-num">1.1</span><div><strong>Place-based Education</strong> als Standardform schulischen Lernens. Nicht Naturkunde als Schulfach, sondern Lernen <em>in</em> Beziehung zu einem konkreten Ort — seinen Ökosystemen, seiner Geschichte, seinen Bewohnern aller Art. Vorbilder existieren in Aotearoa (Neuseeland), in einzelnen US-Bundesstaaten, in Skandinavien.</div></div>
         <div class="measure"><span class="measure-num">1.2</span><div><strong>Naturwissenschaften ohne Bifurkation</strong> in Lehrplänen ab Sekundarstufe. Quantenmechanik, Komplexitätstheorie und biologische Selbstorganisation werden in einem konsistenten Rahmen gelehrt, in dem Beobachter und Beobachtetes nicht künstlich getrennt sind. Verweis auf Frank, Gleiser &amp; Thompson <em>The Blind Spot</em> (MIT Press 2024) als Lehrgrundlage möglich.</div></div>
         <div class="measure"><span class="measure-num">1.3</span><div><strong>Indigene Souveränität</strong> als ontologische Voraussetzung. „Land Back"-Bewegungen sind nicht primär kompensatorisch, sondern erkenntnistheoretisch: Ohne souveräne Träger der Tradition gibt es keine Tradition. Anerkennung indigener Rechtspersonalität (Whanganui-Fluss-Modell, Aotearoa 2017), institutionelle Plattformen, Forschungsethiken nach Linda Tuhiwai Smith.</div></div>
+        <h4 class="goal-ref">Alte „Nehmer"-Erzählung sichtbar machen</h4>
         <div class="measure"><span class="measure-num">1.4</span><div><strong>Öffentliche Geschichten-Räume.</strong> Neue Erzählungen brauchen Bühnen — nicht primär kommerzielle. Bibliotheken, Kulturzentren, festival-artige Formate, in denen die neue Geschichte tatsächlich erzählt, nicht nur theoretisiert wird. Das schließt Solarpunk-Literatur, indigene Erzähltraditionen, prozessphilosophische Vermittlung ein.</div></div>
         <div class="measure"><span class="measure-num">1.5</span><div><strong>Grammatikalische Praxis</strong> in alltäglicher Sprache. Pflanzen, Tiere, Flüsse, Berge werden in Texten und Reden grammatikalisch nicht durchgängig als „es" behandelt. Diese Übung wirkt feiner als jede Aufklärung — sie verändert die Wahrnehmung schrittweise.</div></div>
       </div>
@@ -2806,7 +2948,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <div class="layer l2">
     <div class="layer-head">
       <span class="lh-num">Schicht 02</span>
-      <h2>Existenziell-psychologisch <em>· das Verhältnis zur Endlichkeit</em></h2>
+      <h2>Psyche <em>· das Verhältnis zur Endlichkeit</em></h2>
       <div class="lh-desc">Solange der Tod die Bedrohung bleibt, gegen die Wachstum der einzige Schutz scheint, wird keine Reform tragen. Diese Schicht löst nicht die Sterblichkeit auf, sondern ihr Missverständnis.</div>
     </div>
     <div class="layer-body">
@@ -2818,6 +2960,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 
       <h3>Konkrete Maßnahmen</h3>
       <div class="measures">
+        <h4 class="goal-ref">Eigenen Tod akzeptieren lernen</h4>
         <div class="measure"><span class="measure-num">2.1</span><div><strong>Death-positive Education</strong> als Standardbestandteil der Sekundarstufe. Themen: Sterbeprozess, hospice und palliative Begleitung, kulturelle Vielfalt von Trauerritualen, gemeinschaftliche Erfahrung mit Tod und Übergang. Vorbilder: Death Cafes, BJ Millers Arbeit, kommunale Sterbebegleitungs-Genossenschaften.</div></div>
         <div class="measure"><span class="measure-num">2.2</span><div><strong>Aktualisierte Trauer- und Übergangsrituale</strong> in säkularen und multireligiösen Gesellschaften. Geburtstage, Wendepunkte, Sterbefälle, Klimatrauer (Solastalgie nach Glenn Albrecht<cite data-ref="albrecht-solastalgia"></cite>) verlangen Formen — gestaltet, nicht erschöpfend reglementiert.</div></div>
         <div class="measure"><span class="measure-num">2.3</span><div><strong>Active Hope als Praxis.</strong> Joanna Macys Work That Reconnects,<cite data-ref="macy-activehope"></cite> mit der Spirale Dankbarkeit → Schmerz ehren → mit neuen Augen sehen → Aufbrechen, ist eine erprobte Methode für Gemeinschaften und Bildungsräume. Trauer wird hier nicht therapeutisiert, sondern als Ressource verstanden.</div></div>
@@ -2845,7 +2988,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <div class="layer l3">
     <div class="layer-head">
       <span class="lh-num">Schicht 03</span>
-      <h2>Institutionell-distributiv <em>· die Räume gelebter Möglichkeit</em></h2>
+      <h2>Institution <em>· die Räume gelebter Möglichkeit</em></h2>
       <div class="lh-desc">Zwischen ontologischer Erzählung und politischer Struktur liegt die institutionelle Schicht — die geteilten Räume, in denen wir tatsächlich miteinander handeln, entscheiden, verteilen und sorgen.</div>
     </div>
     <div class="layer-body">
@@ -2856,13 +2999,16 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 
       <h3>Konkrete Maßnahmen</h3>
       <div class="measures">
+        <h4 class="goal-ref">Doughnut-Pilotstädte und Bürgerräte</h4>
         <div class="measure"><span class="measure-num">3.1</span><div><strong>Doughnut-Ökonomie auf kommunaler Ebene</strong> nach Kate Raworth.<cite data-ref="raworth-doughnut"></cite> Städte (Amsterdam, Brüssel, Portland) haben begonnen, ihre Politik gegen den Doughnut-Rahmen zu kalibrieren: soziales Fundament unten, ökologische Decke oben, Politik dazwischen. Die Methode ist anschlussfähig an bestehende Verwaltung — sie ersetzt keine Demokratie, sie strukturiert sie. Jason Hickels Degrowth-Argumentation liefert dazu den makroökonomischen Komplementär.<cite data-ref="hickel-less"></cite></div></div>
         <div class="measure"><span class="measure-num">3.2</span><div><strong>Suffizienzkorridore</strong> demokratisch kalibriert. Statt einer einzelnen Obergrenze („wieviel CO₂ darf jemand"), Korridore mit Unter- und Obergrenze für ressourcenintensive Konsumformen — Wohnfläche pro Person, Flugreisen, motorisierter Individualverkehr. Festlegung durch Bürgerräte, nicht durch Expertenkommissionen allein.</div></div>
         <div class="measure"><span class="measure-num">3.3</span><div><strong>Bürgerräte</strong> als reguläres Instrument. Per Losverfahren bestellt, mit professioneller Moderation, mit verpflichtender Anhörung in Parlamenten. Vorbilder: Irlands Verfassungs-Konvent, frankreichs Convention Citoyenne pour le Climat, deutsche Bürgerräte 2021–2024.</div></div>
+        <h4 class="goal-ref">Kommunale Commons</h4>
         <div class="measure"><span class="measure-num">3.4</span><div><strong>Commons-Institutionen</strong> nach Elinor Ostroms Designprinzipien — klare Grenzen, lokale Regelfindung, abgestufte Sanktionen, Konfliktlösung, Anerkennung. Anwendbar auf Wasser, Wald, Saatgut, Wohnraum, digitale Infrastruktur, Wissen.</div></div>
         <div class="measure"><span class="measure-num">3.5</span><div><strong>Polyzentrische Klimagovernance.</strong> Statt einer einzigen globalen Steuerungsebene (UNFCCC) parallel arbeitende Ebenen — Städtenetzwerke (C40), regionale Allianzen, sektorale Selbstverpflichtungen, transnationale Bürgerräte. Ostroms Befund: polyzentrische Systeme sind robuster als zentralisierte.</div></div>
         <div class="measure"><span class="measure-num">3.6</span><div><strong>Land Back als institutionelle Form.</strong> Indigene Hoheit über bestimmte Territorien, Rechtspersonalität von Flüssen und Bergen (Vorbild Whanganui), Co-Management-Strukturen. Nicht als Gnadenakt, sondern als Anerkennung souveräner Träger einer Tradition, ohne die Schicht 1 keine Substanz hätte.</div></div>
         <div class="measure"><span class="measure-num">3.7</span><div><strong>Zeit als Verteilungsfrage.</strong> Lebensarbeitszeit-Modelle, sabbatische Phasen, vier-Tage-Woche, geteilte Sorgearbeit. Wer keine Zeit hat, kann nicht konkreszieren — politisch wie psychisch.</div></div>
+        <h4 class="goal-ref">Worker-owned cooperatives</h4>
         <div class="measure"><span class="measure-num">3.8</span><div><strong>Wirtschaftsdemokratie auf Betriebsebene.</strong> Andres Acevedo (The Market Exit, Stockholm) beschreibt das gewöhnliche Anstellungsverhältnis als „Vermietung der eigenen Person" an eine undemokratische „Fertigungs-Aristokratie" — strukturelle Quelle von Burnout, Lohnschere und Prinzipal-Agent-Verlusten. Mitarbeitergesellschaften kehren das Verhältnis um: Wer mitarbeitet, entscheidet mit, trägt mit, profitiert mit. Die baskische Mondragón-Föderation (über 70.000 Beschäftigte) hält interne Lohnspannen von etwa 6:1, während vergleichbar große Konzerne dreistellige Faktoren erreichen; Belegschaftsstudien zeigen höhere Arbeitszufriedenheit und niedrigere Fluktuation, ohne Produktivitätsverlust.<cite data-ref="acevedo-workers"></cite> ESOPs (Employee Stock Ownership Plans) sind ein bewährtes Übergangsinstrument: Belegschaften kaufen Unternehmen über den Cashflow schrittweise auf, ohne eigenes Kapital riskieren zu müssen. Diese Schicht etabliert Coops als gelebten institutionellen Standard, bevor Schicht 4 sie rechtlich gleichstellt (vgl. 4.12).</div></div>
       </div>
 
@@ -2890,7 +3036,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <div class="layer l4">
     <div class="layer-head">
       <span class="lh-num">Schicht 04</span>
-      <h2>Strukturell-politisch <em>· Macht, Mittel, Rechtsrahmen</em></h2>
+      <h2>Struktur <em>· Macht, Mittel, Rechtsrahmen</em></h2>
       <div class="lh-desc">Schicht 4 ist die klassisch politische Ebene — Parlamente, Steuersystem, Eigentumsrecht, Geld. Ohne sie kollabieren die anderen Schichten an ihren materiellen Voraussetzungen.</div>
     </div>
     <div class="layer-body">
@@ -2901,19 +3047,30 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 
       <h3>Konkrete Maßnahmen</h3>
       <div class="measures">
+        <h4 class="goal-ref">Demokratie schützen</h4>
+        <div class="measure"><span class="measure-num">4.9</span><div><strong>Kampagnenfinanzierungs-Reform — Reihenfolge: Macht vor Geld.</strong> Strenge Begrenzungen privater Politikfinanzierung, öffentliche Wahlkampffinanzierung, Lobby-Transparenz. Diese Reform muss <em>vor</em> der substanziellen Vermögensbesteuerung greifen — sonst wird die Steuerreform durch konzentrierte Medienmacht torpediert, bevor sie wirken kann. Die Reihenfolge ist keine taktische Rücksichtnahme, sondern systemische Bedingung der Wirksamkeit aller anderen Maßnahmen.</div></div>
+        <div class="measure"><span class="measure-num">4.4</span><div><strong>Commons Bank — eine demokratisch verwaltete Investitions-Infrastruktur.</strong> Die aus Maßnahmen 4.2 und 4.3 fließenden Mittel werden nicht in den allgemeinen Staatshaushalt überführt, sondern in eine eigenständige, dezentral organisierte Institution. Drei Mandate: ökologische Restaurierung (Wälder, Böden, Flüsse), lokale Energieautonomie (Genossenschaften, Quartierversorgung) und Lebens-Projekte (Gemeinschaften von 30–150 Menschen, die gemeinsam wohnen, arbeiten, sich pflegen). Governance liegt bei wechselnden Bürgerräten mit Losverfahren, fachlicher Begleitung und Veto-Rechten lokaler Empfangsregionen. Die Commons Bank ist keine Behörde — sie ist ein neuer Ort öffentlichen Vermögens.</div></div>
+        <div class="measure"><span class="measure-num">4.10</span><div><strong>Öffentliches Bankwesen</strong> und Public Money. Zentrale Geldschöpfung als demokratische Kompetenz, nicht als Privileg privater Kreditinstitute. Kommunalbanken (Sparkassen-Tradition), kooperative Kreditgenossenschaften, gegebenenfalls digitale Zentralbankgelder mit explizit demokratischem Mandat.</div></div>
+        <div class="measure"><span class="measure-num">4.7</span><div><strong>CO₂-Bepreisung mit Klimadividende.</strong> Substanzielle Bepreisung mit Pro-Kopf-Rückerstattung — sozial progressiv, ökologisch wirksam. Vorbild: Schweizerisches CO₂-Gesetz, kanadisches Modell. Internationale Mindestpreise zur Vermeidung von Carbon-Leakage.</div></div>
+
+        <h4 class="goal-ref">Bedingungsloses Grundeinkommen</h4>
         <div class="measure"><span class="measure-num">4.1</span><div><strong>Bedingungsloses Grundeinkommen</strong> auf existenzsichernder Höhe (kaufkraftbereinigt, kommunal flexibilisiert). Begründung in dieser Roadmap nicht primär als Sozialleistung, sondern als zeitliche Voraussetzung für Konkreszenz: Menschen brauchen Zeit, in der sie tatsächlich gegenwärtig sein können — nicht nur arbeitsfähig. Empirisch gestützt durch das DIW-Pilotprojekt 2021–2024 (1.200 €/Monat, 3 Jahre): keine signifikante Reduktion der Arbeitszeit, messbare Verbesserung der mentalen Gesundheit, Sparquote bei rund einem Drittel der Teilnehmenden. Die These der „sozialen Hängematte" lässt sich empirisch nicht halten.<cite data-ref="diw-pilot-2025"></cite></div></div>
+        <div class="measure"><span class="measure-num">4.5</span><div><strong>Relationale BGE-Komponente.</strong> Auf das existenzsichernde BGE (4.1) setzt eine ergänzende, gemeinschaftsgebundene Komponente auf — gebunden an Mitwirkung in lokalen Lebens-Projekten, regenerativen Höfen, Pflege-Tribes oder kommunalen Commons. Anders als die alte Konditionalität an Erwerbsarbeit ist diese Komponente nicht restriktiv, sondern einladend: Wer mitwirkt, wer teilt, wer trägt, erhält zusätzlich. Die Mitwirkung definiert das Projekt selbst, nicht der Staat.</div></div>
+
+        <h4 class="goal-ref">„Tax Wealth, not Work"</h4>
         <div class="measure"><span class="measure-num">4.2</span><div><strong>Progressive Vermögenssteuer</strong> mit substanziellen Stufen — sinngemäß nach OECD-Modell und in Anlehnung an Pikettys Arbeit: 2 % jährlich ab 50 Mio., 5 % ab 500 Mio., 8 % ab 1 Mrd. Zweck ist nicht Bestrafung, sondern Verhinderung der Konzentration, die andere am Erreichen ihrer Möglichkeiten hindert (Whitehead: <em>satisfaction</em> setzt Konkreszenzfreiheit voraus). In der Schweiz wuchsen vererbbare Vermögen 2000–2025 auf das 4,2-Fache des BIP — das fiskalische Substrat ist da.<cite data-ref="oecd-wealthtax"></cite><cite data-ref="srf-vermoegen-2026"></cite> Internationaler Mindeststandard zur Vermeidung von Steuerflucht ist Teil der Maßnahme, nicht Vorbedingung.</div></div>
         <div class="measure"><span class="measure-num">4.3</span><div><strong>Erbschafts- und Vermögenskonzentrations-Steuer.</strong> Eine Generationenabgabe auf vererbte Großvermögen mit substanziellen Stufen oberhalb klar definierter Schwellen — flankierend zur jährlichen Vermögenssteuer, nicht ersetzend. Begründung: Was historisch auf öffentlichen Gütern wie Bildung, Forschung und Infrastruktur beruht, kehrt im Erbfall in das Gemeingut zurück. Mittelschicht und kleine Familienbetriebe bleiben durch hohe Freibeträge unberührt. Demokratische Legitimität von Eigentum endet bei vererbter Leistung Dritter — eine Standardposition seit Smith und Mill.</div></div>
-        <div class="measure"><span class="measure-num">4.4</span><div><strong>Commons Bank — eine demokratisch verwaltete Investitions-Infrastruktur.</strong> Die aus Maßnahmen 4.2 und 4.3 fließenden Mittel werden nicht in den allgemeinen Staatshaushalt überführt, sondern in eine eigenständige, dezentral organisierte Institution. Drei Mandate: ökologische Restaurierung (Wälder, Böden, Flüsse), lokale Energieautonomie (Genossenschaften, Quartierversorgung) und Lebens-Projekte (Gemeinschaften von 30–150 Menschen, die gemeinsam wohnen, arbeiten, sich pflegen). Governance liegt bei wechselnden Bürgerräten mit Losverfahren, fachlicher Begleitung und Veto-Rechten lokaler Empfangsregionen. Die Commons Bank ist keine Behörde — sie ist ein neuer Ort öffentlichen Vermögens.</div></div>
-        <div class="measure"><span class="measure-num">4.5</span><div><strong>Relationale BGE-Komponente.</strong> Auf das existenzsichernde BGE (4.1) setzt eine ergänzende, gemeinschaftsgebundene Komponente auf — gebunden an Mitwirkung in lokalen Lebens-Projekten, regenerativen Höfen, Pflege-Tribes oder kommunalen Commons. Anders als die alte Konditionalität an Erwerbsarbeit ist diese Komponente nicht restriktiv, sondern einladend: Wer mitwirkt, wer teilt, wer trägt, erhält zusätzlich. Die Mitwirkung definiert das Projekt selbst, nicht der Staat.</div></div>
-        <div class="measure"><span class="measure-num">4.6</span><div><strong>Boden, Wasser, Energie als Commons.</strong> Erbpacht-Modelle und Stiftungs-Eigentum für Wohn- und Landwirtschaftsboden; Wasser unter öffentlicher Treuhand; Energie-Genossenschaften als Regelfall, nicht Ausnahme. Eigentum bleibt möglich — aber Konzentration in lebensnotwendigen Gütern wird strukturell eingegrenzt. Die rechtliche Architektur folgt den existierenden „Rechte der Natur"-Bestimmungen Ecuadors und Boliviens (verfassungsmäßig kodifiziert seit 2008/2009).</div></div>
-        <div class="measure"><span class="measure-num">4.7</span><div><strong>CO₂-Bepreisung mit Klimadividende.</strong> Substanzielle Bepreisung mit Pro-Kopf-Rückerstattung — sozial progressiv, ökologisch wirksam. Vorbild: Schweizerisches CO₂-Gesetz, kanadisches Modell. Internationale Mindestpreise zur Vermeidung von Carbon-Leakage.</div></div>
-        <div class="measure"><span class="measure-num">4.8</span><div><strong>Reform der Unternehmensverfassung.</strong> Stakeholder-Modell statt Shareholder-Primat: Mitbestimmung der Beschäftigten, Vertretung von Anrainern und ökologischen Interessen, Treuhandstrukturen für langlebige Güter (Stewardship-Modelle wie Patagonias Übergang an Trust).</div></div>
-        <div class="measure"><span class="measure-num">4.9</span><div><strong>Kampagnenfinanzierungs-Reform — Reihenfolge: Macht vor Geld.</strong> Strenge Begrenzungen privater Politikfinanzierung, öffentliche Wahlkampffinanzierung, Lobby-Transparenz. Diese Reform muss <em>vor</em> der substanziellen Vermögensbesteuerung greifen — sonst wird die Steuerreform durch konzentrierte Medienmacht torpediert, bevor sie wirken kann. Die Reihenfolge ist keine taktische Rücksichtnahme, sondern systemische Bedingung der Wirksamkeit aller anderen Maßnahmen.</div></div>
-        <div class="measure"><span class="measure-num">4.10</span><div><strong>Öffentliches Bankwesen</strong> und Public Money. Zentrale Geldschöpfung als demokratische Kompetenz, nicht als Privileg privater Kreditinstitute. Kommunalbanken (Sparkassen-Tradition), kooperative Kreditgenossenschaften, gegebenenfalls digitale Zentralbankgelder mit explizit demokratischem Mandat.</div></div>
-        <div class="measure"><span class="measure-num">4.11</span><div><strong>Bildungssystem-Reform</strong> als strukturelle Aufgabe. Lehrpläne, Lehrerausbildung, Finanzierung; Demokratisierung höherer Bildung; Verlagerung von Selektionsfunktion zu Befähigungsfunktion. Schicht 1 (place-based, ohne Bifurkation) braucht institutionelle Träger, die nicht jede Generation neu erstritten werden müssen.</div></div>
-        <div class="measure"><span class="measure-num">4.12</span><div><strong>Worker Cooperatives und Genossenschaften</strong> rechtlich gleichgestellt, fiskalisch begünstigt. Nicht als Nische, sondern als Standardform für bestimmte Sektoren — Pflege, Lebensmittel, Wohnen, Energie. Mondragón, Emilia-Romagna, Évolution Coopérative als Vorbilder; ESOP-Gesetzgebung nach US-Vorbild ermöglicht Belegschaftsübernahmen ohne Eigenkapitalrisiko der Beschäftigten.<cite data-ref="acevedo-workers"></cite></div></div>
         <div class="measure"><span class="measure-num">4.13</span><div><strong>Limitarismus — Vermögen begrenzen, nicht nur besteuern.</strong> Ingrid Robeyns (Utrecht) formuliert in <em>Limitarianism: The Case Against Extreme Wealth</em> (Astra House, 2024) den Vorschlag einer politischen Obergrenze: oberhalb eines bestimmten Vermögens soll privates Eigentum nicht mehr legal sein. Robeyns unterscheidet eine <em>ethische</em> Schwelle (sinngemäß im Bereich einer Million USD, oberhalb derer zusätzliches Vermögen kaum mehr zur persönlichen Entfaltung beiträgt) von einer <em>politischen</em> Schwelle (in der Größenordnung von zehn Millionen USD), oberhalb derer Vermögen unweigerlich in politische Macht umschlägt — Lobbyarbeit, Medienbesitz, Lawfare. Anders als die progressive Vermögenssteuer (4.2) operiert Limitarismus mit einem absoluten Maximum, nicht mit kontinuierlicher Abschöpfung; die beiden Maßnahmen ergänzen einander, ersetzen sich nicht. Die exakten Schwellen sind diskussionsbedürftig; die Stoßrichtung ist klar: Demokratie verträgt keine konzentrierten Privatvermögen oberhalb einer Schwelle, an der Märkte zu Sammlerstücken werden und Politik käuflich wird.<cite data-ref="robeyns-limitarianism"></cite> Eine flankierende „Ethik des Genug" — kulturell, nicht legalistisch — bildet die psychische Tragfähigkeit dieser Maßnahme (Schicht 2). Gabriel Zucmans EU Tax Observatory liefert die fiskalische Anschlussfähigkeit; sein G20-Vorschlag eines globalen Mindestsatzes auf Milliardärsvermögen ist die internationale Komponente, die Steuerflucht eindämmt.<cite data-ref="zucman-billionaires"></cite><cite data-ref="acevedo-billionaires"></cite></div></div>
+
+        <h4 class="goal-ref">Boden, Wasser und Energie als Commons</h4>
+        <div class="measure"><span class="measure-num">4.6</span><div><strong>Boden, Wasser, Energie als Commons.</strong> Erbpacht-Modelle und Stiftungs-Eigentum für Wohn- und Landwirtschaftsboden; Wasser unter öffentlicher Treuhand; Energie-Genossenschaften als Regelfall, nicht Ausnahme. Eigentum bleibt möglich — aber Konzentration in lebensnotwendigen Gütern wird strukturell eingegrenzt. Die rechtliche Architektur folgt den existierenden „Rechte der Natur"-Bestimmungen Ecuadors und Boliviens (verfassungsmäßig kodifiziert seit 2008/2009).</div></div>
+
+        <h4 class="goal-ref">Worker-owned cooperatives</h4>
+        <div class="measure"><span class="measure-num">4.8</span><div><strong>Reform der Unternehmensverfassung.</strong> Stakeholder-Modell statt Shareholder-Primat: Mitbestimmung der Beschäftigten, Vertretung von Anrainern und ökologischen Interessen, Treuhandstrukturen für langlebige Güter (Stewardship-Modelle wie Patagonias Übergang an Trust).</div></div>
+        <div class="measure"><span class="measure-num">4.12</span><div><strong>Worker Cooperatives und Genossenschaften</strong> rechtlich gleichgestellt, fiskalisch begünstigt. Nicht als Nische, sondern als Standardform für bestimmte Sektoren — Pflege, Lebensmittel, Wohnen, Energie. Mondragón, Emilia-Romagna, Évolution Coopérative als Vorbilder; ESOP-Gesetzgebung nach US-Vorbild ermöglicht Belegschaftsübernahmen ohne Eigenkapitalrisiko der Beschäftigten.<cite data-ref="acevedo-workers"></cite></div></div>
+
+        <h4 class="goal-ref">Prozessphilosophie und indigene Ontologien</h4>
+        <div class="measure"><span class="measure-num">4.11</span><div><strong>Bildungssystem-Reform</strong> als strukturelle Aufgabe. Lehrpläne, Lehrerausbildung, Finanzierung; Demokratisierung höherer Bildung; Verlagerung von Selektionsfunktion zu Befähigungsfunktion. Schicht 1 (place-based, ohne Bifurkation) braucht institutionelle Träger, die nicht jede Generation neu erstritten werden müssen.</div></div>
       </div>
 
       <div class="meta-box"><strong>Hauptakteure</strong>Parlamente und Regierungen (national, regional, EU) · Verfassungsgerichte · Internationale Vertragsorganisationen · Gewerkschaften und Arbeitgeberverbände · Zivilgesellschaftliche Politikallianzen · Wirtschaftswissenschaftliche und juristische Expertise jenseits des Mainstreams</div>
@@ -2944,7 +3101,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <div class="layer l1">
     <div class="layer-head">
       <span class="lh-num">Layer 01</span>
-      <h2>Ontological-Narrative <em>· the story about the world</em></h2>
+      <h2>Ontology <em>· the story about the world</em></h2>
       <div class="lh-desc">The question what the world is is not a question of knowledge but of habitability. Whoever grows up in a dead world lives differently from whoever grows up in a living world.</div>
     </div>
     <div class="layer-body">
@@ -2955,9 +3112,11 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 
       <h3>Concrete Measures</h3>
       <div class="measures">
+        <h4 class="goal-ref">Process philosophy and indigenous ontologies</h4>
         <div class="measure"><span class="measure-num">1.1</span><div><strong>Place-based education</strong> as the standard form of school learning. Not nature studies as a school subject but learning <em>in</em> relation to a concrete place — its ecosystems, its history, its inhabitants of every kind. Models exist in Aotearoa (New Zealand), in individual U.S. states, in Scandinavia.</div></div>
         <div class="measure"><span class="measure-num">1.2</span><div><strong>Natural sciences without bifurcation</strong> in curricula from secondary level onward. Quantum mechanics, complexity theory, and biological self-organization are taught in a consistent framework in which observer and observed are not artificially separated. Reference to Frank, Gleiser &amp; Thompson <em>The Blind Spot</em> (MIT Press 2024) as teaching foundation possible.</div></div>
         <div class="measure"><span class="measure-num">1.3</span><div><strong>Indigenous sovereignty</strong> as ontological precondition. „Land Back" movements are not primarily compensatory but epistemological: without sovereign carriers of a tradition there is no tradition. Recognition of indigenous legal personality (Whanganui River model, Aotearoa 2017), institutional platforms, research ethics following Linda Tuhiwai Smith.</div></div>
+        <h4 class="goal-ref">Make the old "Taker" narrative visible</h4>
         <div class="measure"><span class="measure-num">1.4</span><div><strong>Public story spaces.</strong> New narratives need stages — not primarily commercial ones. Libraries, cultural centers, festival-format events in which the new story is actually told, not only theorized. This includes solarpunk literature, indigenous storytelling traditions, and process-philosophical mediation.</div></div>
         <div class="measure"><span class="measure-num">1.5</span><div><strong>Grammatical practice</strong> in everyday language. Plants, animals, rivers, mountains are not consistently treated as „it" in texts and speech. This practice operates more finely than any explicit teaching — it changes perception incrementally.</div></div>
       </div>
@@ -2981,7 +3140,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <div class="layer l2">
     <div class="layer-head">
       <span class="lh-num">Layer 02</span>
-      <h2>Existential-Psychological <em>· relation to finitude</em></h2>
+      <h2>Psyche <em>· relation to finitude</em></h2>
       <div class="lh-desc">As long as death remains the threat against which growth seems the only protection, no reform will hold. This layer does not dissolve mortality; it dissolves the misunderstanding of mortality.</div>
     </div>
     <div class="layer-body">
@@ -2993,6 +3152,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 
       <h3>Concrete Measures</h3>
       <div class="measures">
+        <h4 class="goal-ref">Learn to accept one's own death</h4>
         <div class="measure"><span class="measure-num">2.1</span><div><strong>Death-positive education</strong> as a standard component of secondary education. Topics: dying process, hospice and palliative accompaniment, cultural diversity of grief rituals, communal experience with death and transition. Models: Death Cafés, BJ Miller's work, communal end-of-life cooperatives.</div></div>
         <div class="measure"><span class="measure-num">2.2</span><div><strong>Updated grief and transition rituals</strong> in secular and multireligious societies. Birthdays, turning points, deaths, climate grief (solastalgia, Glenn Albrecht) require forms — designed, not exhaustively regulated.</div></div>
         <div class="measure"><span class="measure-num">2.3</span><div><strong>Active Hope as practice.</strong> Joanna Macy's Work That Reconnects, with the spiral gratitude → honoring pain → seeing with new eyes → going forth, is a tested method for communities and educational spaces. Grief is not therapeutized here but understood as resource.</div></div>
@@ -3020,7 +3180,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <div class="layer l3">
     <div class="layer-head">
       <span class="lh-num">Layer 03</span>
-      <h2>Institutional-Distributive <em>· spaces of lived possibility</em></h2>
+      <h2>Institution <em>· spaces of lived possibility</em></h2>
       <div class="lh-desc">Between ontological narrative and political structure lies the institutional layer — the shared spaces in which we actually act, decide, distribute, and care for one another.</div>
     </div>
     <div class="layer-body">
@@ -3031,13 +3191,16 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 
       <h3>Concrete Measures</h3>
       <div class="measures">
+        <h4 class="goal-ref">Doughnut pilot cities and citizens' assemblies</h4>
         <div class="measure"><span class="measure-num">3.1</span><div><strong>Doughnut economics at municipal level</strong> following Kate Raworth.<cite data-ref="raworth-doughnut"></cite> Cities (Amsterdam, Brussels, Portland) have begun to calibrate their policies against the Doughnut framework: social foundation below, ecological ceiling above, politics in between. The method connects to existing administration — it does not replace democracy; it structures it. Jason Hickel's degrowth argument provides the macroeconomic complement.<cite data-ref="hickel-less"></cite></div></div>
         <div class="measure"><span class="measure-num">3.2</span><div><strong>Sufficiency corridors</strong> democratically calibrated. Instead of a single upper limit („how much CO₂ may someone"), corridors with lower and upper limits for resource-intensive forms of consumption — living space per person, air travel, motorized individual transport. Defined by citizens' assemblies, not by expert commissions alone.</div></div>
         <div class="measure"><span class="measure-num">3.3</span><div><strong>Citizens' assemblies</strong> as a regular instrument. Selected by lot, with professional facilitation, with mandatory hearing in parliaments. Models: Ireland's Constitutional Convention, France's Convention Citoyenne pour le Climat, German citizens' assemblies 2021–2024.</div></div>
+        <h4 class="goal-ref">Communal commons</h4>
         <div class="measure"><span class="measure-num">3.4</span><div><strong>Commons institutions</strong> following Elinor Ostrom's design principles — clear boundaries, local rule-making, graduated sanctions, conflict resolution, recognition. Applicable to water, forest, seeds, housing, digital infrastructure, knowledge.</div></div>
         <div class="measure"><span class="measure-num">3.5</span><div><strong>Polycentric climate governance.</strong> Instead of a single global control level (UNFCCC), parallel working levels — city networks (C40), regional alliances, sectoral self-commitments, transnational citizens' assemblies. Ostrom's finding: polycentric systems are more robust than centralized ones.</div></div>
         <div class="measure"><span class="measure-num">3.6</span><div><strong>Land Back as institutional form.</strong> Indigenous sovereignty over specific territories, legal personality for rivers and mountains (Whanganui model), co-management structures. Not as an act of grace but as recognition of sovereign carriers of a tradition without which Layer 1 would have no substance.</div></div>
         <div class="measure"><span class="measure-num">3.7</span><div><strong>Time as a distributive question.</strong> Lifetime working-time models, sabbatical phases, four-day week, shared care work. Whoever has no time cannot concresce — politically as much as psychologically.</div></div>
+        <h4 class="goal-ref">Worker-owned cooperatives</h4>
         <div class="measure"><span class="measure-num">3.8</span><div><strong>Workplace economic democracy.</strong> Andres Acevedo (The Market Exit, Stockholm) describes conventional employment as the "renting of one's person" to an undemocratic "manufacturing aristocracy" — the structural source of burnout, the pay gap, and principal-agent losses. Worker cooperatives reverse the relationship: whoever works also decides, carries, and benefits. The Basque Mondragón Federation (more than 70,000 workers) maintains internal pay ratios of around 6:1, where comparably large corporations reach three-digit factors; workforce studies show higher job satisfaction and lower turnover without productivity loss.<cite data-ref="acevedo-workers"></cite> ESOPs (Employee Stock Ownership Plans) are a tested transition tool: workforces buy out companies gradually through cash flow without putting their own capital at risk. This layer establishes coops as a lived institutional standard, before Layer 4 grants them legal equivalence (cf. 4.12).</div></div>
       </div>
 
@@ -3065,7 +3228,7 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <div class="layer l4">
     <div class="layer-head">
       <span class="lh-num">Layer 04</span>
-      <h2>Structural-Political <em>· power, means, legal frame</em></h2>
+      <h2>Structure <em>· power, means, legal frame</em></h2>
       <div class="lh-desc">Layer 4 is the classically political level — parliaments, tax system, property law, money. Without it, the other layers collapse on their material preconditions.</div>
     </div>
     <div class="layer-body">
@@ -3076,19 +3239,30 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 
       <h3>Concrete Measures</h3>
       <div class="measures">
+        <h4 class="goal-ref">Protect democracy</h4>
+        <div class="measure"><span class="measure-num">4.9</span><div><strong>Campaign finance reform — sequence: power before money.</strong> Strict limits on private political financing, public campaign financing, lobby transparency. This reform must take effect <em>before</em> substantive wealth taxation — otherwise concentrated media power will torpedo the tax reform before it can take effect. The sequencing is not tactical caution but a systemic condition for the effectiveness of every other measure.</div></div>
+        <div class="measure"><span class="measure-num">4.4</span><div><strong>Commons Bank — a democratically governed investment infrastructure.</strong> Revenues flowing in from measures 4.2 and 4.3 are not channelled into the general government budget but into a free-standing, decentrally governed institution. Three mandates: ecological restoration (forests, soils, rivers), local energy autonomy (cooperatives, neighbourhood supply) and life-projects (communities of 30–150 people who live, work and care together). Governance rests with rotating citizens' assemblies chosen by lot, with expert support and veto rights for local receiving regions. The Commons Bank is not a public agency — it is a new locus of public wealth.</div></div>
+        <div class="measure"><span class="measure-num">4.10</span><div><strong>Public banking</strong> and public money. Central money creation as democratic competence, not as privilege of private credit institutions. Municipal banks (Sparkasse tradition), cooperative credit unions, possibly digital central bank money with explicitly democratic mandate.</div></div>
+        <div class="measure"><span class="measure-num">4.7</span><div><strong>Carbon pricing with climate dividend.</strong> Substantial pricing with per-capita refund — socially progressive, ecologically effective. Models: Swiss CO₂ law, Canadian model. International minimum prices to avoid carbon leakage.</div></div>
+
+        <h4 class="goal-ref">Universal Basic Income</h4>
         <div class="measure"><span class="measure-num">4.1</span><div><strong>Universal Basic Income</strong> at subsistence-securing level (purchasing-power-adjusted, locally flexible). Justification in this roadmap is not primarily as social benefit but as temporal precondition for concrescence: people need time in which they can actually be present — not only employable. Empirically grounded by the German DIW pilot 2021–2024 (€1,200/month, three years): no significant reduction in working time, measurable improvements in mental health, with about a third of participants saving. The "social hammock" claim does not hold empirically.<cite data-ref="diw-pilot-2025"></cite></div></div>
+        <div class="measure"><span class="measure-num">4.5</span><div><strong>Relational UBI component.</strong> A relational, community-bound component sits on top of the livelihood-securing UBI (4.1) — tied to participation in local life-projects, regenerative farms, care-tribes or communal commons. Unlike old conditionalities tied to wage labour, this component is not restrictive but inviting: whoever takes part, shares and carries receives in addition. The project itself, not the state, defines participation.</div></div>
+
+        <h4 class="goal-ref">"Tax Wealth, not Work"</h4>
         <div class="measure"><span class="measure-num">4.2</span><div><strong>Progressive wealth tax</strong> with substantial brackets — following the OECD model and Piketty's work: 2% annually above €50m, 5% above €500m, 8% above €1bn. The purpose is not punishment but the prevention of concentration that prevents others from realising their possibilities (Whitehead: <em>satisfaction</em> presupposes the freedom to concresce). Swiss inheritable wealth grew from 2000 to 2025 to 4.2 times GDP — the fiscal substrate is there.<cite data-ref="oecd-wealthtax"></cite><cite data-ref="srf-vermoegen-2026"></cite> An international minimum standard against tax flight is part of the measure, not its precondition.</div></div>
         <div class="measure"><span class="measure-num">4.3</span><div><strong>Inheritance and Concentration Tax.</strong> A generational levy on inherited large fortunes with substantial brackets above clearly defined thresholds — alongside, not replacing, the annual wealth tax. Rationale: what historically rests on public goods such as education, research and infrastructure returns in the case of inheritance to the commons. The middle class and small family enterprises remain untouched through high allowances. Democratic legitimacy of property ends with inherited achievement of others — a standard position since Smith and Mill.</div></div>
-        <div class="measure"><span class="measure-num">4.4</span><div><strong>Commons Bank — a democratically governed investment infrastructure.</strong> Revenues flowing in from measures 4.2 and 4.3 are not channelled into the general government budget but into a free-standing, decentrally governed institution. Three mandates: ecological restoration (forests, soils, rivers), local energy autonomy (cooperatives, neighbourhood supply) and life-projects (communities of 30–150 people who live, work and care together). Governance rests with rotating citizens' assemblies chosen by lot, with expert support and veto rights for local receiving regions. The Commons Bank is not a public agency — it is a new locus of public wealth.</div></div>
-        <div class="measure"><span class="measure-num">4.5</span><div><strong>Relational UBI component.</strong> A relational, community-bound component sits on top of the livelihood-securing UBI (4.1) — tied to participation in local life-projects, regenerative farms, care-tribes or communal commons. Unlike old conditionalities tied to wage labour, this component is not restrictive but inviting: whoever takes part, shares and carries receives in addition. The project itself, not the state, defines participation.</div></div>
-        <div class="measure"><span class="measure-num">4.6</span><div><strong>Land, water, energy as commons.</strong> Hereditary lease and foundation ownership for residential and agricultural land; water under public trust; energy cooperatives as the rule, not the exception. Property remains possible — but concentration in goods essential for life is structurally bounded. The legal architecture follows the existing "rights of nature" provisions of Ecuador and Bolivia (constitutionally codified since 2008/2009).</div></div>
-        <div class="measure"><span class="measure-num">4.7</span><div><strong>Carbon pricing with climate dividend.</strong> Substantial pricing with per-capita refund — socially progressive, ecologically effective. Models: Swiss CO₂ law, Canadian model. International minimum prices to avoid carbon leakage.</div></div>
-        <div class="measure"><span class="measure-num">4.8</span><div><strong>Reform of corporate constitution.</strong> Stakeholder model instead of shareholder primacy: codetermination of employees, representation of neighbors and ecological interests, trustee structures for long-lived goods (stewardship models like Patagonia's transfer to trust).</div></div>
-        <div class="measure"><span class="measure-num">4.9</span><div><strong>Campaign finance reform — sequence: power before money.</strong> Strict limits on private political financing, public campaign financing, lobby transparency. This reform must take effect <em>before</em> substantive wealth taxation — otherwise concentrated media power will torpedo the tax reform before it can take effect. The sequencing is not tactical caution but a systemic condition for the effectiveness of every other measure.</div></div>
-        <div class="measure"><span class="measure-num">4.10</span><div><strong>Public banking</strong> and public money. Central money creation as democratic competence, not as privilege of private credit institutions. Municipal banks (Sparkasse tradition), cooperative credit unions, possibly digital central bank money with explicitly democratic mandate.</div></div>
-        <div class="measure"><span class="measure-num">4.11</span><div><strong>Education system reform</strong> as structural task. Curricula, teacher training, financing; democratization of higher education; shift from selection function to capability function. Layer 1 (place-based, without bifurcation) needs institutional carriers that do not have to be re-fought every generation.</div></div>
-        <div class="measure"><span class="measure-num">4.12</span><div><strong>Worker cooperatives</strong> legally equal, fiscally privileged. Not as niche but as standard form for specific sectors — care, food, housing, energy. Mondragón, Emilia-Romagna, Évolution Coopérative as models; ESOP legislation along U.S. lines enables workforce buy-outs without the workers' own capital at risk.<cite data-ref="acevedo-workers"></cite></div></div>
         <div class="measure"><span class="measure-num">4.13</span><div><strong>Limitarianism — bound wealth, do not only tax it.</strong> Ingrid Robeyns (Utrecht) formulates the case for a political upper limit in <em>Limitarianism: The Case Against Extreme Wealth</em> (Astra House, 2024): above a certain threshold, private wealth should no longer be legal. Robeyns distinguishes an <em>ethical</em> threshold (broadly in the range of USD one million, above which additional wealth barely contributes to personal flourishing) from a <em>political</em> threshold (around USD ten million), above which wealth inevitably converts into political power — lobbying, media ownership, lawfare. Unlike progressive wealth taxation (4.2), limitarianism operates with an absolute maximum, not with continuous skimming; the two measures complement each other rather than substitute. The exact thresholds are open to debate; the direction is clear: democracy cannot bear concentrated private wealth above a threshold at which markets become collectibles and politics becomes for sale.<cite data-ref="robeyns-limitarianism"></cite> A complementary cultural "ethics of enough" — not legalistic — provides the psychological carrying capacity of this measure (Layer 2). Gabriel Zucman's EU Tax Observatory provides the fiscal infrastructure; his G20 proposal for a global minimum tax on billionaire wealth is the international component that contains tax flight.<cite data-ref="zucman-billionaires"></cite><cite data-ref="acevedo-billionaires"></cite></div></div>
+
+        <h4 class="goal-ref">Land, water and energy as commons</h4>
+        <div class="measure"><span class="measure-num">4.6</span><div><strong>Land, water, energy as commons.</strong> Hereditary lease and foundation ownership for residential and agricultural land; water under public trust; energy cooperatives as the rule, not the exception. Property remains possible — but concentration in goods essential for life is structurally bounded. The legal architecture follows the existing "rights of nature" provisions of Ecuador and Bolivia (constitutionally codified since 2008/2009).</div></div>
+
+        <h4 class="goal-ref">Worker-owned cooperatives</h4>
+        <div class="measure"><span class="measure-num">4.8</span><div><strong>Reform of corporate constitution.</strong> Stakeholder model instead of shareholder primacy: codetermination of employees, representation of neighbors and ecological interests, trustee structures for long-lived goods (stewardship models like Patagonia's transfer to trust).</div></div>
+        <div class="measure"><span class="measure-num">4.12</span><div><strong>Worker cooperatives</strong> legally equal, fiscally privileged. Not as niche but as standard form for specific sectors — care, food, housing, energy. Mondragón, Emilia-Romagna, Évolution Coopérative as models; ESOP legislation along U.S. lines enables workforce buy-outs without the workers' own capital at risk.<cite data-ref="acevedo-workers"></cite></div></div>
+
+        <h4 class="goal-ref">Process philosophy and indigenous ontologies</h4>
+        <div class="measure"><span class="measure-num">4.11</span><div><strong>Education system reform</strong> as structural task. Curricula, teacher training, financing; democratization of higher education; shift from selection function to capability function. Layer 1 (place-based, without bifurcation) needs institutional carriers that do not have to be re-fought every generation.</div></div>
       </div>
 
       <div class="meta-box"><strong>Main Actors</strong>Parliaments and governments (national, regional, EU) · Constitutional courts · International treaty organizations · Trade unions and employer associations · Civil society policy alliances · Economic and legal expertise beyond the mainstream</div>
@@ -3141,19 +3315,19 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
       </div>
       <div class="tv-layers">
         <div class="tv-layer tl1">
-          <span class="tv-lbl">Schicht 1 · Erzählung</span>
+          <span class="tv-lbl">Ontologie</span>
           <div class="tv-track"><span class="tv-cell x2"></span><span class="tv-cell x3"></span><span class="tv-cell x4"></span><span class="tv-cell x4"></span></div>
         </div>
         <div class="tv-layer tl2">
-          <span class="tv-lbl">Schicht 2 · Psyche</span>
+          <span class="tv-lbl">Psyche</span>
           <div class="tv-track"><span class="tv-cell x1"></span><span class="tv-cell x3"></span><span class="tv-cell x4"></span><span class="tv-cell x4"></span></div>
         </div>
         <div class="tv-layer tl3">
-          <span class="tv-lbl">Schicht 3 · Institutionen</span>
+          <span class="tv-lbl">Institution</span>
           <div class="tv-track"><span class="tv-cell x2"></span><span class="tv-cell x4"></span><span class="tv-cell x4"></span><span class="tv-cell x3"></span></div>
         </div>
         <div class="tv-layer tl4">
-          <span class="tv-lbl">Schicht 4 · Strukturen</span>
+          <span class="tv-lbl">Struktur</span>
           <div class="tv-track"><span class="tv-cell x1"></span><span class="tv-cell x4"></span><span class="tv-cell x3"></span><span class="tv-cell x2"></span></div>
         </div>
       </div>
@@ -3170,10 +3344,14 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <p>Die alte Geschichte ist in dieser Phase noch hegemonial. Aufgabe ist, sie sichtbar zu machen, alternative Erzählungen zu kultivieren, in lokalen Räumen erste Pilotinstitutionen zu etablieren und die strukturelle Reform-Agenda öffentlich zu artikulieren.</p>
         <h4>Schwerpunkt-Aktivitäten</h4>
         <ul>
-          <li>Schicht 1: place-based Pilotschulen, indigene Plattformen, Solarpunk-Kultur, prozessphilosophische Vermittlung in Erwachsenenbildung</li>
-          <li>Schicht 2: Death Cafés, Work That Reconnects, kommunale Trauerformate</li>
-          <li>Schicht 3: Doughnut-Pilotstädte, Bürgerräte zu Klima und Verfassungsfragen, kommunale Commons</li>
-          <li>Schicht 4: BGE-Pilotprojekte (DIW-Studie 2021–2024 abgeschlossen, Folgepiloten in Vorbereitung); erste verbindliche Vermögenssteuer-Diskurse mit politischer Anschlussfähigkeit (Schweiz, EU); Kampagnenfinanzierungs- und Medienkonzentrations-Reformen als Vorlauf; Prototypen einer Commons Bank in Pilotregionen</li>
+          <li><b>Alte „Nehmer"-Erzählung sichtbar machen</b> — place-based Pilotschulen, Solarpunk-Kultur, prozessphilosophische Vermittlung in Erwachsenenbildung</li>
+          <li><b>Prozessphilosophie und indigene Ontologien</b> — indigene Plattformen, prozessphilosophische Vermittlung; Solarpunk als ästhetische Sprache</li>
+          <li><b>Eigenen Tod akzeptieren lernen</b> — Death Cafés, Work That Reconnects, kommunale Trauerformate</li>
+          <li><b>Doughnut-Pilotstädte und Bürgerräte</b> — Klima- und Verfassungsfragen</li>
+          <li><b>Kommunale Commons</b> — erste gelebte Modelle</li>
+          <li><b>Bedingungsloses Grundeinkommen</b> — BGE-Pilotprojekte (DIW-Studie 2021–2024 abgeschlossen, Folgepiloten in Vorbereitung)</li>
+          <li><b>„Tax Wealth, not Work"</b> — erste verbindliche Vermögenssteuer-Diskurse mit politischer Anschlussfähigkeit (Schweiz, EU)</li>
+          <li><b>Demokratie schützen</b> — Kampagnenfinanzierungs- und Medienkonzentrations-Reformen als Vorlauf; Prototypen einer Commons Bank in Pilotregionen</li>
         </ul>
       </div>
     </div>
@@ -3188,10 +3366,14 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <p>Die ontologische und psychische Arbeit der Phase 0 erzeugt eine wachsende Bevölkerungsgruppe, für die Sufficiency, Commons und partizipative Demokratie nicht mehr als Verzicht oder Utopie erfahren werden, sondern als plausible Lebensform. Strukturelle Reformen werden mehrheitsfähig.</p>
         <h4>Charakteristische Entwicklungen</h4>
         <ul>
-          <li>Schicht 1: place-based Bildung wird Standard in Vorreiterregionen; indigene Souveränität rechtlich und wirtschaftlich konsolidiert</li>
-          <li>Schicht 2: Mortalitätskompetenz im Lehrplan; psychotherapeutische Praxis ohne Bifurkation</li>
-          <li>Schicht 3: Doughnut-Logik in zahlreichen Kommunen; Bürgerräte mit verbindlicher Wirkung; Commons in Wasser, Wohnen, Energie etabliert</li>
-          <li>Schicht 4: BGE-Einführung in mehreren Staaten (kaufkraftbereinigt, kommunal flexibilisiert); progressive Vermögenssteuer mit substanziellen Stufen in einer Pioniergruppe europäischer Länder; Erbschafts- und Vermögenskonzentrations-Steuer als regionaler Standard; Commons Banks operativ; Stakeholder-Modelle für Großunternehmen; relationale BGE-Komponenten als zweite Säule</li>
+          <li><b>Place-based Bildung als Standard</b> in Vorreiterregionen</li>
+          <li><b>Indigene Souveränität</b> rechtlich und wirtschaftlich konsolidiert</li>
+          <li><b>Mortalitätskompetenz im Lehrplan</b>; psychotherapeutische Praxis ohne Bifurkation</li>
+          <li><b>Doughnut-Logik in vielen Kommunen</b>; Bürgerräte mit verbindlicher Wirkung</li>
+          <li><b>Commons in Wasser, Wohnen, Energie</b> etabliert</li>
+          <li><b>BGE-Einführung in mehreren Staaten</b> (kaufkraftbereinigt, kommunal flexibilisiert); relationale BGE-Komponente als zweite Säule</li>
+          <li><b>Progressive Vermögenssteuer</b> mit substanziellen Stufen — europäische Pioniergruppe; Erbschafts- und Konzentrations-Steuer als regionaler Standard</li>
+          <li><b>Worker-owned cooperatives</b> / Stakeholder-Modelle für Großunternehmen; Commons Banks operativ</li>
         </ul>
       </div>
     </div>
@@ -3206,10 +3388,13 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <p>Die strukturellen Reformen sind in vielen Ländern etabliert. Die Aufgabe verschiebt sich von Durchsetzung zu Vertiefung — sicherzustellen, dass die institutionellen Räume tatsächlich tragen, was sie tragen sollen, und dass die kulturelle Erzählung mit der strukturellen Wirklichkeit konsistent bleibt.</p>
         <h4>Charakteristische Entwicklungen</h4>
         <ul>
-          <li>Schicht 1: prozess-relationale Naturwissenschaft als Lehrstandard; pluriversale Wissensordnungen anerkannt</li>
-          <li>Schicht 2: Trauerkulturen ausdifferenziert; intergenerationale Sinnpraktiken etabliert</li>
-          <li>Schicht 3: polyzentrische Klimagovernance funktional; transnationale Bürgerräte regulär</li>
-          <li>Schicht 4: BGE und progressive Steuerstrukturen als Standard im OECD-Raum; öffentliches Bankwesen und Commons Banks als Norm; Erbschaftsregime substanziell reformiert; Boden, Wasser und Energie überwiegend als Commons strukturiert; Lebens-Projekte (Tribes von 30–150 Menschen) als anerkannte Wohn- und Arbeitsform</li>
+          <li><b>Prozess-relationale Naturwissenschaft</b> als Lehrstandard wissenschaftlich etabliert</li>
+          <li><b>Pluriversale Wissensordnungen</b> anerkannt — Pluralität statt Synthese</li>
+          <li><b>Ausdifferenzierte Trauerkulturen</b>; intergenerationale Sinnpraktiken etabliert</li>
+          <li><b>Polyzentrische Klimagovernance</b> funktional; transnationale Bürgerräte regulär</li>
+          <li><b>BGE und progressive Steuerstrukturen</b> als OECD-Standard; öffentliches Bankwesen und Commons Banks als Norm; Erbschaftsregime substanziell reformiert</li>
+          <li><b>Boden, Wasser und Energie als Commons</b> — überwiegend strukturiert</li>
+          <li><b>Lebens-Projekte (Tribes von 30–150 Menschen)</b> als anerkannte Wohn- und Arbeitsform</li>
         </ul>
       </div>
     </div>
@@ -3224,10 +3409,10 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <p>Glenn Albrechts Symbiozän bezeichnet eine Epoche, in der menschliche Zivilisation sich wieder als Teil ökologischer Verwandtschaftsverhältnisse versteht und ökonomisch organisiert. Diese Phase ist nicht Ende der Geschichte, sondern Beginn einer anderen — in der Probleme nicht verschwinden, aber die Probleme, die wir uns selbst durch die Nehmer-Erzählung geschaffen haben, ihre strukturelle Triebkraft verloren haben.</p>
         <h4>Charakteristische Verfasstheit</h4>
         <ul>
-          <li>Sieben von neun planetaren Grenzen wieder im sicheren Raum oder klar in dieser Richtung</li>
-          <li>Konsumlogik durch Beziehungs- und Konkreszenzlogik ersetzt</li>
-          <li>Indigene Souveränität als selbstverständlicher Bestandteil multilateraler Ordnungen</li>
-          <li>Demokratie auf mehreren Skalen funktionsfähig — von Quartier bis transnational</li>
+          <li><b>Sieben von neun planetaren Grenzen</b> wieder im sicheren Raum oder klar in dieser Richtung</li>
+          <li><b>Konsumlogik durch Beziehungs- und Konkreszenzlogik</b> ersetzt</li>
+          <li><b>Indigene Souveränität</b> als selbstverständlicher Bestandteil multilateraler Ordnungen</li>
+          <li><b>Demokratie auf mehreren Skalen</b> funktionsfähig — von Quartier bis transnational</li>
         </ul>
       </div>
     </div>
@@ -3319,19 +3504,19 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
       </div>
       <div class="tv-layers">
         <div class="tv-layer tl1">
-          <span class="tv-lbl">Layer 1 · Narrative</span>
+          <span class="tv-lbl">Ontology</span>
           <div class="tv-track"><span class="tv-cell x2"></span><span class="tv-cell x3"></span><span class="tv-cell x4"></span><span class="tv-cell x4"></span></div>
         </div>
         <div class="tv-layer tl2">
-          <span class="tv-lbl">Layer 2 · Psyche</span>
+          <span class="tv-lbl">Psyche</span>
           <div class="tv-track"><span class="tv-cell x1"></span><span class="tv-cell x3"></span><span class="tv-cell x4"></span><span class="tv-cell x4"></span></div>
         </div>
         <div class="tv-layer tl3">
-          <span class="tv-lbl">Layer 3 · Institutions</span>
+          <span class="tv-lbl">Institution</span>
           <div class="tv-track"><span class="tv-cell x2"></span><span class="tv-cell x4"></span><span class="tv-cell x4"></span><span class="tv-cell x3"></span></div>
         </div>
         <div class="tv-layer tl4">
-          <span class="tv-lbl">Layer 4 · Structures</span>
+          <span class="tv-lbl">Structure</span>
           <div class="tv-track"><span class="tv-cell x1"></span><span class="tv-cell x4"></span><span class="tv-cell x3"></span><span class="tv-cell x2"></span></div>
         </div>
       </div>
@@ -3344,10 +3529,14 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <p>The old story is still hegemonic in this phase. The task is not to pretend otherwise. The work is to make the existing story visible — to name what is normally called "reality" as a narrative choice — and to cultivate alternatives concretely in the places where cultivation is already possible. Pilot institutions in local spaces, structural reform agendas articulated in public, and cultural seeds planted deliberately: this is Phase 0 work.</p>
         <h4>Focal Activities</h4>
         <ul>
-          <li>Layer 1: place-based pilot schools, indigenous platforms, solarpunk culture, process-philosophical mediation in adult education</li>
-          <li>Layer 2: Death Cafés, Work That Reconnects, communal grief formats, climate-grief containers</li>
-          <li>Layer 3: Doughnut pilot cities, citizens' assemblies on climate and constitutional questions, communal commons in housing and energy</li>
-          <li>Layer 4: UBI pilots (DIW study 2021–2024 complete, follow-up pilots in preparation); first binding wealth-tax discourses with political traction (Switzerland, EU); campaign-finance and media-concentration reform as preparation; Commons-Bank prototypes in pilot regions</li>
+          <li><b>Make the old "Taker" narrative visible</b> — place-based pilot schools, solarpunk culture, process-philosophical mediation in adult education</li>
+          <li><b>Process philosophy and indigenous ontologies</b> — indigenous platforms, solarpunk as aesthetic language</li>
+          <li><b>Learn to accept one's own death</b> — Death Cafés, Work That Reconnects, communal grief formats, climate-grief containers</li>
+          <li><b>Doughnut pilot cities and citizens' assemblies</b> — climate and constitutional questions</li>
+          <li><b>Communal commons</b> — housing and energy, as first lived models</li>
+          <li><b>Universal Basic Income</b> — UBI pilots (DIW study 2021–2024 complete, follow-up pilots in preparation)</li>
+          <li><b>"Tax Wealth, not Work"</b> — first binding wealth-tax discourses with political traction (Switzerland, EU)</li>
+          <li><b>Protect democracy</b> — campaign-finance and media-concentration reform as preparation; Commons-Bank prototypes in pilot regions</li>
         </ul>
       </div>
     </div>
@@ -3358,10 +3547,14 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <p>The ontological and psychological work of Phase 0 produces a growing population for whom sufficiency, commons, and participatory democracy are no longer experienced as deprivation or utopia, but as a plausible form of life. Structural reforms become majority-capable — not because everyone has been persuaded, but because the cultural soil has been prepared enough. Jason Hickel's observation is pertinent here: degrowth is not a sacrifice narrative but a liberation from the compulsion of accumulation;<cite data-ref="hickel-less"></cite> this reframing only becomes politically usable once Layer 1 and 2 work is sufficiently underway.</p>
         <h4>Characteristic Developments</h4>
         <ul>
-          <li>Layer 1: place-based education becomes standard in lead regions; indigenous sovereignty legally and economically consolidated</li>
-          <li>Layer 2: mortality competence in curricula; psychotherapeutic practice that does not presuppose bifurcation of mind and nature</li>
-          <li>Layer 3: Doughnut logic in numerous municipalities; citizens' assemblies with binding effect; commons in water, housing, and energy established</li>
-          <li>Layer 4: UBI introduction in several states (purchasing-power adjusted, municipally flexible); progressive wealth tax with substantial brackets in a pioneer group of European countries; inheritance- and concentration-tax as a regional standard; Commons Banks operational; stakeholder models for large corporations; relational UBI components as a second pillar</li>
+          <li><b>Place-based education as standard</b> in lead regions</li>
+          <li><b>Indigenous sovereignty</b> legally and economically consolidated</li>
+          <li><b>Mortality competence in the curriculum</b>; psychotherapeutic practice without bifurcation of mind and nature</li>
+          <li><b>Doughnut logic in many municipalities</b>; citizens' assemblies with binding effect</li>
+          <li><b>Commons in water, housing, and energy</b> established</li>
+          <li><b>UBI introduction in several states</b> (purchasing-power adjusted, municipally flexible); relational UBI component as a second pillar</li>
+          <li><b>Progressive wealth tax</b> with substantial brackets — European pioneer group; inheritance- and concentration-tax as a regional standard</li>
+          <li><b>Worker-owned cooperatives</b> / stakeholder models for large corporations; Commons Banks operational</li>
         </ul>
       </div>
     </div>
@@ -3372,10 +3565,13 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <p>The structural reforms are established in many countries. The task shifts from enforcement to deepening — ensuring that the institutional spaces actually carry what they should, and that the cultural narrative remains consistent with the structural reality rather than lagging behind it. This is the phase most often underestimated in systems change: the gap between a reform enacted and a reform embodied can be a generation wide.</p>
         <h4>Characteristic Developments</h4>
         <ul>
-          <li>Layer 1: process-relational natural science as teaching standard; pluriversal knowledge orders recognised at institutional level</li>
-          <li>Layer 2: grief cultures differentiated and ritually held; intergenerational meaning practices established in secular form</li>
-          <li>Layer 3: polycentric climate governance functional; transnational citizens' assemblies meeting regularly</li>
-          <li>Layer 4: UBI and progressive tax structures standard across the OECD; public banking and Commons Banks as norm; inheritance regimes substantially reformed; land, water and energy predominantly structured as commons; life-projects (tribes of 30–150) as recognised forms of living and working</li>
+          <li><b>Process-relational natural science</b> scientifically established as teaching standard</li>
+          <li><b>Pluriversal knowledge orders</b> recognised at institutional level — plurality, not synthesis</li>
+          <li><b>Differentiated grief cultures</b>; intergenerational meaning practices established in secular form</li>
+          <li><b>Polycentric climate governance</b> functional; transnational citizens' assemblies meeting regularly</li>
+          <li><b>UBI and progressive tax structures</b> standard across the OECD; public banking and Commons Banks as norm; inheritance regimes substantially reformed</li>
+          <li><b>Land, water and energy as commons</b> — predominantly structured</li>
+          <li><b>Life-projects (tribes of 30–150)</b> as recognised forms of living and working</li>
         </ul>
       </div>
     </div>
@@ -3386,10 +3582,10 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <p>Glenn Albrecht's Symbiocene names an epoch in which human civilisation understands and organises itself again as part of ecological kinship relations.<cite data-ref="albrecht-emotions"></cite> This phase is not the end of history but the beginning of a different kind of history — one in which problems do not disappear, but the problems we have created for ourselves through the Taker narrative have lost their structural drive. Ailton Krenak's invitation is the spirit of this phase: not the end of the world, but the ability to "always tell one more story".<cite data-ref="krenak-ideas"></cite></p>
         <h4>Characteristic Disposition</h4>
         <ul>
-          <li>Seven of nine planetary boundaries back within the safe space or clearly heading there<cite data-ref="ipcc-ar6-syr"></cite></li>
-          <li>Consumption logic replaced by relation and concrescence logic in dominant economic culture</li>
-          <li>Indigenous sovereignty as a self-evident component of multilateral orders</li>
-          <li>Democracy functional at multiple scales — from neighbourhood to transnational</li>
+          <li><b>Seven of nine planetary boundaries</b> back within the safe space or clearly heading there<cite data-ref="ipcc-ar6-syr"></cite></li>
+          <li><b>Consumption logic replaced</b> by relation and concrescence logic in dominant economic culture</li>
+          <li><b>Indigenous sovereignty</b> as a self-evident component of multilateral orders</li>
+          <li><b>Democracy functional at multiple scales</b> — from neighbourhood to transnational</li>
         </ul>
       </div>
     </div>
