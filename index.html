@@ -516,9 +516,11 @@ cite[data-ref],cite{font-style:normal}
 /* ════════════════════════════════════════════════════════
    DREI-SEKTIONEN-ARCHITEKTUR
 ════════════════════════════════════════════════════════ */
-body.story .roadmap-only,body.story .foundations-only{display:none!important}
-body.roadmap .story-only,body.roadmap .foundations-only{display:none!important}
-body.foundations .story-only,body.foundations .roadmap-only{display:none!important}
+/* Sichtbarkeit: aktive Sektion zeigt nur ihre eigenen *-only-Elemente */
+body.story .roadmap-only,body.story .foundations-only,body.story .breath-only{display:none!important}
+body.roadmap .story-only,body.roadmap .foundations-only,body.roadmap .breath-only{display:none!important}
+body.foundations .story-only,body.foundations .roadmap-only,body.foundations .breath-only{display:none!important}
+body.breath .story-only,body.breath .roadmap-only,body.breath .foundations-only{display:none!important}
 
 /* CROSS-NAV */
 .cross-nav{background:rgba(25,45,12,.94);padding:9px 40px;border-bottom:1px solid rgba(255,255,255,.08);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;display:flex;align-items:center;gap:14px;justify-content:center;position:relative;z-index:5}
@@ -547,7 +549,66 @@ body.foundations .lbtn.active{background:var(--bark)}
 body.foundations header::after{background:var(--bud);opacity:.45}
 body.foundations .tbtn.active{color:var(--sun);border-bottom-color:var(--bark)}
 body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(240,192,56,.45)}
+
+/* ════════════════════════════════════════════════════════
+   BREATH-MODUS: Sky/Leaf-Akzent — Atem, Gegenwart
+════════════════════════════════════════════════════════ */
+body.breath .site-title em{color:var(--sky)}
+body.breath .site-divider{background:var(--sky);opacity:.6}
+body.breath .lbtn.active{background:var(--sky)}
+body.breath header::after{background:var(--bud);opacity:.45}
+body.breath .tbtn.active{color:var(--sky);border-bottom-color:var(--sky)}
+body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,170,.5)}
+
+/* ── TAB ATEM — Atemwand & Gabe ── */
+.atem-intro h1{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,5vw,2.9rem);color:var(--forest);line-height:1.12;margin:0 0 .4em}
+.atem-lead{font-size:clamp(1.02rem,2.2vw,1.18rem);color:var(--bark);line-height:1.7;font-style:italic}
+.atem-block{margin-top:8px}
+.atem-block-gift{margin-top:64px;padding-top:48px;border-top:1px solid var(--linen)}
+.atem-h{font-family:var(--f-display);font-weight:500;font-size:clamp(1.5rem,3.4vw,2rem);color:var(--moss);margin:0 0 .25em}
+.atem-sub{font-size:.98rem;color:var(--stone);line-height:1.65;margin:0 0 24px;max-width:60ch}
+.atem-form{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.atem-row{display:flex;gap:12px;flex-wrap:wrap}
+.atem-input{font-family:var(--f-body);font-size:1rem;color:var(--earth);background:var(--paper);border:1px solid var(--linen);border-radius:10px;padding:12px 15px;width:100%;transition:border-color .2s,box-shadow .2s}
+.atem-input:focus{outline:none;border-color:var(--leaf);box-shadow:0 0 0 3px rgba(69,122,76,.12)}
+.atem-input::placeholder{color:var(--stone);opacity:.7;font-style:italic}
+.atem-input-sm{flex:1;min-width:140px}
+.atem-textarea{resize:vertical;line-height:1.6}
+.atem-btn{align-self:flex-start;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em;color:var(--cream);background:var(--moss);border:none;border-radius:22px;padding:12px 26px;cursor:pointer;transition:background .2s,transform .15s}
+.atem-btn:hover{background:var(--leaf);transform:translateY(-1px)}
+.atem-btn:disabled{background:var(--stone);cursor:default;transform:none}
+.atem-msg{font-size:.85rem;font-style:italic;color:var(--leaf);min-height:1.2em;margin:2px 0 0}
+.atem-msg.err{color:var(--clay)}
+/* Atemwand-Feld */
+.breath-wall{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;align-content:flex-start}
+.breath-mark{font-family:var(--f-body);font-size:.85rem;color:var(--bark);background:var(--paper);border:1px solid var(--linen);border-radius:14px;padding:7px 13px;line-height:1.4;max-width:280px;animation:breathIn .6s ease}
+.breath-mark .bm-place{display:block;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.04em;color:var(--sprout);margin-top:3px}
+.breath-mark .bm-name{color:var(--stone);font-style:italic}
+@keyframes breathIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.breath-empty{font-style:italic;color:var(--stone);font-size:.92rem}
+/* Gabe — Art-Auswahl */
+.gift-kind{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.gift-kind-btn{font-family:var(--f-body);font-style:italic;font-size:.9rem;color:var(--stone);background:none;border:1px solid var(--linen);border-radius:18px;padding:8px 18px;cursor:pointer;transition:all .2s}
+.gift-kind-btn:hover{color:var(--moss);border-color:var(--leaf)}
+.gift-kind-btn.active{color:var(--cream);background:var(--bark);border-color:var(--bark)}
+.gift-check{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--stone);margin-top:4px}
+.gift-check input{accent-color:var(--moss)}
 </style>
+
+<!-- ══════════════ SUPABASE — Atemwand & Gaben-Datenspeicher ══════════════
+     Verbindet die statische Seite mit dem Datenspeicher (Tabellen
+     'breaths' = öffentlich, 'gifts' = private Warteschlange).
+     Der Publishable Key ist für öffentliche Seiten vorgesehen und sicher;
+     der eigentliche Schutz liegt in den Row-Level-Security-Regeln der DB.
+═══════════════════════════════════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ⬇⬇⬇  HIER TRÄGT F. DIE ZWEI WERTE AUS DEM SUPABASE-DASHBOARD EIN  ⬇⬇⬇
+  const SUPABASE_URL = "https://elwplnmuifwforlaydtr.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_9d26SR9xLZ76aLR9nB8UNg_3almPhXd"; // Publishable Key — für öffentliche Seiten sicher, Schutz via RLS
+  // ⬆⬆⬆  ⬆⬆⬆
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+</script>
 </head>
 <body class="de story">
 
@@ -621,6 +682,18 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <span class="en-text">Voices &amp; readings · Quantum Physics · Process Philosophy · Emergence · Indigenous Ontologies · Political Ecology</span>
       </div>
     </div>
+    <!-- ── BREATH-HEADER ── -->
+    <div class="hdr breath-only">
+      <div class="site-title">
+        <span class="de-text">Teile einen <em>Atemzug</em></span>
+        <span class="en-text">Share a <em>Breath</em></span>
+      </div>
+      <div class="site-divider"></div>
+      <div class="site-sub">
+        <span class="de-text">Hinterlasse einen Atemzug, der sofort Teil der Wand wird · oder schenke eine Gabe, die behutsam geprüft wird, bevor sie in die Seite einwächst.</span>
+        <span class="en-text">Leave a breath that joins the wall at once · or give a gift that is tended carefully before it grows into the page.</span>
+      </div>
+    </div>
     <div class="site-meta">
       <span class="de-text">· Eine lebende Seite — Texte entstehen mit Claude AI, werden von F. Lanfranconi überarbeitet und wachsen weiter.</span>
       <span class="en-text">· A living page — texts are drafted with Claude AI, edited by F. Lanfranconi, and continue to grow.</span>
@@ -643,6 +716,11 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <a class="cn-item" data-section="foundations" href="#" onclick="setSection('foundations'); return false;">
     <span class="de-text">Grundlagen &amp; Quellen</span>
     <span class="en-text">Foundations &amp; Sources</span>
+  </a>
+  <span class="cn-sep">·</span>
+  <a class="cn-item" data-section="breath" href="#" onclick="setSection('breath'); return false;">
+    <span class="de-text">Teile einen Atemzug</span>
+    <span class="en-text">Share a breath</span>
   </a>
 </div>
 
@@ -685,6 +763,15 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
   <button class="tbtn foundations-only" data-tab="f2" onclick="showTab('f2')">
     <span class="de-text">F2 — Literatur</span>
     <span class="en-text">F2 — Bibliography</span>
+  </button>
+
+  <button class="tbtn breath-only" data-tab="atem-wall" onclick="showTab('atem-wall')">
+    <span class="de-text">Atemwand</span>
+    <span class="en-text">Breath wall</span>
+  </button>
+  <button class="tbtn breath-only" data-tab="atem-gift" onclick="showTab('atem-gift')">
+    <span class="de-text">Gabe</span>
+    <span class="en-text">Gift</span>
   </button>
 </nav>
 
@@ -2669,6 +2756,133 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
 </div><!-- /tab-d -->
 
 
+<!-- ══════════════════════ TAB ATEM-WALL — Atemwand ══════════════════════
+     Sektion 'breath', Unter-Tab 1: öffentliche Atemwand (sofort sichtbar).
+     Daten via Supabase-Tabelle 'breaths' (Client 'sb' im Head).
+══════════════════════════════════════════════════════════════════════════════ -->
+<div id="tab-atem-wall" class="tab-content">
+
+  <!-- ════════ ATEMWAND ════════ -->
+  <div style="max-width:720px;margin:0 auto;padding:68px 32px 96px">
+    <div class="atem-block">
+      <h2 class="atem-h">
+        <span class="de-text">Die Atemwand</span>
+        <span class="en-text">The breath wall</span>
+      </h2>
+      <p class="atem-sub">
+        <span class="de-text">Jeder Atemzug ist ein Ereignis. Hinterlasse eine
+        Spur — ein Wort, einen Ort, einen Moment. Sie erscheint sofort.</span>
+        <span class="en-text">Each breath is an event. Leave a trace — a word,
+        a place, a moment. It appears at once.</span>
+      </p>
+
+      <!-- Eingabe -->
+      <div class="atem-form">
+        <input id="breath-text" type="text" maxlength="120"
+          class="atem-input"
+          data-ph-de="Ein Wort, ein Moment …"
+          data-ph-en="A word, a moment …">
+        <div class="atem-row">
+          <input id="breath-place" type="text" maxlength="60"
+            class="atem-input atem-input-sm"
+            data-ph-de="Wo bist du? (optional)"
+            data-ph-en="Where are you? (optional)">
+          <input id="breath-name" type="text" maxlength="40"
+            class="atem-input atem-input-sm"
+            data-ph-de="Name (optional)"
+            data-ph-en="Name (optional)">
+        </div>
+        <button class="atem-btn" onclick="submitBreath()">
+          <span class="de-text">Atemzug hinterlassen</span>
+          <span class="en-text">Leave a breath</span>
+        </button>
+        <p id="breath-msg" class="atem-msg" aria-live="polite"></p>
+      </div>
+
+      <!-- Das Feld der Atemzüge -->
+      <div id="breath-wall" class="breath-wall" aria-live="polite"></div>
+    </div>
+  </div>
+
+</div><!-- /tab-atem-wall -->
+
+
+<!-- ══════════════════════ TAB ATEM-GIFT — Gabe ══════════════════════
+     Sektion 'breath', Unter-Tab 2: kuratierte Gabe (privat, Warteschlange).
+     Daten via Supabase-Tabelle 'gifts' (nur insert, kein select — RLS).
+══════════════════════════════════════════════════════════════════════════════ -->
+<div id="tab-atem-gift" class="tab-content">
+
+  <!-- ════════ DIE GABE ════════ -->
+  <div style="max-width:720px;margin:0 auto;padding:68px 32px 96px">
+    <div class="atem-block">
+      <h2 class="atem-h">
+        <span class="de-text">Eine Gabe</span>
+        <span class="en-text">A gift</span>
+      </h2>
+      <p class="atem-sub">
+        <span class="de-text">Du weisst um etwas, das dieser Seite fehlt — eine
+        Stimme, eine gelebte Praxis, eine Quelle. Schenke sie. Sie geht nicht
+        sofort online: F. liest jede Gabe und prüft sie sorgfältig, bevor sie
+        Teil der Seite wird.</span>
+        <span class="en-text">You know of something this page is missing — a
+        voice, a lived practice, a source. Give it. It does not go online at
+        once: F. reads every gift and tends it carefully before it becomes part
+        of the page.</span>
+      </p>
+
+      <!-- Art der Gabe -->
+      <div class="gift-kind">
+        <button class="gift-kind-btn active" data-kind="voice" onclick="setGiftKind('voice')">
+          <span class="de-text">Stimme / Praxis</span>
+          <span class="en-text">Voice / practice</span>
+        </button>
+        <button class="gift-kind-btn" data-kind="source" onclick="setGiftKind('source')">
+          <span class="de-text">Quelle / Denker:in</span>
+          <span class="en-text">Source / thinker</span>
+        </button>
+      </div>
+
+      <div class="atem-form">
+        <!-- Hauptbeitrag -->
+        <textarea id="gift-body" rows="5" maxlength="1500" class="atem-input atem-textarea"
+          data-ph-de="Die Stimme, das Wort, die Praxis — in deinen Worten."
+          data-ph-en="The voice, the word, the practice — in your words."></textarea>
+
+        <!-- Beziehung (für Stimme/Praxis) -->
+        <input id="gift-relation" type="text" maxlength="160" class="atem-input"
+          data-ph-de="Deine Beziehung dazu (z. B. „das Wort meiner Großmutter“)"
+          data-ph-en="Your relationship to it (e.g. my grandmother's word)">
+
+        <!-- Quelle/Zitat (für Quelle/Denker:in — wird per JS ein-/ausgeblendet) -->
+        <div id="gift-source-wrap" style="display:none">
+          <input id="gift-source" type="text" maxlength="300" class="atem-input"
+            data-ph-de="Quelle, Zitat, DOI — so genau wie möglich"
+            data-ph-en="Source, citation, DOI — as precise as possible">
+          <label class="gift-check">
+            <input id="gift-verified" type="checkbox">
+            <span class="de-text">Ich habe diesen Verweis überprüft.</span>
+            <span class="en-text">I have verified this reference.</span>
+          </label>
+        </div>
+
+        <!-- Attribution -->
+        <input id="gift-contributor" type="text" maxlength="60" class="atem-input"
+          data-ph-de="Wie sollen wir dich nennen? Name, Region — oder leer für anonym"
+          data-ph-en="How shall we name you? Name, region — or leave blank to stay anonymous">
+
+        <button class="atem-btn" onclick="submitGift()">
+          <span class="de-text">Gabe schenken</span>
+          <span class="en-text">Give this gift</span>
+        </button>
+        <p id="gift-msg" class="atem-msg" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-atem-gift -->
+
+
 <!-- ══════════════════════ TAB I — AUSRICHTUNG ══════════════════════ -->
 <div id="tab-i" class="tab-content">
 
@@ -3733,6 +3947,10 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <span class="de-text">↗ Zu den Grundlagen</span>
         <span class="en-text">↗ To the Foundations</span>
       </a>
+      <a class="rl" onclick="setSection('breath'); return false;" href="#" style="text-decoration:none;margin-left:10px">
+        <span class="de-text">↗ Teile einen Atemzug</span>
+        <span class="en-text">↗ Share a breath</span>
+      </a>
     </div>
     <!-- ── ROADMAP-FOOTER ── -->
     <div class="roadmap-only">
@@ -3752,6 +3970,10 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
         <span class="de-text">↗ Zu den Grundlagen</span>
         <span class="en-text">↗ To the Foundations</span>
       </a>
+      <a class="rl" onclick="setSection('breath'); return false;" href="#" style="text-decoration:none;margin-left:10px">
+        <span class="de-text">↗ Teile einen Atemzug</span>
+        <span class="en-text">↗ Share a breath</span>
+      </a>
     </div>
     <!-- ── FOUNDATIONS-FOOTER ── -->
     <div class="foundations-only">
@@ -3770,6 +3992,29 @@ body.foundations .cn-item.cn-active{color:var(--sun);border-bottom-color:rgba(24
       <a class="rl" onclick="setSection('roadmap'); return false;" href="#" style="text-decoration:none;margin-left:10px">
         <span class="de-text">↗ Zur Roadmap</span>
         <span class="en-text">↗ To the Roadmap</span>
+      </a>
+      <a class="rl" onclick="setSection('breath'); return false;" href="#" style="text-decoration:none;margin-left:10px">
+        <span class="de-text">↗ Teile einen Atemzug</span>
+        <span class="en-text">↗ Share a breath</span>
+      </a>
+    </div>
+    <!-- ── BREATH-FOOTER ── -->
+    <div class="breath-only">
+      <div class="ft">
+        <span class="de-text">Diese Seite atmet weiter.</span>
+        <span class="en-text">This page keeps breathing.</span>
+      </div>
+      <div class="fn">
+        <span class="de-text">Die neue Geschichte ist relational — und darum gemeinsam. Jeder Atemzug, jede Gabe lässt sie weiterwachsen.</span>
+        <span class="en-text">The new story is relational — and therefore collective. Each breath, each gift lets it grow on.</span>
+      </div>
+      <a class="rl" onclick="setSection('story'); return false;" href="#" style="text-decoration:none">
+        <span class="de-text">↗ Zurück zur Geschichte</span>
+        <span class="en-text">↗ Back to the Story</span>
+      </a>
+      <a class="rl" onclick="setSection('foundations'); return false;" href="#" style="text-decoration:none;margin-left:10px">
+        <span class="de-text">↗ Zu den Grundlagen</span>
+        <span class="en-text">↗ To the Foundations</span>
       </a>
     </div>
   </div>
@@ -3795,6 +4040,7 @@ function setLang(lang) {
   document.getElementById('btn-en').classList.toggle('active', lang==='en');
   try{localStorage.setItem('lang',lang);}catch(e){}
   if (typeof _renderBibAfterLang === 'function') _renderBibAfterLang(lang);
+  if (typeof _applyPlaceholders === 'function') _applyPlaceholders();
 }
 
 // ── Tabs ──
@@ -3802,11 +4048,13 @@ function showTab(id) {
   // Sektion automatisch aus Tab-ID ableiten
   const isRoadmap = ['i','ii','iii'].includes(id);
   const isFoundations = ['f1','f2'].includes(id);
+  const isBreath = ['atem-wall','atem-gift'].includes(id);
   let wantSection = 'story';
   if (isRoadmap) wantSection = 'roadmap';
   else if (isFoundations) wantSection = 'foundations';
+  else if (isBreath) wantSection = 'breath';
   if (!document.body.classList.contains(wantSection)) {
-    document.body.classList.remove('story','roadmap','foundations');
+    document.body.classList.remove('story','roadmap','foundations','breath');
     document.body.classList.add(wantSection);
     document.querySelectorAll('.cn-item').forEach(el => {
       el.classList.toggle('cn-active', el.dataset.section === wantSection);
@@ -3824,8 +4072,9 @@ function showTab(id) {
 // Aktiviert den Standard-Tab der Zielsektion
 function setSection(s) {
   if (s === 'story') showTab('a');
+  else if (s === 'roadmap') showTab('i');
   else if (s === 'foundations') showTab('f1');
-  else showTab('i');
+  else if (s === 'breath') showTab('atem-wall');
 }
 
 // ── Akkordeon ──
@@ -3886,7 +4135,7 @@ window.addEventListener('scroll', () => {
   } catch(e) {}
 
   // Body-Sektionsklasse exklusiv setzen (Default 'story' aus HTML ggf. ersetzen)
-  document.body.classList.remove('story','roadmap','foundations');
+  document.body.classList.remove('story','roadmap','foundations','breath');
   document.body.classList.add(section);
 
   // Cross-Nav-Status synchronisieren
@@ -3909,11 +4158,137 @@ window.addEventListener('scroll', () => {
     const btnF = document.querySelector('[data-tab="f1"]');
     if (tabF) tabF.classList.add('active');
     if (btnF) btnF.classList.add('active');
+  } else if (section === 'breath') {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tbtn').forEach(b => b.classList.remove('active'));
+    const tabW = document.getElementById('tab-atem-wall');
+    const btnW = document.querySelector('[data-tab="atem-wall"]');
+    if (tabW) tabW.classList.add('active');
+    if (btnW) btnW.classList.add('active');
   }
 
   // Auf schmalen Screens: keine Sidebar mehr — entfällt
+  if (typeof loadBreaths === 'function') loadBreaths();
+  if (typeof setGiftKind === 'function') setGiftKind('voice');
   setLang(lang);
 })();
+
+// ══════════════ ATEMWAND & GABE ══════════════
+
+// Platzhalter sprachabhängig setzen (data-ph-de / data-ph-en)
+function _applyPlaceholders(){
+  const lang = document.body.classList.contains('en') ? 'en' : 'de';
+  document.querySelectorAll('[data-ph-'+lang+']').forEach(el=>{
+    el.placeholder = el.getAttribute('data-ph-'+lang);
+  });
+}
+
+// ── Atemwand laden ──
+async function loadBreaths(){
+  const wall = document.getElementById('breath-wall');
+  if(!wall) return;
+  try{
+    const { data, error } = await sb
+      .from('breaths').select('text,place')
+      .order('created_at',{ascending:false}).limit(300);
+    if(error) throw error;
+    renderBreaths(data||[]);
+  }catch(e){
+    wall.innerHTML = '<p class="breath-empty">'+
+      (document.body.classList.contains('en')
+        ? 'The wall could not be loaded right now.'
+        : 'Die Wand konnte gerade nicht geladen werden.')+'</p>';
+  }
+}
+function renderBreaths(rows){
+  const wall = document.getElementById('breath-wall');
+  if(!rows.length){
+    wall.innerHTML = '<p class="breath-empty">'+
+      (document.body.classList.contains('en')
+        ? 'No breaths yet. Be the first.'
+        : 'Noch keine Atemzüge. Sei die erste Spur.')+'</p>';
+    return;
+  }
+  wall.innerHTML = rows.map(r=>{
+    const t = _esc(r.text||'');
+    const place = r.place ? '<span class="bm-place">'+_esc(r.place)+'</span>' : '';
+    return '<div class="breath-mark">'+t+place+'</div>';
+  }).join('');
+}
+
+// ── Atemzug absenden ──
+async function submitBreath(){
+  const txt = document.getElementById('breath-text').value.trim();
+  const place = document.getElementById('breath-place').value.trim();
+  const name = document.getElementById('breath-name').value.trim();
+  const msg = document.getElementById('breath-msg');
+  if(!txt){ _msg(msg, true, 'Bitte ein Wort.', 'Please a word.'); return; }
+  try{
+    // name + place werden zusammengeführt: Ort, ggf. mit Name
+    const placeField = [place, name].filter(Boolean).join(' · ');
+    const { error } = await sb.from('breaths').insert({ text: txt, place: placeField });
+    if(error) throw error;
+    document.getElementById('breath-text').value='';
+    document.getElementById('breath-place').value='';
+    document.getElementById('breath-name').value='';
+    _msg(msg, false, 'Dein Atemzug ist Teil der Wand.', 'Your breath joined the wall.');
+    loadBreaths();
+  }catch(e){
+    _msg(msg, true, 'Konnte nicht gespeichert werden.', 'Could not be saved.');
+  }
+}
+
+// ── Gabe: Art umschalten ──
+// var statt let: die Init-IIFE ruft setGiftKind() vor dieser Zeile auf;
+// var wird gehoistet und vermeidet die temporale Todeszone (let würde werfen).
+var _giftKind = 'voice';
+function setGiftKind(kind){
+  _giftKind = kind;
+  document.querySelectorAll('.gift-kind-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.kind===kind);
+  });
+  // Quelle-Feld nur bei 'source', Beziehungs-Feld nur bei 'voice'
+  document.getElementById('gift-source-wrap').style.display = kind==='source' ? 'block' : 'none';
+  document.getElementById('gift-relation').style.display = kind==='voice' ? 'block' : 'none';
+}
+
+// ── Gabe absenden ── (landet in privater Warteschlange, status='pending')
+async function submitGift(){
+  const body = document.getElementById('gift-body').value.trim();
+  const relation = document.getElementById('gift-relation').value.trim();
+  const source = document.getElementById('gift-source').value.trim();
+  const contributor = document.getElementById('gift-contributor').value.trim();
+  const msg = document.getElementById('gift-msg');
+  if(!body){ _msg(msg, true, 'Bitte schreibe deinen Beitrag.', 'Please write your contribution.'); return; }
+  if(_giftKind==='source' && !source){
+    _msg(msg, true, 'Bitte gib die Quelle an.', 'Please provide the source.'); return;
+  }
+  try{
+    const { error } = await sb.from('gifts').insert({
+      kind: _giftKind,
+      body: body,
+      relation: _giftKind==='voice' ? relation : null,
+      source: _giftKind==='source' ? source : null,
+      contributor: contributor || null
+    });
+    if(error) throw error;
+    ['gift-body','gift-relation','gift-source','gift-contributor'].forEach(id=>{
+      const el=document.getElementById(id); if(el) el.value='';
+    });
+    _msg(msg, false,
+      'Danke. Deine Gabe ist angekommen und wartet auf Sichtung.',
+      'Thank you. Your gift has arrived and awaits tending.');
+  }catch(e){
+    _msg(msg, true, 'Konnte nicht gesendet werden.', 'Could not be sent.');
+  }
+}
+
+// ── Hilfsfunktionen ──
+function _esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function _msg(el, isErr, de, en){
+  el.textContent = document.body.classList.contains('en') ? en : de;
+  el.classList.toggle('err', !!isErr);
+}
 </script>
 
 
