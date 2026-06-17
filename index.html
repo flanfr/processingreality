@@ -4191,6 +4191,19 @@ window.addEventListener('scroll', () => {
     if (btnW) btnW.classList.add('active');
   }
 
+  // Horizontales Scrollen der Navigationsleisten per Mausrad (Desktop).
+  // Auf dem Smartphone genügt die Wischgeste; mit der Maus übersetzt dies
+  // vertikales Scrollen in horizontales — aber nur, solange die Leiste
+  // überläuft, damit das normale Seitenscrollen sonst nicht gekapert wird.
+  document.querySelectorAll('.navwrap, .cross-nav').forEach(bar => {
+    bar.addEventListener('wheel', e => {
+      if (bar.scrollWidth <= bar.clientWidth) return;       // passt — nichts tun
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;  // bereits horizontal
+      e.preventDefault();
+      bar.scrollLeft += e.deltaY;
+    }, { passive: false });
+  });
+
   // Auf schmalen Screens: keine Sidebar mehr — entfällt
   if (typeof loadBreaths === 'function') loadBreaths();
   if (typeof setGiftKind === 'function') setGiftKind('voice');
