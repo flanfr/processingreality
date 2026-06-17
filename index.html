@@ -35,7 +35,7 @@
   --f-mono:'JetBrains Mono',monospace;
   /* ── Layout-Breiten ── */
   --frame:1080px;   /* breiter Inhaltsrahmen — steuert die Außenränder */
-  --measure:760px;  /* Lesespalte für laufenden Fließtext */
+  --measure:960px;  /* Lesespalte für laufenden Fließtext */
   --gut:28px;       /* seitliches Padding (Desktop) */
 }
 html{scroll-behavior:smooth}
@@ -255,7 +255,7 @@ cite[data-ref],cite{font-style:normal}
 .review-banner strong{color:var(--clay)}
 
 @media(max-width:640px){
-  :root{--gut:8px}                 /* sehr enge Seitenränder auf dem Smartphone */
+  :root{--gut:16px}                /* enge, aber atmende Seitenränder auf dem Smartphone */
   header{padding:24px 0 22px}
   .h-inner{padding-right:80px}     /* Platz für Sprach-Umschalter; Seiten-Inset via --gut */
   .hbg svg{width:220px;height:220px}
@@ -613,6 +613,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 .story-hero,.s-section,.closing,.closing-call,
 .sf,.stext,.sending,.anote,
 .t-hero,
+.tabwrap>p,
 .story-block,.disclaimer-box,.r-section,.orientation,.atem-block{
   max-width:var(--measure);margin-left:auto;margin-right:auto}
 </style>
