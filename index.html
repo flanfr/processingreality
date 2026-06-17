@@ -33,6 +33,10 @@
   --f-display:'Cormorant Garamond',Georgia,serif;
   --f-body:'Lora',Georgia,serif;
   --f-mono:'JetBrains Mono',monospace;
+  /* ── Layout-Breiten ── */
+  --frame:1080px;   /* breiter Inhaltsrahmen — steuert die Außenränder */
+  --measure:760px;  /* Lesespalte für laufenden Fließtext */
+  --gut:28px;       /* seitliches Padding (Desktop) */
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--f-body);background:var(--cream);color:var(--earth);font-size:16px;line-height:1.75;font-feature-settings:"liga","kern","onum";min-height:100vh;display:flex;flex-direction:column}
@@ -47,9 +51,9 @@ body.en .de-text{display:none}
 html{scrollbar-color:var(--bud) var(--linen);scrollbar-width:thin}
 
 /* ── HEADER ── */
-header{background:var(--forest);position:relative;overflow:hidden;padding:30px 40px 26px;border-bottom:1px solid rgba(244,198,61,.18)}
+header{background:var(--forest);position:relative;overflow:hidden;padding:30px 0 26px;border-bottom:1px solid rgba(244,198,61,.18)}
 header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--bud);opacity:.55;z-index:3}
-.h-inner{max-width:920px;margin:0 auto;position:relative;z-index:2;padding-right:96px}
+.h-inner{max-width:var(--frame);margin:0 auto;position:relative;z-index:2;padding:0 var(--gut);padding-right:96px}
 .site-title{font-family:var(--f-display);font-size:clamp(1.8rem,4.2vw,2.7rem);font-weight:400;color:var(--cream);letter-spacing:.005em;line-height:1.18}
 .site-title em{font-style:italic;font-weight:300;color:var(--sun)}
 .site-divider{width:44px;height:1px;background:var(--bud);margin:11px 0 10px;opacity:.7}
@@ -62,8 +66,9 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;ba
 .hbg svg{width:260px;height:260px;display:block}
 
 /* ── TAB NAV ── */
-.tab-nav{background:var(--forest);border-bottom:1px solid rgba(255,255,255,.08);padding:0 40px;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.tab-nav::-webkit-scrollbar{display:none}
+.tab-nav{background:var(--forest);border-bottom:1px solid rgba(255,255,255,.08);padding:0}
+.navwrap{max-width:var(--frame);margin:0 auto;padding:0 var(--gut);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.navwrap::-webkit-scrollbar{display:none}
 .tbtn{background:none;border:none;border-bottom:3px solid transparent;color:rgba(245,240,226,.45);font-family:var(--f-body);font-size:.87rem;font-style:italic;padding:14px 22px 11px;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-1px}
 .tbtn:hover{color:var(--cream)}
 .tbtn.active{color:var(--sun);border-bottom-color:var(--amber)}
@@ -72,10 +77,12 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;ba
 main{min-height:70vh;flex:1 0 auto}
 .tab-content{display:none;animation:fadeIn .3s ease}
 .tab-content.active{display:block}
+/* Gemeinsamer Inhalts-Wrapper: füllt den breiten Rahmen, zentriert, mit Seiten-Gutter.
+   Ersetzt die früheren Inline-Breiten (max-width:660/680/720/780). */
+.tabwrap{max-width:var(--frame);margin:0 auto;padding:64px var(--gut) 88px}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── TAB A: GESCHICHTE ── */
-#tab-a{max-width:720px;margin:0 auto;padding:68px 32px 88px}
 .story-hero{text-align:center;padding-bottom:56px;border-bottom:1px solid rgba(46,92,22,.2);margin-bottom:56px}
 .story-hero h1{font-family:var(--f-display);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:400;color:var(--moss);line-height:1.2;margin-bottom:14px}
 .story-hero .hero-sub{font-size:.98rem;font-style:italic;color:var(--stone)}
@@ -115,7 +122,7 @@ main{min-height:70vh;flex:1 0 auto}
 .closing em{color:var(--sun);font-style:normal;font-weight:600}
 
 /* ── TAB F1: STIMMEN ── */
-.found-intro{max-width:680px;margin:0 auto 56px;text-align:center}
+.found-intro{max-width:var(--measure);margin:0 auto 56px;text-align:center}
 .found-intro h1{font-family:var(--f-display);font-size:2.1rem;font-weight:400;color:var(--moss);margin-bottom:14px}
 .found-intro p{font-size:.98rem;color:var(--stone);font-style:italic;line-height:1.75}
 /* Gruppe Wissenschaft */
@@ -188,7 +195,6 @@ main{min-height:70vh;flex:1 0 auto}
 .card.ic .crel{background:rgba(176,78,40,.06);color:#6b3a1e}
 
 /* ── TAB C: KURZGESCHICHTE ── */
-#tab-c{max-width:660px;margin:0 auto;padding:68px 32px 96px}
 .sf{text-align:center;margin-bottom:60px}
 .sf h1{font-family:var(--f-display);font-size:clamp(1.7rem,4vw,2.5rem);font-weight:400;color:var(--earth);line-height:1.25;margin-bottom:12px}
 .sf .flabel{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--stone)}
@@ -201,8 +207,8 @@ main{min-height:70vh;flex:1 0 auto}
 .anote{background:var(--linen);border-radius:8px;padding:20px 24px;margin-top:48px;font-size:.86rem;line-height:1.7;color:var(--stone);font-style:italic}
 
 /* ── FOOTER ── */
-footer{background:var(--forest);color:rgba(245,240,226,.45);padding:36px 32px;text-align:center}
-.fi{max-width:800px;margin:0 auto}
+footer{background:var(--forest);color:rgba(245,240,226,.45);padding:36px 0;text-align:center}
+.fi{max-width:var(--frame);margin:0 auto;padding:0 var(--gut)}
 .ft{font-family:var(--f-display);font-size:1.15rem;color:rgba(245,240,226,.7);font-style:italic;margin-bottom:10px}
 .fn{font-size:.82rem;line-height:1.65}
 .rl{display:inline-block;margin-top:16px;padding:8px 22px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:20px;color:rgba(245,240,226,.65);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-decoration:none;cursor:default;transition:all .2s}
@@ -249,17 +255,17 @@ cite[data-ref],cite{font-style:normal}
 .review-banner strong{color:var(--clay)}
 
 @media(max-width:640px){
-  header{padding:24px 20px 22px}
-  .h-inner{padding-right:80px}
+  :root{--gut:8px}                 /* sehr enge Seitenränder auf dem Smartphone */
+  header{padding:24px 0 22px}
+  .h-inner{padding-right:80px}     /* Platz für Sprach-Umschalter; Seiten-Inset via --gut */
   .hbg svg{width:220px;height:220px}
-  .tab-nav{padding:0 20px}
-  #tab-a,#tab-c{padding-left:20px;padding-right:20px}
+  .tabwrap{padding-top:48px;padding-bottom:64px}
+  .rmap-tab{padding-top:48px;padding-bottom:64px}
   .tbtn{padding:12px 12px 9px;font-size:.82rem}
   .closing{padding:28px 24px}
   .cgrid{grid-template-columns:1fr}
   .verif-table{font-size:.78rem}
   .verif-table th,.verif-table td{padding:8px 10px}
-  .rmap-tab{padding:48px 20px 64px}
   .layer-head{padding:20px 22px 18px}
   .layer-body{padding:20px 22px}
   .closing-call{padding:32px 26px}
@@ -299,7 +305,7 @@ cite[data-ref],cite{font-style:normal}
 /* ════════════════════════════════════════════════════════
    ROADMAP-SPEZIFISCHES CSS
 ════════════════════════════════════════════════════════ */
-.rmap-tab{max-width:780px;margin:0 auto;padding:64px 32px 88px}
+.rmap-tab{max-width:var(--frame);margin:0 auto;padding:64px var(--gut) 88px}
 
 /* HERO */
 .t-hero{text-align:center;padding-bottom:48px;border-bottom:1px solid rgba(46,92,22,.2);margin-bottom:52px}
@@ -593,6 +599,21 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 .gift-kind-btn.active{color:var(--cream);background:var(--bark);border-color:var(--bark)}
 .gift-check{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--stone);margin-top:4px}
 .gift-check input{accent-color:var(--moss)}
+
+/* ── LESESPALTE ──────────────────────────────────────────────────────
+   Fließtext bleibt in der ruhigen Lesespalte (--measure); breite Elemente
+   (Karten-Raster, Tabellen, Diagramme, Schichten) füllen den Rahmen.
+   Nur margin-left/right setzen, damit margin-top/bottom der Klassen
+   erhalten bleibt. Spät platziert, um margin-Kurzformen einzelner
+   Basisregeln (.story-block, .disclaimer-box, .orientation) sicher zu
+   überschreiben. Zusätzlich zur Handoff-Liste gebunden (Fließtext-/lesenah,
+   in der Vorlage ausgelassen): .story-block .disclaimer-box .r-section
+   .orientation .atem-block. */
+.story-hero,.s-section,.closing,.closing-call,
+.sf,.stext,.sending,.anote,
+.t-hero,
+.story-block,.disclaimer-box,.r-section,.orientation,.atem-block{
+  max-width:var(--measure);margin-left:auto;margin-right:auto}
 </style>
 
 <!-- ══════════════ SUPABASE — Atemwand & Gaben-Datenspeicher ══════════════
@@ -726,6 +747,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ══════════════════════ TAB NAV ══════════════════════ -->
 <nav class="tab-nav">
+  <div class="navwrap">
   <button class="tbtn story-only active" data-tab="a" onclick="showTab('a')">
     <span class="de-text">A — Die Geschichte</span>
     <span class="en-text">A — The Story</span>
@@ -773,6 +795,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <span class="de-text">Gabe</span>
     <span class="en-text">Gift</span>
   </button>
+  </div>
 </nav>
 
 <!-- ══════════════════════ TAB A ══════════════════════ -->
@@ -781,14 +804,14 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── GERMAN ── -->
 <div class="de-text" style="padding-bottom:0">
-<div style="max-width:720px;margin:0 auto;padding:68px 32px 88px">
+<div class="tabwrap">
   <div class="story-hero">
     <h1>Wir leben eine Geschichte.<br>Hier ist eine andere.</h1>
     <p class="hero-sub">Eine Einladung in eine grössere Welt</p>
   </div>
 
 <!-- ─── DIE NEUE GESCHICHTE ─── -->
-<p style="font-style:italic;color:var(--stone);margin:36px 0 24px;font-size:.98rem">Die Geschichte könnte etwa so klingen:</p>
+<p style="font-style:italic;color:var(--stone);margin:36px auto 24px;max-width:var(--measure);font-size:.98rem">Die Geschichte könnte etwa so klingen:</p>
 <div class="story-block story-new">
   <div class="sb-label">◐ Die neue Geschichte</div>
   <div class="sb-text">
@@ -801,7 +824,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 </div>
 
 <!-- ─── DIE ALTE GESCHICHTE ─── -->
-<p style="font-style:italic;color:var(--stone);margin:36px 0 24px;font-size:.98rem">Das klingt doch gar nicht so schlecht!?!</p>
+<p style="font-style:italic;color:var(--stone);margin:36px auto 24px;max-width:var(--measure);font-size:.98rem">Das klingt doch gar nicht so schlecht!?!</p>
 <p>Die Geschichte, in der wir aufwuchsen und die noch immer vom Grossteil unserer Gesellschaft aufgeführt wird, klang etwa so:</p>
 <div class="story-block story-old">
   <div class="sb-label">◑ Die alte Geschichte</div>
@@ -815,7 +838,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 </div>
 
 
-  <div class="disclaimer-box" style="font-size:.82rem;padding:12px 18px;margin:24px 0">
+  <div class="disclaimer-box" style="font-size:.82rem;padding:12px 18px;margin:24px auto">
     <p style="font-style:normal">Quellen, Primärbelege und vertiefte Bezüge sind im <a href="#biblio" onclick="return bibJump(&#39;biblio&#39;)" style="color:var(--clay);font-weight:600">Literaturverzeichnis</a> (Tab F2) dokumentiert.</p>
   </div>
 
@@ -952,14 +975,14 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── ENGLISH ── -->
 <div class="en-text" style="padding-bottom:0">
-<div style="max-width:720px;margin:0 auto;padding:68px 32px 88px">
+<div class="tabwrap">
   <div class="story-hero">
     <h1>We live a story.<br>Here is another.</h1>
     <p class="hero-sub">An invitation into a larger world</p>
   </div>
 
 <!-- ─── THE NEW STORY ─── -->
-<p style="font-style:italic;color:var(--stone);margin:36px 0 24px;font-size:.98rem">The story might sound something like this:</p>
+<p style="font-style:italic;color:var(--stone);margin:36px auto 24px;max-width:var(--measure);font-size:.98rem">The story might sound something like this:</p>
 <div class="story-block story-new">
   <div class="sb-label">◐ The New Story</div>
   <div class="sb-text">
@@ -972,7 +995,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 </div>
 
 <!-- ─── THE OLD STORY ─── -->
-<p style="font-style:italic;color:var(--stone);margin:36px 0 24px;font-size:.98rem">That doesn't sound so bad!?!</p>
+<p style="font-style:italic;color:var(--stone);margin:36px auto 24px;max-width:var(--measure);font-size:.98rem">That doesn't sound so bad!?!</p>
 <p>The story we grew up in — and that is still being performed by most of our society — sounded something like this:</p>
 <div class="story-block story-old">
   <div class="sb-label">◑ The Old Story</div>
@@ -986,7 +1009,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 </div>
 
 
-  <div class="disclaimer-box" style="font-size:.82rem;padding:12px 18px;margin:24px 0">
+  <div class="disclaimer-box" style="font-size:.82rem;padding:12px 18px;margin:24px auto">
     <p style="font-style:normal">Sources, primary references, and deeper context are documented in the <a href="#biblio-en" onclick="return bibJump(&#39;biblio-en&#39;)" style="color:var(--clay);font-weight:600">bibliography</a> (Tab F2).</p>
   </div>
 
@@ -1127,13 +1150,13 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── DEUTSCH ── -->
 <div class="de-text">
-<div style="max-width:660px;margin:0 auto;padding:68px 32px 96px">
+<div class="tabwrap">
   <div class="sf">
     <div class="flabel">Geschichte · Aus dem Jahr 2047 · Tab B</div>
     <h1>Die Welt nach<br>dem Schwellen-Jahr</h1>
   </div>
 
-  <div class="disclaimer-box" style="max-width:660px;margin:0 auto 24px auto;font-size:.95rem">
+  <div class="disclaimer-box" style="max-width:var(--measure);margin:0 auto 24px auto;font-size:.95rem">
     <p>Diese Erzählung ist eine fiktive Geschichte aus dem Jahr 2047. Personen und Institutionen sind erdacht; die philosophischen, ökonomischen und politischen Bezüge — Whitehead, Becker, Quinn, Vermögenssteuer, Grundeinkommen, Death-Positive — sind real und im <a href="#" onclick="showTab(&#39;f2&#39;); return false;" style="color:var(--clay);font-weight:600">Literaturverzeichnis (Tab F2)</a> dokumentiert.</p>
   </div>
 
@@ -1221,13 +1244,13 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── ENGLISH ── -->
 <div class="en-text">
-<div style="max-width:660px;margin:0 auto;padding:68px 32px 96px">
+<div class="tabwrap">
   <div class="sf">
     <div class="flabel">Story · From the Year 2047 · Tab B</div>
     <h1>The World After<br>the Threshold Year</h1>
   </div>
 
-  <div class="disclaimer-box" style="max-width:660px;margin:0 auto 24px auto;font-size:.95rem">
+  <div class="disclaimer-box" style="max-width:var(--measure);margin:0 auto 24px auto;font-size:.95rem">
     <p>This is a fictional story set in the year 2047. Characters and institutions are imagined; the philosophical, economic and political references — Whitehead, Becker, Quinn, wealth taxation, basic income, the Death-Positive movement — are real and documented in the <a href="#" onclick="showTab(&#39;f2&#39;); return false;" style="color:var(--clay);font-weight:600">bibliography (Tab F2)</a>.</p>
   </div>
 
@@ -1320,7 +1343,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── GERMAN ── -->
 <div class="de-text">
-<div id="tab-f1-de" style="max-width:720px;margin:0 auto;padding:60px 32px 88px">
+<div id="tab-f1-de" class="tabwrap">
   <div class="found-intro">
     <h1>Intellektuelle Grundlagen</h1>
     <p>Die Quellen, Denker und Traditionen, die die neue Geschichte tragen. Jeder Eintrag ist eine eigenständige Stimme — keine harmonisierte "Weltweisheit", sondern ein Plural von Perspektiven, die sich berühren ohne sich zu verwischen.</p>
@@ -1894,7 +1917,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── ENGLISH Tab F1 ── -->
 <div class="en-text">
-<div style="max-width:720px;margin:0 auto;padding:60px 32px 88px">
+<div class="tabwrap">
   <div class="found-intro">
     <h1>Intellectual Foundations</h1>
     <p>The sources, thinkers, and traditions that support the new story. Each entry is a distinct voice — not a harmonized "world wisdom," but a plurality of perspectives that touch without blurring into one another.</p>
@@ -2385,7 +2408,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── DEUTSCH ── -->
 <div class="de-text">
-<div style="max-width:780px;margin:0 auto;padding:60px 32px 88px">
+<div class="tabwrap">
   <div class="found-intro">
     <h1>Literatur &amp; Quellenverifikation</h1>
   </div>
@@ -2440,7 +2463,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── ENGLISH ── -->
 <div class="en-text">
-<div style="max-width:780px;margin:0 auto;padding:60px 32px 88px">
+<div class="tabwrap">
   <div class="found-intro">
     <h1>Bibliography &amp; source verification</h1>
   </div>
@@ -2500,12 +2523,12 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── GERMAN ── -->
 <div class="de-text">
-<div style="max-width:660px;margin:0 auto;padding:68px 32px 96px">
+<div class="tabwrap">
   <div class="sf">
     <div class="flabel">Kurzgeschichte · Retrospektiv · Tab C</div>
     <h1>Was meine Großmutter<br>noch wusste</h1>
   </div>
-  <div class="disclaimer-box" style="max-width:660px;margin:0 auto 24px auto;font-size:0.95rem">
+  <div class="disclaimer-box" style="max-width:var(--measure);margin:0 auto 24px auto;font-size:0.95rem">
     <p>Diese Kurzgeschichte ist eine fiktive Erzählung aus der Perspektive einer Ich-Erzählerin im Jahr ca. 2070. Personen und Orte sind fiktiv; einzelne reale philosophische Bezüge (Whitehead, Kimmerer, Becker u.a.) werden in <a href="#" onclick="showTab(&#39;f2&#39;); return false;" style="color:var(--clay);font-weight:600">Tab F2</a> mit Primärquellen belegt.</p>
   </div>
   <div class="stext">
@@ -2541,12 +2564,12 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── ENGLISH Tab C ── -->
 <div class="en-text">
-<div style="max-width:660px;margin:0 auto;padding:68px 32px 96px">
+<div class="tabwrap">
   <div class="sf">
     <div class="flabel">Short Story · Retrospective · Tab C</div>
     <h1>What My Grandmother<br>Still Knew</h1>
   </div>
-  <div class="disclaimer-box" style="max-width:660px;margin:0 auto 24px auto;font-size:0.95rem">
+  <div class="disclaimer-box" style="max-width:var(--measure);margin:0 auto 24px auto;font-size:0.95rem">
     <p>This is a fictional short story told by a first-person narrator around the year 2070. Characters and places are fictional; individual real philosophical references (Whitehead, Kimmerer, Becker and others) are documented with primary sources in <a href="#" onclick="showTab(&#39;f2&#39;); return false;" style="color:var(--clay);font-weight:600">Tab F2</a>.</p>
   </div>
   <div class="stext">
@@ -2587,13 +2610,13 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── DEUTSCH ── -->
 <div class="de-text">
-<div style="max-width:660px;margin:0 auto;padding:68px 32px 96px">
+<div class="tabwrap">
   <div class="sf">
     <div class="flabel">Kurzgeschichte · Verdichtung · Tab D</div>
     <h1>Der Atemzug<br>zwischen zwei Welten</h1>
   </div>
 
-  <div class="disclaimer-box" style="max-width:660px;margin:0 auto 24px auto;font-size:0.95rem">
+  <div class="disclaimer-box" style="max-width:var(--measure);margin:0 auto 24px auto;font-size:0.95rem">
     <p>Diese Erzählung ist eine narrative Verdichtung der Inhalte aus Tab A („Die Geschichte") und der Roadmap. Sie folgt einem fiktiven Bauphysiker durch eine Nacht, in der zwei Welten in ihm aufeinandertreffen. Personen und Handlung sind erdacht; die philosophischen Bezüge — Whitehead, Rovelli, Kimmerer, Becker, Macy, die vier Schichten — sind real und in <a href="#biblio" onclick="return bibJump(&#39;biblio&#39;)" style="color:var(--clay);font-weight:600">Tab F2</a> dokumentiert.</p>
   </div>
 
@@ -2671,13 +2694,13 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
 <!-- ── ENGLISH ── -->
 <div class="en-text">
-<div style="max-width:660px;margin:0 auto;padding:68px 32px 96px">
+<div class="tabwrap">
   <div class="sf">
     <div class="flabel">Short Story · Condensation · Tab D</div>
     <h1>The Breath<br>Between Two Worlds</h1>
   </div>
 
-  <div class="disclaimer-box" style="max-width:660px;margin:0 auto 24px auto;font-size:0.95rem">
+  <div class="disclaimer-box" style="max-width:var(--measure);margin:0 auto 24px auto;font-size:0.95rem">
     <p>This story is a narrative condensation of the material in Tab A ("The Story") and the Roadmap. It follows a fictional structural engineer through one night in which two worlds meet within him. The characters and plot are imagined; the philosophical references — Whitehead, Rovelli, Kimmerer, Becker, Macy, the four layers — are real and documented in <a href="#biblio-en" onclick="return bibJump(&#39;biblio-en&#39;)" style="color:var(--clay);font-weight:600">Tab F2</a>.</p>
   </div>
 
@@ -2763,7 +2786,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 <div id="tab-atem-wall" class="tab-content">
 
   <!-- ════════ ATEMWAND ════════ -->
-  <div style="max-width:720px;margin:0 auto;padding:68px 32px 96px">
+  <div class="tabwrap">
     <div class="atem-block">
       <h2 class="atem-h">
         <span class="de-text">Die Atemwand</span>
@@ -2814,7 +2837,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 <div id="tab-atem-gift" class="tab-content">
 
   <!-- ════════ DIE GABE ════════ -->
-  <div style="max-width:720px;margin:0 auto;padding:68px 32px 96px">
+  <div class="tabwrap">
     <div class="atem-block">
       <h2 class="atem-h">
         <span class="de-text">Eine Gabe</span>
