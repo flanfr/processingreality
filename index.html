@@ -616,6 +616,96 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 .tabwrap>p,
 .story-block,.disclaimer-box,.r-section,.orientation,.atem-block{
   max-width:var(--measure);margin-left:auto;margin-right:auto}
+
+/* ── DER PFAD — Tab A als Stationen ──────────────────────────────────
+   Umbau gemäss handoff_pfad_umbau_260823_1525.md: 7 Stationen + Schluss,
+   je vier Tiefen (E0 Kernsatz · E1 Destillat · E2 Essaytext · E3 Verweise).
+   Nur bestehende Variablen, flache Farben, kein scroll-snap. */
+.st{margin:0 0 clamp(64px,12vh,130px)}
+.st:last-child{margin-bottom:0}
+/* E0 — Kernsatz, luftig zentriert */
+.st-e0{min-height:min(62vh,540px);min-height:min(62svh,540px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:26px;padding:24px 0}
+.st-e0 .orn{width:34px;height:34px;color:var(--moss)}
+.st-satz{font-family:var(--f-display);font-weight:400;font-size:clamp(1.9rem,5.5vw,3.2rem);line-height:1.15;max-width:var(--measure);margin:0;color:var(--forest);text-wrap:balance}
+/* E1 — Destillat */
+.st-e1{max-width:var(--measure);margin:0 auto;font-size:clamp(1rem,2.4vw,1.12rem)}
+.st-e1>p{line-height:1.85;margin-bottom:18px;hyphens:auto;-webkit-hyphens:auto}
+.st-e1 a{color:var(--clay);font-weight:600}
+/* Scroll-Reveal (Observer setzt .rev-in einmalig) */
+.st-e0,.st-e1{opacity:0;transform:translateY(14px);transition:opacity .65s ease,transform .65s ease}
+.rev-in{opacity:1;transform:none}
+/* Tiefer/Weniger-Toggle */
+.st-more{display:block;margin:26px auto 0;background:none;border:none;cursor:pointer;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--moss);padding:10px 16px;min-height:40px}
+.st-more:hover{color:var(--leaf)}
+.st-more::after{content:"";display:inline-block;width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:0 0 2px 9px;transition:transform .25s}
+.st.open .st-more::after{transform:rotate(-135deg);margin-bottom:-2px}
+.st-more .lbl-less{display:none}
+.st.open .st-more .lbl-more{display:none}
+.st.open .st-more .lbl-less{display:inline}
+/* E2 — eingeklappter Essaytext. display-Variante statt max-height:
+   robuster bei sehr langen Inhalten (analog .open-Mechanik der Karten). */
+.st-e2{display:none;margin-top:34px}
+.st.open .st-e2{display:block;animation:fadeIn .3s ease}
+/* Story-Umschalter (St. 1) */
+.sw-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 0 6px}
+.sw-btn{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);background:none;border:1px solid var(--linen);border-radius:20px;padding:10px 18px;min-height:40px;cursor:pointer;transition:all .2s}
+.sw-btn:hover{color:var(--moss);border-color:var(--leaf)}
+.sw-btn.active{color:var(--cream);background:var(--moss);border-color:var(--moss)}
+.sw-btn.sw-old.active{background:var(--bark);border-color:var(--bark)}
+.story-panel{display:none}
+.story-panel.on{display:block;animation:fadeIn .3s ease}
+/* Mikro-Interaktion: Poll (St. 1) */
+.mi-poll{background:var(--paper);border:1px solid rgba(78,130,32,.2);border-radius:10px;padding:22px 24px;margin:34px 0 0}
+.mi-q,.wand-q{font-family:var(--f-display);font-size:1.14rem;font-weight:600;color:var(--moss);margin:0 0 13px}
+.mi-opts{display:flex;gap:10px;flex-wrap:wrap}
+.mi-opt{font-family:var(--f-body);font-style:italic;font-size:.92rem;color:var(--stone);background:none;border:1px solid var(--linen);border-radius:18px;padding:9px 18px;min-height:40px;cursor:pointer;transition:all .2s}
+.mi-opt:hover:not(:disabled){color:var(--moss);border-color:var(--leaf)}
+.mi-opt:disabled{cursor:default;opacity:.55}
+.mi-opt.mine{color:var(--moss);border-color:var(--leaf);opacity:1}
+.mi-bar-row{display:grid;grid-template-columns:minmax(88px,auto) 1fr 44px;gap:10px;align-items:center;margin:8px 0;font-size:.92rem}
+.mi-bar-row.mine .mi-bar-label{font-weight:600;color:var(--moss)}
+.mi-bar{height:8px;background:var(--linen);border-radius:4px;overflow:hidden}
+.mi-bar-fill{display:block;height:100%;background:var(--leaf);border-radius:4px}
+.mi-bar-pct{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);text-align:right}
+.mi-total{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);margin-top:10px}
+/* Mikro-Interaktion: Satzschalter (St. 3) */
+.mi-flipwrap{margin:30px 0 0;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center}
+.mi-flip{background:rgba(95,160,36,.07);border:1px dashed rgba(53,108,26,.35);border-radius:10px;padding:15px 22px;min-height:40px;max-width:100%;cursor:pointer;font-family:var(--f-display);font-style:italic;font-size:clamp(1.15rem,3vw,1.45rem);line-height:1.45;color:var(--bark);transition:color .2s,background .2s}
+.mi-flip.proc{color:var(--moss);background:rgba(95,160,36,.13)}
+.mi-hint{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
+/* Mikro-Interaktion: Wandfrage (St. 2, 6, 7) */
+.wand{margin:30px 0 0}
+.wand-form{display:flex;gap:10px;flex-wrap:wrap}
+.wand-form .atem-input{flex:1 1 220px;width:auto}
+.wand-ok{font-size:.9rem;font-style:italic;color:var(--leaf);margin-top:6px}
+.wand-err{font-size:.9rem;font-style:italic;color:var(--clay);margin-top:6px}
+/* Resonanz-Blatt */
+.res-row{max-width:var(--measure);margin:26px auto 0;display:flex;justify-content:flex-end;align-items:center;gap:8px;flex-wrap:wrap;min-height:40px}
+.res-hint{margin-right:auto;font-size:.85rem;font-style:italic;color:var(--stone)}
+.res-leaf{background:none;border:none;cursor:pointer;color:var(--moss);width:40px;height:40px;padding:8px;border-radius:50%;transition:color .2s,background .2s}
+.res-leaf:hover{background:rgba(95,160,36,.12)}
+.res-leaf svg{width:100%;height:100%;display:block}
+.res-row.res-done .res-leaf{color:var(--leaf)}
+.res-row.res-done .res-leaf .lf{fill:var(--leaf)}
+.res-count{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);min-width:1.2em}
+/* CTA-Reihe (Schluss) */
+.cta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;max-width:var(--measure);margin:34px auto 0}
+.cta-card{display:block;background:var(--paper);border:1px solid rgba(78,130,32,.25);border-left:4px solid var(--leaf);border-radius:10px;padding:20px 22px;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.cta-card:hover{border-color:var(--leaf);box-shadow:0 2px 8px rgba(25,45,12,.08)}
+.cta-card .cta-t{display:block;font-family:var(--f-display);font-size:1.14rem;font-weight:600;color:var(--moss);margin-bottom:4px}
+.cta-card .cta-s{display:block;font-size:.85rem;font-style:italic;color:var(--stone)}
+/* Atemwand: Kontext-Label der Wandfragen */
+.breath-mark .bm-ctx{display:block;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--clay);margin-bottom:2px}
+/* Reduzierte Bewegung: keine Transformationen, sofort sichtbar */
+@media (prefers-reduced-motion:reduce){
+  .st-e0,.st-e1{opacity:1;transform:none;transition:none}
+  .st.open .st-e2,.story-panel.on{animation:none}
+  .st-more::after{transition:none}
+}
+@media(max-width:640px){
+  .st-e0{min-height:min(56vh,440px);min-height:min(56svh,440px);gap:20px}
+  .mi-poll{padding:18px 18px}
+}
 </style>
 
 <!-- ══════════════ SUPABASE — Atemwand & Gaben-Datenspeicher ══════════════
@@ -630,7 +720,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   const SUPABASE_URL = "https://elwplnmuifwforlaydtr.supabase.co";
   const SUPABASE_KEY = "sb_publishable_9d26SR9xLZ76aLR9nB8UNg_3almPhXd"; // Publishable Key — für öffentliche Seiten sicher, Schutz via RLS
   // ⬆⬆⬆  ⬆⬆⬆
-  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  // Hinweis: resonances + breaths.context erfordern das SQL aus handoff_pfad_umbau_260823_1525.md
+  // Abgesichert: mit Platzhalter-Werten oder ohne geladenes CDN-Skript entsteht
+  // kein Konsolenfehler — die Seite degradiert leise (sb bleibt undefined).
+  var sb; try { sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY); } catch(e) {}
 </script>
 </head>
 <body class="de story">
@@ -807,12 +900,23 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 <!-- ── GERMAN ── -->
 <div class="de-text" style="padding-bottom:0">
 <div class="tabwrap">
+
+<!-- ═══ STATION 1 · st-geschichten — Hero & die zwei Geschichten ═══ -->
+<section class="st" data-sec="st-geschichten">
   <div class="story-hero">
     <h1>Wir leben eine Geschichte.<br>Hier ist eine andere.</h1>
     <p class="hero-sub">Eine Einladung in eine grössere Welt</p>
   </div>
 
+  <div class="st-e1">
+    <!-- Umschalter: die zwei Geschichten als Panels -->
+    <div class="sw-row">
+      <button class="sw-btn sw-new active" type="button" onclick="switchStory(this,'new')">◐ Die neue Geschichte</button>
+      <button class="sw-btn sw-old" type="button" onclick="switchStory(this,'old')">◑ Die alte Geschichte</button>
+    </div>
+
 <!-- ─── DIE NEUE GESCHICHTE ─── -->
+<div class="story-panel on" data-panel="new">
 <p style="font-style:italic;color:var(--stone);margin:36px auto 24px;max-width:var(--measure);font-size:.98rem">Die Geschichte könnte etwa so klingen:</p>
 <div class="story-block story-new">
   <div class="sb-label">◐ Die neue Geschichte</div>
@@ -824,8 +928,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Wir geben uns unseren eigenen Sinn. Wir dürfen uns einfach neugierig immer wieder neu erfinden und ausprobieren — und unser altes Ich darf getrost zufrieden sterben.</p>
   </div>
 </div>
+</div>
 
 <!-- ─── DIE ALTE GESCHICHTE ─── -->
+<div class="story-panel" data-panel="old">
 <p style="font-style:italic;color:var(--stone);margin:36px auto 24px;max-width:var(--measure);font-size:.98rem">Das klingt doch gar nicht so schlecht!?!</p>
 <p>Die Geschichte, in der wir aufwuchsen und die noch immer vom Grossteil unserer Gesellschaft aufgeführt wird, klang etwa so:</p>
 <div class="story-block story-old">
@@ -838,13 +944,50 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Und wer nicht mitmacht, bekommt kein Essen. Wer nicht mitmacht, dem droht der Tod.</p>
   </div>
 </div>
+</div>
 
-
-  <div class="disclaimer-box" style="font-size:.82rem;padding:12px 18px;margin:24px auto">
-    <p style="font-style:normal">Quellen, Primärbelege und vertiefte Bezüge sind im <a href="#biblio" onclick="return bibJump(&#39;biblio&#39;)" style="color:var(--clay);font-weight:600">Literaturverzeichnis</a> (Tab F2) dokumentiert.</p>
+    <!-- Poll: Welche Geschichte hast du heute gelebt? -->
+    <div class="mi-poll">
+      <p class="mi-q">Welche Geschichte hast du heute gelebt?</p>
+      <div class="mi-opts">
+        <button class="mi-opt" type="button" data-vote="poll-heute-alt" onclick="pollVote(this)">Die alte</button>
+        <button class="mi-opt" type="button" data-vote="poll-heute-neu" onclick="pollVote(this)">Die neue</button>
+        <button class="mi-opt" type="button" data-vote="poll-heute-beide" onclick="pollVote(this)">Beide</button>
+      </div>
+      <div class="mi-res" hidden></div>
+    </div>
   </div>
 
+  <div class="res-row" data-sec="st-geschichten">
+    <span class="res-hint">Tippe das Blatt, wenn etwas in dir anklingt — anonym.</span>
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 2 · st-riss — Die unsichtbare Geschichte ═══ -->
+<section class="st" data-sec="st-riss">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C7 7 3 10 3 14a9 9 0 0018 0c0-4-4-7-9-12z"/><path d="M12 14v8M9 17l3-3 3 3"/></svg>
+    <h2 class="st-satz">Eine Kultur sieht ihre eigene Geschichte nicht. Sie nennt sie Wirklichkeit.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Sechs von neun planetaren Grenzen sind überschritten.<cite data-ref="richardson-boundaries"></cite> Zugleich erklärt die WHO Einsamkeit zur globalen Gesundheitspriorität.<cite data-ref="who-loneliness"></cite> Die Logik des Mehr trägt nicht mehr — draussen nicht und drinnen nicht. Und doch verpuffen kluge Reformen, als arbeiteten sie gegen etwas Unsichtbares. Sie tun es: gegen eine Geschichte, die niemand ausspricht, weil alle sie für die Wirklichkeit halten.<cite data-ref="quinn-ishmael"></cite></p>
+    <!-- Wandfrage → Atemwand (context: riss) -->
+    <div class="wand" data-context="riss">
+      <p class="wand-q">Wo hast du den Riss zuletzt gespürt?</p>
+      <div class="wand-form">
+        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
+        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+      </div>
+      <p class="wand-ok" hidden>Angekommen. Danke.</p>
+      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+    </div>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
     <!-- ─── DIE UNSICHTBARE GESCHICHTE (umgestellt: Krise zuerst) ─── -->
   <div class="s-section">
     <h2>
@@ -856,7 +999,31 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <div class="pull"><p>„Eine Kultur ist Menschen, die eine Geschichte aufführen."<cite data-ref="quinn-ishmael"></cite> — In Anlehnung an Quinn: <em>„Die Prämisse der Nehmer lautet: ‚Die Welt gehört dem Menschen.' Die der Lasser: ‚Der Mensch gehört zur Welt.'"</em><cite data-ref="quinn-ishmael"></cite></p></div>
     <p>Die eigentliche Frage liegt damit tiefer als bei Politik und Ökologie. Sie ist keine Frage danach, welche Geschichte uns besser gefällt, sondern danach, was wir überhaupt für <em>wirklich</em> halten.</p>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-riss">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 3 · st-ereignis — Whitehead ═══ -->
+<section class="st" data-sec="st-ereignis">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 6 7 3 3 5M12 12C12 6 17 3 21 5"/><path d="M3 5C3 13 7 18 12 22M21 5C21 13 17 18 12 22"/></svg>
+    <h2 class="st-satz">Die Welt besteht nicht aus Dingen. Sie besteht aus Ereignissen.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Alfred North Whitehead hat es 1929 ausgearbeitet: Die Grundeinheiten der Wirklichkeit sind keine Substanzen, sondern Werdens-Momente, die ihre Vergangenheit fühlend aufgreifen und sich zu etwas Neuem verdichten.<cite data-ref="whitehead-pr"></cite> Subjekt und Objekt sind keine zwei Arten von Dingen, sondern zwei Phasen desselben Ereignisses. Und was geschehen ist, bleibt geschehen — Whitehead nennt es objective immortality. Bedeutung muss nicht aufgeschoben werden. Sie wohnt im Augenblick selbst.</p>
+    <!-- Satzschalter: Substanz-Form ↔ Prozess-Form -->
+    <div class="mi-flipwrap">
+      <button class="mi-flip" type="button" data-i="0" onclick="flipSentence(this)">Ich habe ein Leben.</button>
+      <span class="mi-hint">tippen</span>
+    </div>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── WHITEHEAD: DIE ONTOLOGISCHE SCHLUSSFOLGERUNG (Kernsektion) ─── -->
   <div class="s-section">
     <h2>
@@ -872,7 +1039,26 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="paraphrase-note">— A. N. Whitehead, <em>Process and Reality</em> (Corrected Edition 1978), S. 167</span>
     </div>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-ereignis">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 4 · st-zeuge — Die Wissenschaft als Zeuge ═══ -->
+<section class="st" data-sec="st-zeuge">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+    <h2 class="st-satz">Auch die Physik sagt: Beziehung kommt zuerst.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Das mechanische Weltbild war nie ein Befund, sondern ein Entwurf des 17. Jahrhunderts.<cite data-ref="merchant-death"></cite> Die Quantenmechanik zeigt Eigenschaften, die erst in Relation bestehen.<cite data-ref="rovelli-rqm"></cite> Auf jeder Ebene der Komplexität entsteht qualitativ Neues, das sich aus den unteren Gesetzen nicht ableiten lässt.<cite data-ref="anderson-more"></cite> Und jede Messung setzt voraus, was sie nie einholen kann: die Erfahrung des Beobachters.<cite data-ref="frank-blindspot"></cite> Die Wissenschaft widerlegt die neue Geschichte nicht. Sie ist ihr Zeuge.</p>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── DIE WISSENSCHAFT BESTÄTIGT VON INNEN (Chor) ─── -->
   <div class="s-section">
     <h2>
@@ -886,7 +1072,26 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </div>
     <p>Am schärfsten benennen es Frank, Gleiser und Thompson 2024: den „blinden Fleck" — die Erfahrung des Beobachters, die jede Wissenschaft voraussetzt, ohne sie je einholen zu können.<cite data-ref="frank-blindspot"></cite> Genau diese Erfahrung hatte die alte Geschichte aus der Welt verbannt; sie kehrt nicht als Mystik zurück, sondern als die Bedingung, ohne die kein Messen, kein Beobachten, kein Verstehen möglich ist. Die Physik bestätigt nachträglich, was Whitehead vorwegnahm — kein Konkurrent, sondern Zeuge.</p>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-zeuge">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 5 · st-verwandt — Indigene Traditionen ═══ -->
+<section class="st" data-sec="st-verwandt">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <h2 class="st-satz">Manche Kulturen haben die alte Geschichte nie übernommen.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Die Reihenfolge ist wichtig: Nicht indigene Traditionen bestätigen Whitehead — Whitehead und die Physik kommen spät dort an, wo viele von ihnen nie weggegangen sind.<cite data-ref="viveiros-cannibal"></cite> Im Potawatomi hat alles Lebendige grammatikalische Personhaftigkeit: Bäume, Flüsse, Steine sind Wer, nicht Was.<cite data-ref="kimmerer-bs"></cite> Das Rarámuri-Konzept iwígara sagt: Alle Lebensformen teilen denselben Atem und sind darum verwandt.<cite data-ref="salmon-kincentric"></cite> Diese Traditionen sind souveräne Philosophien lebendiger Völker — keine frei verfügbare „Weisheit". Wie respektvoller Bezug aussieht, steht in den <a href="#" onclick="showTab('f1'); return false;">Grundlagen</a>.</p>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── INDIGENE TRADITIONEN (Souveränität bleibt gewahrt) ─── -->
   <div class="s-section">
     <h2>
@@ -937,7 +1142,36 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     <p>Diese Stimmen kommen aus verschiedenen Völkern, Sprachen und Orten. Was sie verbindet, ist keine harmonisierte „Weltweisheit", sondern ein Refrain: dass der Mensch nicht über der Natur steht, sondern in ihr verwurzelt ist — als Verwandter, nicht als Herr —, und dass Bedeutung im Augenblick liegt, nicht jenseits des Todes.</p>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-verwandt">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 6 · st-turm — Becker ═══ -->
+<section class="st" data-sec="st-turm">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+    <h2 class="st-satz">Wir bauen Türme, weil wir sterben müssen.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Ernest Becker hat es 1973 präzise beschrieben: Der Wachstumsdrang moderner Zivilisation ist nicht ökonomisch fundiert, sondern psychisch — eine kollektive Strategie, dem eigenen Tod nicht ins Auge zu sehen.<cite data-ref="becker-denial"></cite> Reichtum, Ruhm, Vermächtnis: Unsterblichkeitsprojekte. Wo sie zu schwer werden, übernimmt die Ablenkung. Deshalb verpuffen kluge Reformen an der Oberfläche. Doch wo der Augenblick selbst Bestand hat — objective immortality —, wird der Turm nicht verboten. Er wird überflüssig.<cite data-ref="whitehead-pr"></cite></p>
+    <!-- Wandfrage → Atemwand (context: turm) -->
+    <div class="wand" data-context="turm">
+      <p class="wand-q">Was ist dein Turm?</p>
+      <div class="wand-form">
+        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
+        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+      </div>
+      <p class="wand-ok" hidden>Angekommen. Danke.</p>
+      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+    </div>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── BECKER · SCHARNIER IN DEN POLITISCHEN TEIL ─── -->
   <div class="s-section">
     <h2>
@@ -947,17 +1181,36 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Was diese Traditionen können — Bedeutung diesseits des Todes finden —, hat unsere Kultur verlernt. Ernest Becker hat 1973 mit grosser Genauigkeit beschrieben, was an ihre Stelle tritt. In <em>The Denial of Death</em> argumentiert er, dass der unaufhörliche Wachstumsdrang moderner Zivilisation nicht ökonomisch, sondern psychisch fundiert ist: Wir sind die einzige Spezies, die weiss, dass sie sterben wird, und die Wachstumslogik ist eine kollektive Strategie, dieser Tatsache nicht ins Auge zu sehen.<cite data-ref="becker-denial"></cite> Die Fluchtversuche nennt er „Unsterblichkeitsprojekte" — Reichtum, Ruhm, Vermächtnis; wo diese zu schwer werden, übernimmt die Ablenkung.</p>
     <p>Das erklärt, warum gute Argumente und kluge Reformen allein so oft verpuffen: Sie zielen auf die Oberfläche, während der Antrieb tiefer liegt. Eine neue Geschichte muss auf eben dieser Ebene ansetzen. Und genau hier hat Whitehead das Werkzeug bereits geliefert: Wo der Augenblick selbst Bestand hat — objective immortality —, wird das Unsterblichkeitsprojekt nicht verboten, sondern überflüssig. Damit verliert die Wachstumslogik ihren psychischen Treibstoff — und der Weg zu einer anderen Politik wird überhaupt erst gangbar.</p>
   </div>
-
-  <!-- ─── BRÜCKENBAUER ─── -->
-  <div class="s-section">
-    <h2>
-      <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l9-13 9 13M7 13h10"/></svg>
-      Brückenbauer: zwischen Wissenschaft, Tradition und Politik
-    </h2>
-    <p>Zwischen Prozessphilosophie, neuer Naturwissenschaft und indigenen Traditionen schreibt seit Jahrzehnten eine Generation an einer Synthese. Bruno Latour zeigt, dass die saubere Trennung von Natur und Kultur immer fiktiv war;<cite data-ref="latour-modern"></cite> Donna Haraway entwirft gegen den menschenzentrierten Anthropozän-Begriff ein multispezifisches Mit-Werden;<cite data-ref="haraway-trouble"></cite> Anna Tsing zeigt am Matsutake-Pilz, dass Leben in den Ruinen des Fortschritts möglich ist.<cite data-ref="tsing-mushroom"></cite> Karen Barad bringt Quantenphysik und Materialität zu einem „agentiellen Realismus" zusammen, in dem Bedeutung und Materie verschränkt sind;<cite data-ref="barad-halfway"></cite> Andreas Weber stellt der Aufklärung eine „Enlivenment" — Belebung — zur Seite, in der Subjektivität und Reziprozität als Grundzüge des Lebendigen anerkannt werden.<cite data-ref="weber-enlivenment"></cite></p>
-    <p>Politisch übersetzt sich diese Bewegung in Entwürfe jenseits des Wachstumszwangs: Kate Raworths Doughnut-Ökonomie zieht zwischen sozialem Boden und ökologischer Decke einen „sicheren und gerechten Raum";<cite data-ref="raworth-doughnut"></cite> Jason Hickels Degrowth-These verbindet Klimawissenschaft, Kolonialgeschichte und ökologische Ökonomie;<cite data-ref="hickel-less"></cite> Naomi Klein hat die Konsequenz benannt: Wirtschaftssystem und Erdsystem sind im Krieg miteinander.<cite data-ref="klein-changes"></cite> Was als Ontologie beginnt, endet als Gestaltungsauftrag.</p>
   </div>
+  <div class="res-row" data-sec="st-turm">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 7 · st-freude — Solarpunk ═══ -->
+<section class="st" data-sec="st-freude">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <h2 class="st-satz">Freude ist eine politische Haltung.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Solarpunk entstand als bewusst optimistische Antwort auf die Dystopie-Müdigkeit der Gegenwart.<cite data-ref="solarpunk-manifesto"></cite> Die Bewegung darf utopisch sein oder mit den Mühen des Wegs ringen — aber nie dystopisch: Die Antwort muss schön und lebenswert sein, nicht blosser Verzicht. Adam Flynn dreht das Silicon-Valley-Mantra um: leise bewegen und Dinge pflanzen.<cite data-ref="flynn-notes"></cite> Pflanzen. Teilen. Reparieren. Singen. Wieder pflanzen.</p>
+    <!-- Wandfrage → Atemwand (context: pflanzen) -->
+    <div class="wand" data-context="pflanzen">
+      <p class="wand-q">Was pflanzt du?</p>
+      <div class="wand-form">
+        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
+        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+      </div>
+      <p class="wand-ok" hidden>Angekommen. Danke.</p>
+      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+    </div>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── SOLARPUNK ─── -->
   <div class="s-section">
     <h2>
@@ -967,23 +1220,82 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Wenn die neue Geschichte einen Klang hat, dann den von Solarpunk. Die Bewegung entstand seit etwa 2008 als bewusst optimistische Antwort auf die Dystopie-Obsession der Gegenwart. Das <em>Solarpunk Manifesto</em> (2019) stellt die Leitfrage: <em>„What does a sustainable civilization look like, and how can we get there?"</em><cite data-ref="solarpunk-manifesto"></cite> Solarpunk darf utopisch sein oder mit den Mühen des Wegs ringen — aber nie dystopisch. Die Antwort muss schön und lebenswert sein; sie darf nicht aus blossem Verzicht bestehen. Adam Flynns Wahlspruch invertiert das Silicon-Valley-Mantra: <em>„Solarpunk should move quietly and plant things."</em><cite data-ref="flynn-notes"></cite></p>
     <p>Der Ton ist ansteckend: direkt, einladend, gegenwärtig. „Wir" statt „man", aktiv statt konjunktiv, sinnlich statt abstrakt. Solarpunk macht aus Freude eine politische Haltung — nicht weil die Krise klein wäre, sondern weil Verzweiflung uns nicht hilft. Pflanzen. Teilen. Reparieren. Singen. Wieder pflanzen. Das ist die Sprache, in der die neue Geschichte uns gut steht.</p>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-freude">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
+
+<!-- ═══ SCHLUSS · st-weg — Der Weg ═══ -->
+<section class="st" data-sec="st-weg">
+  <div class="disclaimer-box" style="font-size:.82rem;padding:12px 18px;margin:24px auto">
+    <p style="font-style:normal">Quellen, Primärbelege und vertiefte Bezüge sind im <a href="#biblio" onclick="return bibJump(&#39;biblio&#39;)" style="color:var(--clay);font-weight:600">Literaturverzeichnis</a> (Tab F2) dokumentiert.</p>
+  </div>
 
   <!-- ─── SCHLUSS · UNVERÄNDERT ─── -->
   <div class="closing">
     <p>Eine neue Geschichte ist keine bessere Theorie. Sie ist eine andere Weise, am Morgen aufzuwachen.<br><br>Der Baum ist ein Gegenüber. Die Ernte ist ein Geschenk. Der Atemzug zählt. Die Welt hört zu. Und wir — wir sind <em>mittendrin</em>, nicht darüber.<br><br>Wir müssen nicht mehr. Wir dürfen sein. Wir dürfen uns neugierig immer wieder neu erfinden. — Und: wir <em>gehören</em> zur Welt, wir sind hier willkommen, genauso wie alle Anderen auch willkommen sind.</p>
   </div>
+
+  <!-- CTA-Reihe: drei Wege weiter -->
+  <div class="cta-row">
+    <a class="cta-card" href="#" onclick="showTab('i'); return false;">
+      <span class="cta-t">Der Weg dorthin →</span>
+      <span class="cta-s">Vier Schichten, sechs Jahrzehnte.</span>
+    </a>
+    <a class="cta-card" href="#" onclick="showTab('b'); return false;">
+      <span class="cta-t">Lieber erzählt? →</span>
+      <span class="cta-s">Drei Erzählungen aus der neuen Geschichte.</span>
+    </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-wall'); return false;">
+      <span class="cta-t">Die Atemwand →</span>
+      <span class="cta-s">Was andere hier gelassen haben.</span>
+    </a>
+  </div>
+
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer: Wer heute daran baut</span><span class="en-text">Deeper: who is building on this today</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
+  <!-- ─── BRÜCKENBAUER ─── -->
+  <div class="s-section">
+    <h2>
+      <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l9-13 9 13M7 13h10"/></svg>
+      Brückenbauer: zwischen Wissenschaft, Tradition und Politik
+    </h2>
+    <p>Zwischen Prozessphilosophie, neuer Naturwissenschaft und indigenen Traditionen schreibt seit Jahrzehnten eine Generation an einer Synthese. Bruno Latour zeigt, dass die saubere Trennung von Natur und Kultur immer fiktiv war;<cite data-ref="latour-modern"></cite> Donna Haraway entwirft gegen den menschenzentrierten Anthropozän-Begriff ein multispezifisches Mit-Werden;<cite data-ref="haraway-trouble"></cite> Anna Tsing zeigt am Matsutake-Pilz, dass Leben in den Ruinen des Fortschritts möglich ist.<cite data-ref="tsing-mushroom"></cite> Karen Barad bringt Quantenphysik und Materialität zu einem „agentiellen Realismus" zusammen, in dem Bedeutung und Materie verschränkt sind;<cite data-ref="barad-halfway"></cite> Andreas Weber stellt der Aufklärung eine „Enlivenment" — Belebung — zur Seite, in der Subjektivität und Reziprozität als Grundzüge des Lebendigen anerkannt werden.<cite data-ref="weber-enlivenment"></cite></p>
+    <p>Politisch übersetzt sich diese Bewegung in Entwürfe jenseits des Wachstumszwangs: Kate Raworths Doughnut-Ökonomie zieht zwischen sozialem Boden und ökologischer Decke einen „sicheren und gerechten Raum";<cite data-ref="raworth-doughnut"></cite> Jason Hickels Degrowth-These verbindet Klimawissenschaft, Kolonialgeschichte und ökologische Ökonomie;<cite data-ref="hickel-less"></cite> Naomi Klein hat die Konsequenz benannt: Wirtschaftssystem und Erdsystem sind im Krieg miteinander.<cite data-ref="klein-changes"></cite> Was als Ontologie beginnt, endet als Gestaltungsauftrag.</p>
+  </div>
+  </div>
+  <div class="res-row" data-sec="st-weg">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 </div>
 </div>
 
 <!-- ── ENGLISH ── -->
 <div class="en-text" style="padding-bottom:0">
 <div class="tabwrap">
+
+<!-- ═══ STATION 1 · st-geschichten — Hero & the two stories ═══ -->
+<section class="st" data-sec="st-geschichten">
   <div class="story-hero">
     <h1>We live a story.<br>Here is another.</h1>
     <p class="hero-sub">An invitation into a larger world</p>
   </div>
 
+  <div class="st-e1">
+    <!-- Umschalter: die zwei Geschichten als Panels -->
+    <div class="sw-row">
+      <button class="sw-btn sw-new active" type="button" onclick="switchStory(this,'new')">◐ The New Story</button>
+      <button class="sw-btn sw-old" type="button" onclick="switchStory(this,'old')">◑ The Old Story</button>
+    </div>
+
 <!-- ─── THE NEW STORY ─── -->
+<div class="story-panel on" data-panel="new">
 <p style="font-style:italic;color:var(--stone);margin:36px auto 24px;max-width:var(--measure);font-size:.98rem">The story might sound something like this:</p>
 <div class="story-block story-new">
   <div class="sb-label">◐ The New Story</div>
@@ -995,8 +1307,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>We give ourselves our own meaning. We are free to reinvent and try ourselves out again and again, with curiosity — and our old self is allowed to die content.</p>
   </div>
 </div>
+</div>
 
 <!-- ─── THE OLD STORY ─── -->
+<div class="story-panel" data-panel="old">
 <p style="font-style:italic;color:var(--stone);margin:36px auto 24px;max-width:var(--measure);font-size:.98rem">That doesn't sound so bad!?!</p>
 <p>The story we grew up in — and that is still being performed by most of our society — sounded something like this:</p>
 <div class="story-block story-old">
@@ -1009,12 +1323,50 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>And those who do not participate get no food. Those who do not participate are threatened with death.</p>
   </div>
 </div>
+</div>
 
-
-  <div class="disclaimer-box" style="font-size:.82rem;padding:12px 18px;margin:24px auto">
-    <p style="font-style:normal">Sources, primary references, and deeper context are documented in the <a href="#biblio-en" onclick="return bibJump(&#39;biblio-en&#39;)" style="color:var(--clay);font-weight:600">bibliography</a> (Tab F2).</p>
+    <!-- Poll: Which story did you live today? -->
+    <div class="mi-poll">
+      <p class="mi-q">Which story did you live today?</p>
+      <div class="mi-opts">
+        <button class="mi-opt" type="button" data-vote="poll-heute-alt" onclick="pollVote(this)">The old one</button>
+        <button class="mi-opt" type="button" data-vote="poll-heute-neu" onclick="pollVote(this)">The new one</button>
+        <button class="mi-opt" type="button" data-vote="poll-heute-beide" onclick="pollVote(this)">Both</button>
+      </div>
+      <div class="mi-res" hidden></div>
+    </div>
   </div>
 
+  <div class="res-row" data-sec="st-geschichten">
+    <span class="res-hint">Tap the leaf when something stirs — anonymous.</span>
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
+
+<!-- ═══ STATION 2 · st-riss — The Invisible Story ═══ -->
+<section class="st" data-sec="st-riss">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C7 7 3 10 3 14a9 9 0 0018 0c0-4-4-7-9-12z"/><path d="M12 14v8M9 17l3-3 3 3"/></svg>
+    <h2 class="st-satz">A culture does not see its own story. It calls it reality.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Six of nine planetary boundaries are crossed.<cite data-ref="richardson-boundaries"></cite> At the same time, the WHO has declared loneliness a global health priority.<cite data-ref="who-loneliness"></cite> The logic of More no longer holds — not outside, not inside. And still, clever reforms fizzle, as if they were working against something invisible. They are: against a story no one speaks aloud, because everyone mistakes it for reality.<cite data-ref="quinn-ishmael"></cite></p>
+    <!-- Wandfrage → Atemwand (context: riss) -->
+    <div class="wand" data-context="riss">
+      <p class="wand-q">Where did you last feel the crack?</p>
+      <div class="wand-form">
+        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
+        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+      </div>
+      <p class="wand-ok" hidden>Received. Thank you.</p>
+      <p class="wand-err" hidden>Could not be saved.</p>
+    </div>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
     <!-- ─── THE INVISIBLE STORY (reordered: crisis first) ─── -->
   <div class="s-section">
     <h2>
@@ -1026,7 +1378,31 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <div class="pull"><p>"A culture is people enacting a story."<cite data-ref="quinn-ishmael"></cite> — Following Daniel Quinn: <em>"The premise of the Taker story is 'the world belongs to man.' The premise of the Leaver story is 'man belongs to the world.'"</em><cite data-ref="quinn-ishmael"></cite></p></div>
     <p>The real question, then, lies deeper than politics or ecology. It is not a question of which story we prefer, but of what we hold to be <em>real</em> in the first place.</p>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-riss">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 3 · st-ereignis — Whitehead ═══ -->
+<section class="st" data-sec="st-ereignis">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 6 7 3 3 5M12 12C12 6 17 3 21 5"/><path d="M3 5C3 13 7 18 12 22M21 5C21 13 17 18 12 22"/></svg>
+    <h2 class="st-satz">The world is not made of things. It is made of events.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Alfred North Whitehead worked it out in 1929: the basic units of reality are not substances but moments of becoming that feelingly take up their past and condense it into something new.<cite data-ref="whitehead-pr"></cite> Subject and object are not two kinds of things but two phases of the same event. And what has happened remains — Whitehead calls it objective immortality. Meaning need not be deferred. It lives in the moment itself.</p>
+    <!-- Satzschalter: Substanz-Form ↔ Prozess-Form -->
+    <div class="mi-flipwrap">
+      <button class="mi-flip" type="button" data-i="0" onclick="flipSentence(this)">I have a life.</button>
+      <span class="mi-hint">tap</span>
+    </div>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── WHITEHEAD: THE ONTOLOGICAL CONCLUSION (core section) ─── -->
   <div class="s-section">
     <h2>
@@ -1042,7 +1418,26 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="paraphrase-note">— A. N. Whitehead, <em>Process and Reality</em> (Corrected Ed. 1978), p. 167</span>
     </div>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-ereignis">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 4 · st-zeuge — Science as Witness ═══ -->
+<section class="st" data-sec="st-zeuge">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+    <h2 class="st-satz">Physics agrees: relation comes first.</h2>
+  </div>
+  <div class="st-e1">
+    <p>The mechanistic worldview was never a finding but a seventeenth-century design.<cite data-ref="merchant-death"></cite> Quantum mechanics shows properties that exist only in relation.<cite data-ref="rovelli-rqm"></cite> At every level of complexity something qualitatively new appears that cannot be derived from the laws below.<cite data-ref="anderson-more"></cite> And every measurement presupposes what it can never capture: the experience of the observer.<cite data-ref="frank-blindspot"></cite> Science does not refute the new story. It is its witness.</p>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── SCIENCE CONFIRMS FROM WITHIN (chorus) ─── -->
   <div class="s-section">
     <h2>
@@ -1056,7 +1451,26 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </div>
     <p>Frank, Gleiser, and Thompson name it most sharply in 2024: the "blind spot" — the experience of the observer that every science presupposes without ever being able to catch up with it.<cite data-ref="frank-blindspot"></cite> It was precisely this experience that the old story had banished from the world; it returns not as mysticism but as the condition without which no measuring, no observing, no understanding is possible. Physics confirms, after the fact, what Whitehead anticipated — not a rival, but a witness.</p>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-zeuge">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 5 · st-verwandt — Indigenous Traditions ═══ -->
+<section class="st" data-sec="st-verwandt">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <h2 class="st-satz">Some cultures never adopted the old story.</h2>
+  </div>
+  <div class="st-e1">
+    <p>The order matters: indigenous traditions do not confirm Whitehead — Whitehead and physics arrive late where many of them never left.<cite data-ref="viveiros-cannibal"></cite> In Potawatomi, everything alive has grammatical personhood: trees, rivers, stones are who, not what.<cite data-ref="kimmerer-bs"></cite> The Rarámuri concept iwígara says all life forms share the same breath and are therefore kin.<cite data-ref="salmon-kincentric"></cite> These traditions are sovereign philosophies of living peoples — not a "wisdom" free for the taking. How respectful reference works is laid out in the <a href="#" onclick="showTab('f1'); return false;">Foundations</a>.</p>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── INDIGENOUS TRADITIONS (sovereignty preserved) ─── -->
   <div class="s-section">
     <h2>
@@ -1107,7 +1521,36 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     <p>These voices come from different peoples, languages, and places. What binds them is no harmonised "world-wisdom", but a refrain: that the human being does not stand above nature but is rooted within it — as kin, not as lord — and that meaning lies in the moment, not beyond death.</p>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-verwandt">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 6 · st-turm — Becker ═══ -->
+<section class="st" data-sec="st-turm">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+    <h2 class="st-satz">We build towers because we must die.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Ernest Becker described it precisely in 1973: modern civilization's drive to grow is not economic but psychic — a collective strategy for not looking one's own death in the eye.<cite data-ref="becker-denial"></cite> Wealth, fame, legacy: immortality projects. Where they grow too heavy, distraction takes over. That is why clever reforms bounce off the surface. But where the moment itself endures — objective immortality — the tower is not forbidden. It becomes unnecessary.<cite data-ref="whitehead-pr"></cite></p>
+    <!-- Wandfrage → Atemwand (context: turm) -->
+    <div class="wand" data-context="turm">
+      <p class="wand-q">What is your tower?</p>
+      <div class="wand-form">
+        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
+        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+      </div>
+      <p class="wand-ok" hidden>Received. Thank you.</p>
+      <p class="wand-err" hidden>Could not be saved.</p>
+    </div>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── BECKER · HINGE INTO THE POLITICAL PART ─── -->
   <div class="s-section">
     <h2>
@@ -1117,17 +1560,36 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>What these traditions can do — find meaning on this side of death — our culture has unlearned. Ernest Becker described, in 1973, with great precision, what takes its place. In <em>The Denial of Death</em> he argues that the relentless growth-drive of modern civilisation is grounded not economically but psychically: we are the only species that knows it will die, and the logic of growth is a collective strategy for not looking that fact in the eye.<cite data-ref="becker-denial"></cite> He calls the attempts at escape "immortality projects" — wealth, fame, legacy; where these grow too heavy, distraction takes over.</p>
     <p>This explains why good arguments and clever reforms alone so often come to nothing: they aim at the surface, while the drive lies deeper. A new story must take hold at exactly this level. And it is precisely here that Whitehead has already supplied the tool: where the moment itself has permanence — objective immortality — the immortality project becomes not forbidden but unnecessary. With that, the logic of growth loses its psychic fuel — and the path to a different politics becomes passable at all.</p>
   </div>
-
-  <!-- ─── BRIDGE-BUILDERS ─── -->
-  <div class="s-section">
-    <h2>
-      <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l9-13 9 13M7 13h10"/></svg>
-      Bridge-Builders: Between Science, Tradition, and Politics
-    </h2>
-    <p>Between process philosophy, the new natural science, and Indigenous traditions, a generation has for decades been writing toward a synthesis. Bruno Latour shows that the clean separation of nature and culture was always a fiction;<cite data-ref="latour-modern"></cite> Donna Haraway, against the human-centred concept of the Anthropocene, sketches a multispecies becoming-with;<cite data-ref="haraway-trouble"></cite> Anna Tsing shows, through the matsutake mushroom, that life in the ruins of progress is possible.<cite data-ref="tsing-mushroom"></cite> Karen Barad brings quantum physics and materiality together into an "agential realism" in which meaning and matter are entangled;<cite data-ref="barad-halfway"></cite> Andreas Weber sets an "enlivenment" alongside the Enlightenment, in which subjectivity and reciprocity are recognised as basic features of the living.<cite data-ref="weber-enlivenment"></cite></p>
-    <p>Politically, this movement translates into designs beyond the compulsion to grow: Kate Raworth's doughnut economics draws a "safe and just space" between a social floor and an ecological ceiling;<cite data-ref="raworth-doughnut"></cite> Jason Hickel's degrowth thesis joins climate science, colonial history, and ecological economics;<cite data-ref="hickel-less"></cite> Naomi Klein has named the consequence: the economic system and the earth system are at war with each other.<cite data-ref="klein-changes"></cite> What begins as ontology ends as a mandate to design.</p>
   </div>
+  <div class="res-row" data-sec="st-turm">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 
+<!-- ═══ STATION 7 · st-freude — Solarpunk ═══ -->
+<section class="st" data-sec="st-freude">
+  <div class="st-e0">
+    <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <h2 class="st-satz">Joy is a political stance.</h2>
+  </div>
+  <div class="st-e1">
+    <p>Solarpunk arose as a deliberately optimistic answer to our dystopia fatigue.<cite data-ref="solarpunk-manifesto"></cite> The movement may be utopian or wrestle with the labors of the way — but never dystopian: the answer must be beautiful and livable, not mere renunciation. Adam Flynn inverts the Silicon Valley mantra: move quietly and plant things.<cite data-ref="flynn-notes"></cite> Plant. Share. Repair. Sing. Plant again.</p>
+    <!-- Wandfrage → Atemwand (context: pflanzen) -->
+    <div class="wand" data-context="pflanzen">
+      <p class="wand-q">What are you planting?</p>
+      <div class="wand-form">
+        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
+        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+      </div>
+      <p class="wand-ok" hidden>Received. Thank you.</p>
+      <p class="wand-err" hidden>Could not be saved.</p>
+    </div>
+  </div>
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
   <!-- ─── SOLARPUNK ─── -->
   <div class="s-section">
     <h2>
@@ -1137,11 +1599,59 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>If the new story has a sound, it is the sound of solarpunk. The movement emerged from around 2008 onward as a deliberately optimistic response to the dystopia-obsession of the present. <em>A Solarpunk Manifesto</em> (2019) poses its orienting question: <em>"What does a sustainable civilization look like, and how can we get there?"</em><cite data-ref="solarpunk-manifesto"></cite> Solarpunk may be utopian or may wrestle with the difficulties of the path — but never dystopian. The answer must be beautiful and worth living; it must not be built on mere deprivation. Adam Flynn's slogan inverts the Silicon Valley mantra: <em>"Solarpunk should move quietly and plant things."</em><cite data-ref="flynn-notes"></cite></p>
     <p>The tone is contagious: direct, inviting, present. "We" instead of "one", active rather than conditional, sensual rather than abstract. Solarpunk turns joy into a political stance — not because the crisis is small, but because despair does not help us. Plant. Share. Repair. Sing. Plant again. This is the language in which the new story suits us well.</p>
   </div>
+  </div>
+  <div class="res-row" data-sec="st-freude">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
+
+<!-- ═══ SCHLUSS · st-weg — The Way ═══ -->
+<section class="st" data-sec="st-weg">
+  <div class="disclaimer-box" style="font-size:.82rem;padding:12px 18px;margin:24px auto">
+    <p style="font-style:normal">Sources, primary references, and deeper context are documented in the <a href="#biblio-en" onclick="return bibJump(&#39;biblio-en&#39;)" style="color:var(--clay);font-weight:600">bibliography</a> (Tab F2).</p>
+  </div>
 
   <!-- ─── CLOSING · UNCHANGED ─── -->
   <div class="closing">
     <p>A new story is not a better theory. It is a different way of waking up in the morning — a different ontology of the ordinary.<br><br>The tree is a counterpart. The harvest is a gift. Each breath is an event. The world is not a stage for human action but a subject in its own right — listening, responding, co-creating. And we — we are <em>inside</em> it, not above it, not separate from it.<br><br>We do not need to do more. We are allowed to be. We are allowed to reinvent ourselves again and again, with curiosity and without guilt. — And: we <em>belong</em> to this world. We are welcome here — just as the rain, the beech, the mycelium, and all the others who have always been welcome too.</p>
   </div>
+
+  <!-- CTA-Reihe: drei Wege weiter -->
+  <div class="cta-row">
+    <a class="cta-card" href="#" onclick="showTab('i'); return false;">
+      <span class="cta-t">The way there →</span>
+      <span class="cta-s">Four layers, six decades.</span>
+    </a>
+    <a class="cta-card" href="#" onclick="showTab('b'); return false;">
+      <span class="cta-t">Rather have it as a story? →</span>
+      <span class="cta-s">Three tales from the new story.</span>
+    </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-wall'); return false;">
+      <span class="cta-t">The breath wall →</span>
+      <span class="cta-s">What others have left here.</span>
+    </a>
+  </div>
+
+  <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
+    <span class="lbl-more"><span class="de-text">Tiefer: Wer heute daran baut</span><span class="en-text">Deeper: who is building on this today</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
+  </button>
+  <div class="st-e2">
+  <!-- ─── BRIDGE-BUILDERS ─── -->
+  <div class="s-section">
+    <h2>
+      <svg class="orn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l9-13 9 13M7 13h10"/></svg>
+      Bridge-Builders: Between Science, Tradition, and Politics
+    </h2>
+    <p>Between process philosophy, the new natural science, and Indigenous traditions, a generation has for decades been writing toward a synthesis. Bruno Latour shows that the clean separation of nature and culture was always a fiction;<cite data-ref="latour-modern"></cite> Donna Haraway, against the human-centred concept of the Anthropocene, sketches a multispecies becoming-with;<cite data-ref="haraway-trouble"></cite> Anna Tsing shows, through the matsutake mushroom, that life in the ruins of progress is possible.<cite data-ref="tsing-mushroom"></cite> Karen Barad brings quantum physics and materiality together into an "agential realism" in which meaning and matter are entangled;<cite data-ref="barad-halfway"></cite> Andreas Weber sets an "enlivenment" alongside the Enlightenment, in which subjectivity and reciprocity are recognised as basic features of the living.<cite data-ref="weber-enlivenment"></cite></p>
+    <p>Politically, this movement translates into designs beyond the compulsion to grow: Kate Raworth's doughnut economics draws a "safe and just space" between a social floor and an ecological ceiling;<cite data-ref="raworth-doughnut"></cite> Jason Hickel's degrowth thesis joins climate science, colonial history, and ecological economics;<cite data-ref="hickel-less"></cite> Naomi Klein has named the consequence: the economic system and the earth system are at war with each other.<cite data-ref="klein-changes"></cite> What begins as ontology ends as a mandate to design.</p>
+  </div>
+  </div>
+  <div class="res-row" data-sec="st-weg">
+    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
+    <span class="res-count" aria-live="polite"></span>
+  </div>
+</section>
 </div>
 </div>
 
@@ -4278,11 +4788,18 @@ async function loadBreaths(){
   const wall = document.getElementById('breath-wall');
   if(!wall) return;
   try{
-    const { data, error } = await sb
-      .from('breaths').select('text,place')
+    // 'context' markiert Wandfragen-Antworten aus dem Pfad (riss/turm/pflanzen).
+    // Fallback ohne die Spalte, solange das SQL aus dem Handoff noch nicht lief.
+    let res = await sb
+      .from('breaths').select('text,place,context')
       .order('created_at',{ascending:false}).limit(300);
-    if(error) throw error;
-    renderBreaths(data||[]);
+    if(res.error){
+      res = await sb
+        .from('breaths').select('text,place')
+        .order('created_at',{ascending:false}).limit(300);
+    }
+    if(res.error) throw res.error;
+    renderBreaths(res.data||[]);
   }catch(e){
     wall.innerHTML = '<p class="breath-empty">'+
       (document.body.classList.contains('en')
@@ -4290,6 +4807,8 @@ async function loadBreaths(){
         : 'Die Wand konnte gerade nicht geladen werden.')+'</p>';
   }
 }
+// Kontext-Labels der Wandfragen (beide Sprachen als Spans — reagiert auf setLang)
+const _ctxLabels = { riss:['Riss','Crack'], turm:['Turm','Tower'], pflanzen:['Pflanzen','Planting'] };
 function renderBreaths(rows){
   const wall = document.getElementById('breath-wall');
   if(!rows.length){
@@ -4302,7 +4821,10 @@ function renderBreaths(rows){
   wall.innerHTML = rows.map(r=>{
     const t = _esc(r.text||'');
     const place = r.place ? '<span class="bm-place">'+_esc(r.place)+'</span>' : '';
-    return '<div class="breath-mark">'+t+place+'</div>';
+    const ctx = r.context && _ctxLabels[r.context]
+      ? '<span class="bm-ctx"><span class="de-text">'+_ctxLabels[r.context][0]+'</span><span class="en-text">'+_ctxLabels[r.context][1]+'</span></span>'
+      : '';
+    return '<div class="breath-mark">'+ctx+t+place+'</div>';
   }).join('');
 }
 
@@ -4379,6 +4901,214 @@ function _msg(el, isErr, de, en){
   el.textContent = document.body.classList.contains('en') ? en : de;
   el.classList.toggle('err', !!isErr);
 }
+
+// ══════════════ DER PFAD — Stationen, Resonanz & Mikro-Interaktionen ══════════════
+// Umbau gemäss handoff_pfad_umbau_260823_1525.md. Benötigt in Supabase die
+// Tabelle 'resonances' und die Spalte 'breaths.context' (SQL siehe Handoff).
+
+// ── Kleine localStorage-Helfer (privater Modus etc. wirft sonst) ──
+function _lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function _lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+// ── Ist der Supabase-Client konfiguriert? (Platzhalter-Key ⇒ Resonanz aus) ──
+function _resReady(){
+  try{
+    return typeof sb !== 'undefined' && !!sb
+      && typeof SUPABASE_URL === 'string' && SUPABASE_URL.indexOf('https://') === 0
+      && typeof SUPABASE_KEY === 'string' && SUPABASE_KEY.length > 20
+      && !/HIER|PLATZHALTER|XXX/i.test(SUPABASE_URL + SUPABASE_KEY);
+  }catch(e){ return false; }
+}
+
+// ── Tiefer/Weniger: E2 auf- und zuklappen ──
+function toggleDepth(btn){
+  const st = btn.closest('.st');
+  if(!st) return;
+  const open = st.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+// ── Story-Umschalter (St. 1): reines Klassen-Toggling ──
+function switchStory(btn, which){
+  const e1 = btn.closest('.st-e1');
+  if(!e1) return;
+  e1.querySelectorAll('.sw-btn').forEach(b=>b.classList.toggle('active', b===btn));
+  e1.querySelectorAll('.story-panel').forEach(p=>p.classList.toggle('on', p.dataset.panel===which));
+}
+
+// ── Satzschalter (St. 3): rotiert durch 3 Satzpaare (Substanz ↔ Prozess) ──
+const _flipSaetze = {
+  de: ['Ich habe ein Leben.','Ich bin ein Geschehen.',
+       'Der Baum ist ein Ding.','Der Baum ist ein Ereignis, das dreihundert Jahre dauert.',
+       'Der Moment vergeht.','Der Moment bleibt — als das, was er der Welt hinzugefügt hat.'],
+  en: ['I have a life.','I am a happening.',
+       'The tree is a thing.','The tree is an event lasting three hundred years.',
+       'The moment passes.','The moment remains — as what it added to the world.']
+};
+function flipSentence(btn){
+  const arr = _flipSaetze[btn.closest('.en-text') ? 'en' : 'de'];
+  const i = (parseInt(btn.dataset.i||'0',10)+1) % arr.length;
+  btn.dataset.i = i;
+  btn.textContent = arr[i];
+  btn.classList.toggle('proc', i%2===1); // Prozess-Form hervorheben
+}
+
+// ── Resonanz-Blatt: anonymes «Das wirkt in mir» ──
+var _resCounts = {};
+function _resPaint(id, n, done){
+  _resCounts[id] = n;
+  document.querySelectorAll('.res-row[data-sec="'+id+'"]').forEach(row=>{
+    if(done !== undefined) row.classList.toggle('res-done', !!done);
+    row.querySelectorAll('.res-count').forEach(c=>{ c.textContent = n>0 ? n : ''; });
+  });
+}
+async function _resFetch(id){
+  if(!_resReady()) return;
+  try{
+    const { count, error } = await sb.from('resonances')
+      .select('*',{count:'exact',head:true}).eq('section_id',id);
+    if(error) throw error;
+    _resPaint(id, count||0, !!_lsGet('res_'+id));
+  }catch(e){ /* leise — Zähler bleibt leer */ }
+}
+async function resTap(btn){
+  const row = btn.closest('.res-row');
+  if(!row || !_resReady()) return;
+  const id = row.dataset.sec;
+  if(_lsGet('res_'+id)) return;            // eine Resonanz pro Gerät
+  _lsSet('res_'+id,'1');
+  _resPaint(id, (_resCounts[id]||0)+1, true); // optimistisches UI
+  try{
+    const lang = document.body.classList.contains('en') ? 'en' : 'de';
+    const { error } = await sb.from('resonances').insert({ section_id:id, lang:lang });
+    if(error) throw error;
+  }catch(e){ /* leise — der optimistische Zähler bleibt stehen */ }
+}
+
+// ── Poll (St. 1): «Welche Geschichte hast du heute gelebt?» ──
+const _pollIds = ['poll-heute-alt','poll-heute-neu','poll-heute-beide'];
+async function pollVote(btn){
+  if(!_resReady() || _lsGet('poll_heute')) return;
+  const choice = btn.dataset.vote;
+  _lsSet('poll_heute', choice);
+  // Buttons sofort sperren, Wahl markieren (beide Sprachfassungen)
+  document.querySelectorAll('.mi-poll .mi-opt').forEach(b=>{
+    b.disabled = true;
+    b.classList.toggle('mine', b.dataset.vote===choice);
+  });
+  try{
+    const lang = document.body.classList.contains('en') ? 'en' : 'de';
+    const { error } = await sb.from('resonances').insert({ section_id: choice, lang:lang });
+    if(error) throw error;
+  }catch(e){ /* leise */ }
+  _pollShow();
+}
+async function _pollShow(){
+  if(!_resReady()) return;
+  const counts = {};
+  try{
+    for(const id of _pollIds){
+      const { count, error } = await sb.from('resonances')
+        .select('*',{count:'exact',head:true}).eq('section_id',id);
+      if(error) throw error;
+      counts[id] = count||0;
+    }
+  }catch(e){ return; } // leise — Poll bleibt im Button-Zustand
+  const total = _pollIds.reduce((s,id)=>s+(counts[id]||0),0);
+  const mine = _lsGet('poll_heute');
+  document.querySelectorAll('.mi-poll').forEach(poll=>{
+    const en = !!poll.closest('.en-text');
+    const labels = en ? ['The old one','The new one','Both'] : ['Die alte','Die neue','Beide'];
+    let html = '';
+    _pollIds.forEach((id,i)=>{
+      const n = counts[id]||0;
+      const pct = total ? Math.round(n*100/total) : 0;
+      html += '<div class="mi-bar-row'+(id===mine?' mine':'')+'">'+
+        '<span class="mi-bar-label">'+labels[i]+'</span>'+
+        '<span class="mi-bar"><span class="mi-bar-fill" style="width:'+pct+'%"></span></span>'+
+        '<span class="mi-bar-pct">'+pct+'%</span></div>';
+    });
+    html += '<div class="mi-total">'+total+' '+(en?'votes':'Stimmen')+'</div>';
+    const res = poll.querySelector('.mi-res');
+    if(res){ res.innerHTML = html; res.hidden = false; }
+    const opts = poll.querySelector('.mi-opts');
+    if(opts) opts.hidden = true;
+  });
+}
+
+// ── Wandfrage: ein Satz → Atemwand (Tabelle breaths, Spalte context) ──
+async function wandGive(btn){
+  const wand = btn.closest('.wand');
+  if(!wand || !_resReady()) return;
+  const input = wand.querySelector('.wand-in');
+  const txt = (input && input.value || '').trim();
+  if(!txt) return;
+  btn.disabled = true;
+  const err = wand.querySelector('.wand-err');
+  if(err) err.hidden = true;
+  try{
+    const { error } = await sb.from('breaths').insert({ text: txt, context: wand.dataset.context });
+    if(error) throw error;
+    // beide Sprachfassungen dieses Kontexts: Feld aus, Bestätigung an
+    document.querySelectorAll('.wand[data-context="'+wand.dataset.context+'"]').forEach(w=>{
+      const f = w.querySelector('.wand-form'); if(f) f.hidden = true;
+      const ok = w.querySelector('.wand-ok'); if(ok) ok.hidden = false;
+    });
+    if (typeof loadBreaths === 'function') loadBreaths();
+  }catch(e){
+    btn.disabled = false;
+    if(err) err.hidden = false; // leise — keine Konsolenfehler
+  }
+}
+
+// ── Init: Scroll-Reveal, Degradation, lazy Zähler ──
+(function(){
+  // Scroll-Reveal für Kernsätze und Destillate — einmalig pro Element
+  const revEls = document.querySelectorAll('.st-e0,.st-e1');
+  if(!('IntersectionObserver' in window)){
+    revEls.forEach(el=>el.classList.add('rev-in'));
+  } else {
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        en.target.classList.add('rev-in');
+        io.unobserve(en.target);
+      });
+    },{threshold:.2});
+    revEls.forEach(el=>io.observe(el));
+  }
+
+  // Ohne konfigurierten Supabase-Client: Resonanz-UI vollständig ausblenden.
+  // Umschalter, Satzschalter, Reveals und Tiefer-Toggles laufen immer.
+  if(!_resReady()){
+    document.querySelectorAll('.res-row,.mi-poll,.wand').forEach(el=>{ el.style.display='none'; });
+    return;
+  }
+
+  // Zähler lazy: erst beim ersten Sichtbarwerden der Station laden
+  const fetched = {};
+  if('IntersectionObserver' in window){
+    const cio = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        cio.unobserve(en.target);
+        if(en.target.classList.contains('mi-poll')){
+          if(_lsGet('poll_heute')) _pollShow(); // Gerät hat schon gestimmt
+          return;
+        }
+        const id = en.target.dataset.sec;
+        if(id && !fetched[id]){ fetched[id]=1; _resFetch(id); }
+      });
+    });
+    document.querySelectorAll('.res-row,.mi-poll').forEach(el=>cio.observe(el));
+  } else {
+    document.querySelectorAll('.res-row').forEach(row=>{
+      const id = row.dataset.sec;
+      if(id && !fetched[id]){ fetched[id]=1; _resFetch(id); }
+    });
+    if(_lsGet('poll_heute')) _pollShow();
+  }
+})();
 </script>
 
 
