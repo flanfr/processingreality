@@ -621,10 +621,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
    Umbau gemäss handoff_pfad_umbau_260823_1525.md: 7 Stationen + Schluss,
    je vier Tiefen (E0 Kernsatz · E1 Destillat · E2 Essaytext · E3 Verweise).
    Nur bestehende Variablen, flache Farben, kein scroll-snap. */
-.st{margin:0 0 clamp(64px,12vh,130px)}
+.st{margin:0 0 clamp(44px,7vh,80px)}
 .st:last-child{margin-bottom:0}
-/* E0 — Kernsatz, luftig zentriert */
-.st-e0{min-height:min(62vh,540px);min-height:min(62svh,540px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:26px;padding:24px 0}
+/* E0 — Kernsatz, ruhig zentriert (Luft dosiert, nicht seitenfüllend) */
+.st-e0{min-height:min(42vh,360px);min-height:min(42svh,360px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:20px;padding:14px 0}
 .st-e0 .orn{width:34px;height:34px;color:var(--moss)}
 .st-satz{font-family:var(--f-display);font-weight:400;font-size:clamp(1.9rem,5.5vw,3.2rem);line-height:1.15;max-width:var(--measure);margin:0;color:var(--forest);text-wrap:balance}
 /* E1 — Destillat */
@@ -682,6 +682,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 /* Resonanz-Blatt */
 .res-row{max-width:var(--measure);margin:26px auto 0;display:flex;justify-content:flex-end;align-items:center;gap:8px;flex-wrap:wrap;min-height:40px}
 .res-hint{margin-right:auto;font-size:.85rem;font-style:italic;color:var(--stone)}
+.res-row.res-done .res-hint{display:none}   /* Aufforderung entfällt, sobald gegeben */
 .res-leaf{background:none;border:none;cursor:pointer;color:var(--moss);width:40px;height:40px;padding:8px;border-radius:50%;transition:color .2s,background .2s}
 .res-leaf:hover{background:rgba(95,160,36,.12)}
 .res-leaf svg{width:100%;height:100%;display:block}
@@ -703,7 +704,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   .st-more::after{transition:none}
 }
 @media(max-width:640px){
-  .st-e0{min-height:min(56vh,440px);min-height:min(56svh,440px);gap:20px}
+  .st-e0{min-height:min(40vh,300px);min-height:min(40svh,300px);gap:16px}
   .mi-poll{padding:18px 18px}
 }
 </style>
@@ -1001,6 +1002,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-riss">
+    <span class="res-hint">Klingt etwas an? Tippe das Blatt — anonym.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1041,6 +1043,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-ereignis">
+    <span class="res-hint">Klingt etwas an? Tippe das Blatt — anonym.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1074,6 +1077,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-zeuge">
+    <span class="res-hint">Klingt etwas an? Tippe das Blatt — anonym.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1144,6 +1148,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-verwandt">
+    <span class="res-hint">Klingt etwas an? Tippe das Blatt — anonym.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1183,6 +1188,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-turm">
+    <span class="res-hint">Klingt etwas an? Tippe das Blatt — anonym.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1222,6 +1228,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-freude">
+    <span class="res-hint">Klingt etwas an? Tippe das Blatt — anonym.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1269,6 +1276,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-weg">
+    <span class="res-hint">Klingt etwas an? Tippe das Blatt — anonym.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1380,6 +1388,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-riss">
+    <span class="res-hint">Something stirring? Tap the leaf — anonymous.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1420,6 +1429,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-ereignis">
+    <span class="res-hint">Something stirring? Tap the leaf — anonymous.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1453,6 +1463,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-zeuge">
+    <span class="res-hint">Something stirring? Tap the leaf — anonymous.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1523,6 +1534,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-verwandt">
+    <span class="res-hint">Something stirring? Tap the leaf — anonymous.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1562,6 +1574,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-turm">
+    <span class="res-hint">Something stirring? Tap the leaf — anonymous.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1601,6 +1614,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-freude">
+    <span class="res-hint">Something stirring? Tap the leaf — anonymous.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
@@ -1648,6 +1662,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   </div>
   <div class="res-row" data-sec="st-weg">
+    <span class="res-hint">Something stirring? Tap the leaf — anonymous.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
     <span class="res-count" aria-live="polite"></span>
   </div>
