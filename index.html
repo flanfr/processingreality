@@ -632,41 +632,29 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 .sw-btn.sw-old.active{background:var(--bark);border-color:var(--bark)}
 .story-panel{display:none}
 .story-panel.on{display:block;animation:fadeIn .3s ease}
-/* Mikro-Interaktion: Poll (St. 1) */
-.mi-poll{background:var(--paper);border:1px solid rgba(78,130,32,.2);border-radius:10px;padding:22px 24px;margin:34px 0 0}
-.mi-q,.wand-q{font-family:var(--f-display);font-size:1.14rem;font-weight:600;color:var(--moss);margin:0 0 13px}
-.mi-opts{display:flex;gap:10px;flex-wrap:wrap}
-.mi-opt{font-family:var(--f-body);font-style:italic;font-size:.92rem;color:var(--stone);background:none;border:1px solid var(--linen);border-radius:18px;padding:9px 18px;min-height:40px;cursor:pointer;transition:all .2s}
-.mi-opt:hover:not(:disabled){color:var(--moss);border-color:var(--leaf)}
-.mi-opt:disabled{cursor:default;opacity:.55}
-.mi-opt.mine{color:var(--moss);border-color:var(--leaf);opacity:1}
-.mi-bar-row{display:grid;grid-template-columns:minmax(88px,auto) 1fr 44px;gap:10px;align-items:center;margin:8px 0;font-size:.92rem}
-.mi-bar-row.mine .mi-bar-label{font-weight:600;color:var(--moss)}
-.mi-bar{height:8px;background:var(--linen);border-radius:4px;overflow:hidden}
-.mi-bar-fill{display:block;height:100%;background:var(--leaf);border-radius:4px}
-.mi-bar-pct{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);text-align:right}
-.mi-total{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);margin-top:10px}
+.wand-q{font-family:var(--f-display);font-size:1.14rem;font-weight:600;color:var(--moss);margin:0 0 13px}
 /* Mikro-Interaktion: Satzschalter (St. 3) */
 .mi-flipwrap{margin:30px 0 0;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center}
 .mi-flip{background:rgba(95,160,36,.07);border:1px dashed rgba(53,108,26,.35);border-radius:10px;padding:15px 22px;min-height:40px;max-width:100%;cursor:pointer;font-family:var(--f-display);font-style:italic;font-size:clamp(1.15rem,3vw,1.45rem);line-height:1.45;color:var(--bark);transition:color .2s,background .2s}
 .mi-flip.proc{color:var(--moss);background:rgba(95,160,36,.13)}
 .mi-hint{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
-/* Mikro-Interaktion: Wandfrage (St. 2, 6, 7) */
+/* Mikro-Interaktion: Wandfrage (Tab B: mail, frost) */
 .wand{margin:30px 0 0}
 .wand-form{display:flex;gap:10px;flex-wrap:wrap}
 .wand-form .atem-input{flex:1 1 220px;width:auto}
 .wand-ok{font-size:.9rem;font-style:italic;color:var(--leaf);margin-top:6px}
 .wand-err{font-size:.9rem;font-style:italic;color:var(--clay);margin-top:6px}
-/* Resonanz-Blatt */
-.res-row{max-width:var(--measure);margin:26px auto 0;display:flex;justify-content:flex-end;align-items:center;gap:8px;flex-wrap:wrap;min-height:40px}
-.res-hint{margin-right:auto;font-size:.85rem;font-style:italic;color:var(--stone)}
-.res-row.res-done .res-hint{display:none}   /* Aufforderung entfällt, sobald gegeben */
-.res-leaf{background:none;border:none;cursor:pointer;color:var(--moss);width:40px;height:40px;padding:8px;border-radius:50%;transition:color .2s,background .2s}
-.res-leaf:hover{background:rgba(95,160,36,.12)}
-.res-leaf svg{width:100%;height:100%;display:block}
-.res-row.res-done .res-leaf{color:var(--leaf)}
-.res-row.res-done .res-leaf .lf{fill:var(--leaf)}
-.res-count{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);min-width:1.2em}
+/* Gefühls-Feld: sticky am unteren Rand von <main>; stoppt automatisch am Footer */
+.feel{position:sticky;bottom:0;z-index:6;background:var(--paper);border-top:1px solid rgba(78,130,32,.25);box-shadow:0 -6px 20px rgba(22,45,24,.08);padding:12px var(--gut) calc(12px + env(safe-area-inset-bottom,0px))}
+.feel-inner{max-width:var(--measure);margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.feel-q{font-family:var(--f-display);font-size:clamp(1rem,2.2vw,1.14rem);font-weight:600;color:var(--moss);margin:0;flex:0 0 auto}
+.feel-form{display:flex;gap:10px;flex:1 1 260px}
+.feel-form .atem-input{flex:1 1 180px;width:auto;margin:0}
+.feel-ok{font-size:.9rem;font-style:italic;color:var(--leaf);margin:0}
+.feel-err{font-size:.9rem;font-style:italic;color:var(--clay);margin:0}
+body.breath .feel{display:none}   /* nicht auf Atemwand/Gabe */
+@media(max-width:640px){.feel-inner{gap:8px}.feel-q{flex-basis:100%}}
+@media(prefers-reduced-motion:no-preference){.feel{transition:opacity .3s}}
 /* CTA-Reihe (Schluss) */
 .cta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;max-width:var(--measure);margin:34px auto 0}
 .cta-card{display:block;background:var(--paper);border:1px solid rgba(78,130,32,.25);border-left:4px solid var(--leaf);border-radius:10px;padding:20px 22px;text-decoration:none;transition:border-color .2s,box-shadow .2s}
@@ -683,7 +671,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 }
 @media(max-width:640px){
   .st-e0{min-height:min(40vh,300px);min-height:min(40svh,300px);gap:16px}
-  .mi-poll{padding:18px 18px}
 }
 </style>
 
@@ -699,7 +686,7 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   const SUPABASE_URL = "https://elwplnmuifwforlaydtr.supabase.co";
   const SUPABASE_KEY = "sb_publishable_9d26SR9xLZ76aLR9nB8UNg_3almPhXd"; // Publishable Key — für öffentliche Seiten sicher, Schutz via RLS
   // ⬆⬆⬆  ⬆⬆⬆
-  // Hinweis: resonances + breaths.context erfordern das SQL aus handoff_pfad_umbau_260823_1525.md
+  // Hinweis: breaths.context erfordert das SQL aus handoff_pfad_umbau_260823_1525.md
   // Abgesichert: mit Platzhalter-Werten oder ohne geladenes CDN-Skript entsteht
   // kein Konsolenfehler — die Seite degradiert leise (sb bleibt undefined).
   var sb; try { sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY); } catch(e) {}
@@ -811,8 +798,8 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <span class="en-text">Foundations &amp; Sources</span>
   </a>
   <a class="cn-item" data-step="4" data-section="breath" href="#" onclick="setSection('breath'); return false;">
-    <span class="de-text">Teile einen Atemzug</span>
-    <span class="en-text">Share a breath</span>
+    <span class="de-text">Atem &amp; Gabe</span>
+    <span class="en-text">Breath &amp; Gift</span>
   </a>
 </div>
 
@@ -910,23 +897,8 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 </div>
 </div>
 
-    <!-- Poll: Welche Geschichte hast du heute gelebt? -->
-    <div class="mi-poll" data-poll="heute">
-      <p class="mi-q">Welche Geschichte hast du heute gelebt?</p>
-      <div class="mi-opts">
-        <button class="mi-opt" type="button" data-vote="poll-heute-alt" onclick="pollVote(this)">Die alte</button>
-        <button class="mi-opt" type="button" data-vote="poll-heute-neu" onclick="pollVote(this)">Die neue</button>
-        <button class="mi-opt" type="button" data-vote="poll-heute-beide" onclick="pollVote(this)">Beide</button>
-      </div>
-      <div class="mi-res" hidden></div>
-    </div>
   </div>
 
-  <div class="res-row" data-sec="st-geschichten">
-    <span class="res-hint">Tippe das Blatt, wenn etwas in dir anklingt — anonym.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 2 · st-riss — Die unsichtbare Geschichte ═══ -->
@@ -937,16 +909,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Sechs von neun planetaren Grenzen sind überschritten.<cite data-ref="richardson-boundaries"></cite> Zugleich erklärt die WHO Einsamkeit zur globalen Gesundheitspriorität.<cite data-ref="who-loneliness"></cite> Die Logik des Mehr trägt nicht mehr — draussen nicht und drinnen nicht. Und doch verpuffen kluge Reformen, als arbeiteten sie gegen etwas Unsichtbares. Sie tun es: gegen eine Geschichte, die niemand ausspricht, weil alle sie für die Wirklichkeit halten.<cite data-ref="quinn-ishmael"></cite></p>
-    <!-- Wandfrage → Atemwand (context: riss) -->
-    <div class="wand" data-context="riss">
-      <p class="wand-q">Wo hast du den Riss zuletzt gespürt?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
-      </div>
-      <p class="wand-ok" hidden>Angekommen. Danke.</p>
-      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -963,11 +925,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <div class="pull"><p>„Eine Kultur ist Menschen, die eine Geschichte aufführen."<cite data-ref="quinn-ishmael"></cite> — In Anlehnung an Quinn: <em>„Die Prämisse der Nehmer lautet: ‚Die Welt gehört dem Menschen.' Die der Lasser: ‚Der Mensch gehört zur Welt.'"</em><cite data-ref="quinn-ishmael"></cite></p></div>
     <p>Damit liegt die eigentliche Frage tiefer als Politik und Ökologie. Sie lautet nicht: Welche Geschichte gefällt uns besser? Sondern: Was halten wir überhaupt für <em>wirklich</em>? Genau dort beginnt die neue Geschichte.</p>
   </div>
-  </div>
-  <div class="res-row" data-sec="st-riss">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -1003,11 +960,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </div>
   </div>
   </div>
-  <div class="res-row" data-sec="st-ereignis">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 4 · st-zeuge — Die Wissenschaft als Zeuge ═══ -->
@@ -1036,11 +988,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </div>
     <p>Den Schlusspunkt setzen Frank, Gleiser und Thompson 2024 mit dem „blinden Fleck": Jede Messung setzt die Erfahrung des Beobachters voraus — und kann sie nie einholen.<cite data-ref="frank-blindspot"></cite> Was die alte Geschichte aus der Welt verbannt hatte, kehrt zurück: nicht als Mystik, sondern als Bedingung allen Messens. Die Physik widerlegt die neue Geschichte nicht. Sie ist ihr Zeuge — ein später. Andere waren früher da.</p>
   </div>
-  </div>
-  <div class="res-row" data-sec="st-zeuge">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -1088,11 +1035,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Diese Stimmen kommen aus verschiedenen Völkern, Sprachen und Orten — verbunden nicht durch eine harmonisierte „Weltweisheit", sondern durch einen Refrain: Der Mensch steht nicht über der Welt; er ist in ihr verwandt, und Bedeutung wohnt diesseits des Todes. Weitere Traditionen — Deloria, Krenak, Yunkaporta, <em>sumak kawsay</em>, <em>whakapapa</em> — stehen mit Primärquellen in <a href="#" onclick="showTab('f1'); return false;" style="color:var(--clay);font-weight:600">Tab F1</a>, jede in ihrer eigenen Stimme. Bleibt eine Frage: Warum fällt uns Übrigen das Loslassen so schwer?</p>
   </div>
   </div>
-  <div class="res-row" data-sec="st-verwandt">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 6 · st-turm — Becker ═══ -->
@@ -1103,16 +1045,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Ernest Becker hat es 1973 präzise beschrieben: Der Wachstumsdrang moderner Zivilisation ist nicht ökonomisch fundiert, sondern psychisch — eine kollektive Strategie, dem eigenen Tod nicht ins Auge zu sehen.<cite data-ref="becker-denial"></cite> Reichtum, Ruhm, Vermächtnis: Unsterblichkeitsprojekte. Wo sie zu schwer werden, übernimmt die Ablenkung. Deshalb verpuffen kluge Reformen an der Oberfläche. Doch wo der Augenblick selbst Bestand hat — objective immortality —, wird der Turm nicht verboten. Er wird überflüssig.<cite data-ref="whitehead-pr"></cite></p>
-    <!-- Wandfrage → Atemwand (context: turm) -->
-    <div class="wand" data-context="turm">
-      <p class="wand-q">Was ist dein Turm?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
-      </div>
-      <p class="wand-ok" hidden>Angekommen. Danke.</p>
-      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1128,11 +1060,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Das erklärt, warum gute Argumente so oft abprallen: Sie zielen auf die Oberfläche, der Antrieb liegt tiefer. Und genau hier greift die neue Geschichte. Wo jeder gefühlte Augenblick bereits Bestand hat — objective immortality —, wird der Turm nicht verboten. Er wird überflüssig. Die Wachstumslogik verliert ihren Treibstoff, und der Weg zu einer anderen Politik wird begehbar. Wie sich das anfühlen kann? Nicht nach Verzicht.</p>
   </div>
   </div>
-  <div class="res-row" data-sec="st-turm">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 7 · st-freude — Solarpunk ═══ -->
@@ -1143,16 +1070,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Solarpunk entstand als bewusst optimistische Antwort auf die Dystopie-Müdigkeit der Gegenwart.<cite data-ref="solarpunk-manifesto"></cite> Die Bewegung darf utopisch sein oder mit den Mühen des Wegs ringen — aber nie dystopisch: Die Antwort muss schön und lebenswert sein, nicht blosser Verzicht. Adam Flynn dreht das Silicon-Valley-Mantra um: leise bewegen und Dinge pflanzen.<cite data-ref="flynn-notes"></cite> Pflanzen. Teilen. Reparieren. Singen. Wieder pflanzen.</p>
-    <!-- Wandfrage → Atemwand (context: pflanzen) -->
-    <div class="wand" data-context="pflanzen">
-      <p class="wand-q">Was pflanzt du?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
-      </div>
-      <p class="wand-ok" hidden>Angekommen. Danke.</p>
-      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1167,11 +1084,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Wenn die neue Geschichte einen Klang hat, dann diesen. Solarpunk entstand ab etwa 2008 als bewusst optimistische Antwort auf die Dystopie-Müdigkeit der Gegenwart — mit einer Leitfrage statt einer Drohung: <em>„What does a sustainable civilization look like, and how can we get there?"</em><cite data-ref="solarpunk-manifesto"></cite> Utopisch dürfen die Geschichten sein, ringend auch. Nur dystopisch nicht: Die Antwort muss schön und lebenswert sein, nicht blosser Verzicht. Adam Flynn dreht das Silicon-Valley-Mantra um: <em>„Solarpunk should move quietly and plant things."</em><cite data-ref="flynn-notes"></cite></p>
     <p>Der Ton ist ansteckend: „wir" statt „man", aktiv statt Konjunktiv, sinnlich statt abstrakt. Freude wird zur politischen Haltung — nicht weil die Krise klein wäre, sondern weil Verzweiflung nichts baut. Pflanzen. Teilen. Reparieren. Singen. Wieder pflanzen. Bleibt das Wie — dafür gibt es keinen Masterplan, aber eine Karte: die Roadmap.</p>
   </div>
-  </div>
-  <div class="res-row" data-sec="st-freude">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -1200,6 +1112,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Die Atemwand →</span>
       <span class="cta-s">Was andere hier gelassen haben.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
   </div>
 
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
@@ -1214,11 +1130,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </h2>
     <p>Was hier als Ontologie beginnt, wird andernorts längst gebaut: Latour, Haraway und Tsing haben die Trennung von Natur und Kultur aufgelöst, Barad die Materie wieder belebt, Raworth und Hickel die Ökonomie neu vermessen. Alle mit Werk, Zitat und Beleg in <a href="#" onclick="showTab('f1'); return false;" style="color:var(--clay);font-weight:600">Tab F1</a>.</p>
   </div>
-  </div>
-  <div class="res-row" data-sec="st-weg">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 </div>
@@ -1273,23 +1184,8 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 </div>
 </div>
 
-    <!-- Poll: Which story did you live today? -->
-    <div class="mi-poll" data-poll="heute">
-      <p class="mi-q">Which story did you live today?</p>
-      <div class="mi-opts">
-        <button class="mi-opt" type="button" data-vote="poll-heute-alt" onclick="pollVote(this)">The old one</button>
-        <button class="mi-opt" type="button" data-vote="poll-heute-neu" onclick="pollVote(this)">The new one</button>
-        <button class="mi-opt" type="button" data-vote="poll-heute-beide" onclick="pollVote(this)">Both</button>
-      </div>
-      <div class="mi-res" hidden></div>
-    </div>
   </div>
 
-  <div class="res-row" data-sec="st-geschichten">
-    <span class="res-hint">Tap the leaf when something stirs — anonymous.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 2 · st-riss — The Invisible Story ═══ -->
@@ -1300,16 +1196,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Six of nine planetary boundaries are crossed.<cite data-ref="richardson-boundaries"></cite> At the same time, the WHO has declared loneliness a global health priority.<cite data-ref="who-loneliness"></cite> The logic of More no longer holds — not outside, not inside. And still, clever reforms fizzle, as if they were working against something invisible. They are: against a story no one speaks aloud, because everyone mistakes it for reality.<cite data-ref="quinn-ishmael"></cite></p>
-    <!-- Wandfrage → Atemwand (context: riss) -->
-    <div class="wand" data-context="riss">
-      <p class="wand-q">Where did you last feel the crack?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
-      </div>
-      <p class="wand-ok" hidden>Received. Thank you.</p>
-      <p class="wand-err" hidden>Could not be saved.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1326,11 +1212,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <div class="pull"><p>"A culture is people enacting a story."<cite data-ref="quinn-ishmael"></cite> — Following Daniel Quinn: <em>"The premise of the Taker story is 'the world belongs to man.' The premise of the Leaver story is 'man belongs to the world.'"</em><cite data-ref="quinn-ishmael"></cite></p></div>
     <p>Which places the real question deeper than politics and ecology. It is not: which story do we like better? It is: what do we take to be <em>real</em> in the first place? That is exactly where the new story begins.</p>
   </div>
-  </div>
-  <div class="res-row" data-sec="st-riss">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -1366,11 +1247,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </div>
   </div>
   </div>
-  <div class="res-row" data-sec="st-ereignis">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 4 · st-zeuge — Science as Witness ═══ -->
@@ -1399,11 +1275,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </div>
     <p>The closing word comes from Frank, Gleiser and Thompson in 2024, with the "blind spot": every measurement presupposes the experience of the observer — and can never catch up with it.<cite data-ref="frank-blindspot"></cite> What the old story had banished from the world returns — not as mysticism, but as the condition of all measuring. Physics does not refute the new story. It is its witness — a late one. Others were there earlier.</p>
   </div>
-  </div>
-  <div class="res-row" data-sec="st-zeuge">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -1451,11 +1322,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>These voices come from different peoples, languages and places — joined not by a harmonized "world wisdom" but by a refrain: the human being does not stand above the world; we are kin within it, and meaning lives on this side of death. Further traditions — Deloria, Krenak, Yunkaporta, <em>sumak kawsay</em>, <em>whakapapa</em> — stand with primary sources in <a href="#" onclick="showTab('f1'); return false;" style="color:var(--clay);font-weight:600">Tab F1</a>, each in its own voice. Which leaves one question: why do the rest of us find letting go so hard?</p>
   </div>
   </div>
-  <div class="res-row" data-sec="st-verwandt">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 6 · st-turm — Becker ═══ -->
@@ -1466,16 +1332,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Ernest Becker described it precisely in 1973: modern civilization's drive to grow is not economic but psychic — a collective strategy for not looking one's own death in the eye.<cite data-ref="becker-denial"></cite> Wealth, fame, legacy: immortality projects. Where they grow too heavy, distraction takes over. That is why clever reforms bounce off the surface. But where the moment itself endures — objective immortality — the tower is not forbidden. It becomes unnecessary.<cite data-ref="whitehead-pr"></cite></p>
-    <!-- Wandfrage → Atemwand (context: turm) -->
-    <div class="wand" data-context="turm">
-      <p class="wand-q">What is your tower?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
-      </div>
-      <p class="wand-ok" hidden>Received. Thank you.</p>
-      <p class="wand-err" hidden>Could not be saved.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1491,11 +1347,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Which explains why good arguments so often bounce off: they aim at the surface while the drive lies deeper. And exactly here the new story takes hold. Where every felt moment already endures — objective immortality — the tower is not forbidden. It becomes unnecessary. The logic of growth loses its fuel, and the way toward a different politics becomes walkable. What might that feel like? Not like renunciation.</p>
   </div>
   </div>
-  <div class="res-row" data-sec="st-turm">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 7 · st-freude — Solarpunk ═══ -->
@@ -1506,16 +1357,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Solarpunk arose as a deliberately optimistic answer to our dystopia fatigue.<cite data-ref="solarpunk-manifesto"></cite> The movement may be utopian or wrestle with the labors of the way — but never dystopian: the answer must be beautiful and livable, not mere renunciation. Adam Flynn inverts the Silicon Valley mantra: move quietly and plant things.<cite data-ref="flynn-notes"></cite> Plant. Share. Repair. Sing. Plant again.</p>
-    <!-- Wandfrage → Atemwand (context: pflanzen) -->
-    <div class="wand" data-context="pflanzen">
-      <p class="wand-q">What are you planting?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
-      </div>
-      <p class="wand-ok" hidden>Received. Thank you.</p>
-      <p class="wand-err" hidden>Could not be saved.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1530,11 +1371,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>If the new story has a sound, this is it. Solarpunk emerged from around 2008 as a deliberately optimistic answer to our dystopia fatigue — with a guiding question instead of a threat: <em>"What does a sustainable civilization look like, and how can we get there?"</em><cite data-ref="solarpunk-manifesto"></cite> The stories may be utopian, or wrestle with the labors of the way. Only never dystopian: the answer must be beautiful and livable, not mere renunciation. Adam Flynn inverts the Silicon Valley mantra: <em>"Solarpunk should move quietly and plant things."</em><cite data-ref="flynn-notes"></cite></p>
     <p>The tone is contagious: "we" instead of "one," active instead of subjunctive, sensuous instead of abstract. Joy becomes a political stance — not because the crisis is small, but because despair builds nothing. Plant. Share. Repair. Sing. Plant again. Which leaves the how — and for that there is no master plan, but there is a map: the roadmap.</p>
   </div>
-  </div>
-  <div class="res-row" data-sec="st-freude">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -1563,6 +1399,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">The breath wall →</span>
       <span class="cta-s">What others have left here.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
+    </a>
   </div>
 
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
@@ -1577,11 +1417,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </h2>
     <p>What begins here as ontology is already being built elsewhere: Latour, Haraway, and Tsing dissolved the divide between nature and culture, Barad re-enlivened matter, Raworth and Hickel remeasured the economy. All with work, quotation, and citation in <a href="#" onclick="showTab('f1'); return false;" style="color:var(--clay);font-weight:600">Tab F1</a>.</p>
   </div>
-  </div>
-  <div class="res-row" data-sec="st-weg">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 </div>
@@ -1696,11 +1531,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="anote">Levin und seine Familie sind erdacht; die zitierten Theoretiker und ihre Quellen sind es nicht.</div>
   </div>
-  <div class="res-row" data-sec="er-nacht">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 2 · er-schwelle — Rückblick aus 2047 ═══ -->
@@ -1711,16 +1541,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Ein Rückblick aus dem Jahr 2047 auf ein Jahrzehnt der Erschöpfung — und auf das, was danach kam: eine Steuer, die Vermögen entkonzentrierte, eine Schule ohne Zaun, ein Raum im Haus, in dem gestorben wird. Sechs Kapitel über eine Gesellschaft, die aufgehört hat, sich selbst zu belügen.</p>
-    <!-- Poll: Hältst du diese Wende für möglich? -->
-    <div class="mi-poll" data-poll="wende">
-      <p class="mi-q">Hältst du diese Wende für möglich?</p>
-      <div class="mi-opts">
-        <button class="mi-opt" type="button" data-vote="poll-wende-nein" onclick="pollVote(this)">Nein</button>
-        <button class="mi-opt" type="button" data-vote="poll-wende-ja" onclick="pollVote(this)">Ja, aber nicht so</button>
-        <button class="mi-opt" type="button" data-vote="poll-wende-begonnen" onclick="pollVote(this)">Sie hat begonnen</button>
-      </div>
-      <div class="mi-res" hidden></div>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Die ganze Geschichte lesen</span><span class="en-text">Read the whole story</span></span><span class="lbl-less"><span class="de-text">Zuklappen</span><span class="en-text">Close</span></span>
@@ -1809,11 +1629,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="anote">Fiktiv und prospektiv erzählt; die Zahlen sind illustrativ, nicht prognostisch.</div>
   </div>
-  <div class="res-row" data-sec="er-schwelle">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 3 · er-enkelin — Aaretal, um 2070 ═══ -->
@@ -1877,11 +1692,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Der Weg dorthin →</span>
       <span class="cta-s">Vier Schichten, sechs Jahrzehnte.</span>
     </a>
-  </div>
-  <div class="res-row" data-sec="er-enkelin">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
   </div>
 </section>
 </div>
@@ -1991,11 +1805,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="anote">Levin and his family are imagined; the theorists cited and their sources are not.</div>
   </div>
-  <div class="res-row" data-sec="er-nacht">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 2 · er-schwelle — looking back from 2047 ═══ -->
@@ -2006,16 +1815,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>A look back from 2047 at a decade of exhaustion — and at what followed: a tax that de-concentrated wealth, a school without a fence, a room in the house where people die. Six chapters on a society that stopped lying to itself.</p>
-    <!-- Poll: Do you think this turn is possible? -->
-    <div class="mi-poll" data-poll="wende">
-      <p class="mi-q">Do you think this turn is possible?</p>
-      <div class="mi-opts">
-        <button class="mi-opt" type="button" data-vote="poll-wende-nein" onclick="pollVote(this)">No</button>
-        <button class="mi-opt" type="button" data-vote="poll-wende-ja" onclick="pollVote(this)">Yes, but not like this</button>
-        <button class="mi-opt" type="button" data-vote="poll-wende-begonnen" onclick="pollVote(this)">It has begun</button>
-      </div>
-      <div class="mi-res" hidden></div>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Die ganze Geschichte lesen</span><span class="en-text">Read the whole story</span></span><span class="lbl-less"><span class="de-text">Zuklappen</span><span class="en-text">Close</span></span>
@@ -2104,11 +1903,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="anote">Fictional and prospective; the figures are illustrative, not predictive.</div>
   </div>
-  <div class="res-row" data-sec="er-schwelle">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 3 · er-enkelin — Aare valley, around 2070 ═══ -->
@@ -2172,11 +1966,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">The way there →</span>
       <span class="cta-s">Four layers, six decades.</span>
     </a>
-  </div>
-  <div class="res-row" data-sec="er-enkelin">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
+    </a>
   </div>
 </section>
 </div>
@@ -2297,11 +2090,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
 
     </div>
-  </div>
-  <div class="res-row" data-sec="gr-westlich">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -2487,11 +2275,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
 
     </div>
-  </div>
-  <div class="res-row" data-sec="gr-wissenschaft">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -2705,11 +2488,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     </div>
   </div>
-  <div class="res-row" data-sec="gr-indigen">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
   <!-- GROUP 3: BRÜCKEN -->
@@ -2864,11 +2642,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     </div>
   </div>
-  <div class="res-row" data-sec="gr-bruecken">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
   <!-- GROUP 5: SOZIAL- &amp; KULTURWISSENSCHAFTLICHE STIMMEN -->
@@ -2937,11 +2710,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Die Belege →</span>
       <span class="cta-s">Literaturverzeichnis und Quellenverifikation.</span>
     </a>
-  </div>
-  <div class="res-row" data-sec="gr-politisch">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
   </div>
 </section>
 
@@ -3027,11 +2799,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
 
     </div>
-  </div>
-  <div class="res-row" data-sec="gr-westlich">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -3215,11 +2982,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     </div>
   </div>
-  <div class="res-row" data-sec="gr-wissenschaft">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
   <!-- GROUP 3: INDIGENOUS PHILOSOPHIES -->
@@ -3337,11 +3099,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
         </div></div>
       </div>
     </div>
-  </div>
-  <div class="res-row" data-sec="gr-indigen">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -3479,11 +3236,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     </div>
   </div>
-  <div class="res-row" data-sec="gr-bruecken">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
   <!-- GROUP 5: SOCIAL AND CULTURAL SCIENCES -->
@@ -3552,11 +3304,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">The evidence →</span>
       <span class="cta-s">Bibliography and source verification.</span>
     </a>
-  </div>
-  <div class="res-row" data-sec="gr-politisch">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
+    </a>
   </div>
 </section>
 
@@ -3587,11 +3338,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <div class="review-banner" style="margin-top:30px">Letzte Überprüfung: <strong>30. April 2026</strong> · Diese Bibliographie listet die zentralen, in dieser Seite zitierten oder paraphrasierten Werke. Sie erhebt keinen Anspruch auf Vollständigkeit für die jeweiligen Forschungsfelder.</div>
   </div>
 
-  <div class="res-row" data-sec="gr-quellen">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 
   <details class="verif-collapse">
     <summary>Quellenverifikation — Status der zentralen Behauptungen <span class="vlabel">·  Stand 30. April 2026</span></summary>
@@ -3636,6 +3382,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Teile einen Atemzug →</span>
       <span class="cta-s">Was andere hier gelassen haben.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
   </div>
 
 </div>
@@ -3655,11 +3405,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <div class="review-banner" style="margin-top:30px">Last review: <strong>30 April 2026</strong> · This bibliography lists the central works cited or paraphrased in this site. It is not intended as exhaustive coverage of the relevant fields.</div>
   </div>
 
-  <div class="res-row" data-sec="gr-quellen">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 
   <details class="verif-collapse">
     <summary>Source verification — status of central claims <span class="vlabel">· last reviewed 30 April 2026</span></summary>
@@ -3703,6 +3448,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <a class="cta-card" href="#" onclick="setSection('breath'); return false;">
       <span class="cta-t">Share a breath →</span>
       <span class="cta-s">What others have left here.</span>
+    </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
     </a>
   </div>
 
@@ -3764,11 +3513,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
         <span class="cta-t"><span class="de-text">Zurück an den Anfang →</span><span class="en-text">Back to the beginning →</span></span>
         <span class="cta-s"><span class="de-text">Die Geschichte, von vorn.</span><span class="en-text">The story, from the start.</span></span>
       </a>
-    </div>
-    <div class="res-row" data-sec="at-wand">
-      <span class="res-hint"><span class="de-text">Klingt etwas an? Tippe das Blatt.</span><span class="en-text">Something stirring? Tap the leaf.</span></span>
-      <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-      <span class="res-count" aria-live="polite"></span>
+      <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+        <span class="cta-t"><span class="de-text">Eine Gabe schenken →</span><span class="en-text">Give a gift →</span></span>
+        <span class="cta-s"><span class="de-text">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span><span class="en-text">A voice, a practice, a source this page is missing.</span></span>
+      </a>
     </div>
     </div>
   </div>
@@ -3847,11 +3595,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
         <p id="gift-msg" class="atem-msg" aria-live="polite"></p>
       </div>
 
-    <div class="res-row" data-sec="at-gabe">
-      <span class="res-hint"><span class="de-text">Klingt etwas an? Tippe das Blatt.</span><span class="en-text">Something stirring? Tap the leaf.</span></span>
-      <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-      <span class="res-count" aria-live="polite"></span>
-    </div>
     </div>
   </div>
 
@@ -3915,11 +3658,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   <div class="st-e2">
     <p>Diese Roadmap ist kein technokratischer Stufenplan, keine Parteiplattform und kein abschliessender Heilsweg — sondern ein konsistenter Rahmen, der die vier Ebenen in Beziehung setzt, damit Akteure auf jeder Ebene erkennen können, ob ihr Tun mit dem zusammenwirkt, was andere tun. Warum die Reihenfolge wichtig ist und woran frühere Reformen scheiterten, entfaltet Tab II.</p>
   </div>
-  <div class="res-row" data-sec="rm-warum">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 2 · rm-ontologie — Schicht 01 ═══ -->
@@ -3969,11 +3707,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  </div>
-  <div class="res-row" data-sec="rm-ontologie">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -4027,11 +3760,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  </div>
-  <div class="res-row" data-sec="rm-psyche">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -4096,11 +3824,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  </div>
-  <div class="res-row" data-sec="rm-institution">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -4176,11 +3899,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Zeit &amp; Prinzipien →</span>
       <span class="cta-s">Vier Phasen, drei Quertheme, acht Prinzipien.</span>
     </a>
-  </div>
-  <div class="res-row" data-sec="rm-struktur">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
   </div>
 </section>
 </div>
@@ -4240,11 +3962,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   <div class="st-e2">
     <p>This roadmap is not a technocratic step-plan, not a party platform, not a final path to salvation — it is a consistent framework that places the four levels in relation to one another, so that actors at every level can recognise whether what they do aligns with what others do. Why the ordering matters, and why earlier reforms have failed, is unfolded in Tab II.</p>
   </div>
-  <div class="res-row" data-sec="rm-warum">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 2 · rm-ontologie — Layer 01 ═══ -->
@@ -4294,11 +4011,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  </div>
-  <div class="res-row" data-sec="rm-ontologie">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -4352,11 +4064,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  </div>
-  <div class="res-row" data-sec="rm-psyche">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -4421,11 +4128,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  </div>
-  <div class="res-row" data-sec="rm-institution">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
   </div>
 </section>
 
@@ -4501,11 +4203,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Time &amp; principles →</span>
       <span class="cta-s">Four phases, three cross-cutting problems, eight principles.</span>
     </a>
-  </div>
-  <div class="res-row" data-sec="rm-struktur">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
+    </a>
   </div>
 </section>
 </div>
@@ -4656,11 +4357,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  <div class="res-row" data-sec="rm-zeit">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 2 · rm-haken — Drei Quertheme ═══ -->
@@ -4701,11 +4397,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  <div class="res-row" data-sec="rm-haken">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 3 · rm-prinzipien — Acht Leitprinzipien ═══ -->
@@ -4738,11 +4429,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Woher das kommt →</span>
       <span class="cta-s">Stimmen, Quellen, Belege.</span>
     </a>
-  </div>
-  <div class="res-row" data-sec="rm-prinzipien">
-    <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
   </div>
 </section>
 </div>
@@ -4872,11 +4562,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  <div class="res-row" data-sec="rm-zeit">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 2 · rm-haken — Three Cross-Themes ═══ -->
@@ -4917,11 +4602,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
-  <div class="res-row" data-sec="rm-haken">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
-  </div>
 </section>
 
 <!-- ═══ STATION 3 · rm-prinzipien — Eight Guiding Principles ═══ -->
@@ -4954,11 +4634,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Where this comes from →</span>
       <span class="cta-s">Voices, sources, evidence.</span>
     </a>
-  </div>
-  <div class="res-row" data-sec="rm-prinzipien">
-    <span class="res-hint">Something stirring? Tap the leaf.</span>
-    <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
-    <span class="res-count" aria-live="polite"></span>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
+    </a>
   </div>
 </section>
 </div>
@@ -4967,6 +4646,35 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 </div><!-- /tab-ii -->
 
 
+<!-- ══════ GEFÜHLS-FELD: klebt unten am Viewport, bleibt am Ende von <main> oberhalb des Footers stehen ══════
+     Speichert in 'breaths' mit context 'gefuehl' → erscheint auf der Atemwand.
+     Ausgeblendet in der Sektion 'breath' (Atemwand/Gabe). -->
+<div class="feel" data-context="gefuehl" role="region" aria-label="Wie fühlt sich das an?">
+  <div class="feel-inner">
+    <p class="feel-q">
+      <span class="de-text">Wie fühlt sich das an?</span>
+      <span class="en-text">How does this feel?</span>
+    </p>
+    <div class="feel-form">
+      <input class="atem-input feel-in" type="text" maxlength="140"
+        data-ph-de="Ein Satz genügt — anonym."
+        data-ph-en="One sentence is enough — anonymous."
+        aria-label="Antwort">
+      <button class="atem-btn" type="button" onclick="feelGive(this)">
+        <span class="de-text">Geben</span>
+        <span class="en-text">Give</span>
+      </button>
+    </div>
+    <p class="feel-ok" hidden>
+      <span class="de-text">Angekommen. Danke.</span>
+      <span class="en-text">Received. Thank you.</span>
+    </p>
+    <p class="feel-err" hidden>
+      <span class="de-text">Konnte nicht gespeichert werden.</span>
+      <span class="en-text">Could not be saved.</span>
+    </p>
+  </div>
+</div>
 </main>
 
 <!-- ══════════════════════ FOOTER ══════════════════════ -->
@@ -5244,7 +4952,7 @@ async function loadBreaths(){
   const wall = document.getElementById('breath-wall');
   if(!wall) return;
   try{
-    // 'context' markiert Wandfragen-Antworten aus dem Pfad (riss/turm/pflanzen).
+    // 'context' markiert Wandfragen-Antworten (Tab B) und Einträge aus dem Gefühls-Feld (gefuehl).
     // Fallback ohne die Spalte, solange das SQL aus dem Handoff noch nicht lief.
     let res = await sb
       .from('breaths').select('text,place,context')
@@ -5264,7 +4972,7 @@ async function loadBreaths(){
   }
 }
 // Kontext-Labels der Wandfragen (beide Sprachen als Spans — reagiert auf setLang)
-const _ctxLabels = { riss:['Riss','Crack'], turm:['Turm','Tower'], pflanzen:['Pflanzen','Planting'] };
+const _ctxLabels = { riss:['Riss','Crack'], turm:['Turm','Tower'], pflanzen:['Pflanzen','Planting'], gefuehl:['Gefühlt','Felt'] };
 function renderBreaths(rows){
   const wall = document.getElementById('breath-wall');
   if(!rows.length){
@@ -5358,15 +5066,10 @@ function _msg(el, isErr, de, en){
   el.classList.toggle('err', !!isErr);
 }
 
-// ══════════════ DER PFAD — Stationen, Resonanz & Mikro-Interaktionen ══════════════
-// Umbau gemäss handoff_pfad_umbau_260823_1525.md. Benötigt in Supabase die
-// Tabelle 'resonances' und die Spalte 'breaths.context' (SQL siehe Handoff).
+// ══════════════ DER PFAD — Stationen & Mikro-Interaktionen ══════════════
+// Benötigt in Supabase die Spalte 'breaths.context' (SQL siehe Handoff).
 
-// ── Kleine localStorage-Helfer (privater Modus etc. wirft sonst) ──
-function _lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
-function _lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
-
-// ── Ist der Supabase-Client konfiguriert? (Platzhalter-Key ⇒ Resonanz aus) ──
+// ── Ist der Supabase-Client konfiguriert? (Platzhalter-Key ⇒ Eingabefelder aus) ──
 function _resReady(){
   try{
     return typeof sb !== 'undefined' && !!sb
@@ -5409,101 +5112,6 @@ function flipSentence(btn){
   btn.classList.toggle('proc', i%2===1); // Prozess-Form hervorheben
 }
 
-// ── Resonanz-Blatt: anonymes «Das wirkt in mir» ──
-var _resCounts = {};
-function _resPaint(id, n, done){
-  _resCounts[id] = n;
-  document.querySelectorAll('.res-row[data-sec="'+id+'"]').forEach(row=>{
-    if(done !== undefined) row.classList.toggle('res-done', !!done);
-    row.querySelectorAll('.res-count').forEach(c=>{ c.textContent = n>0 ? n : ''; });
-  });
-}
-async function _resFetch(id){
-  if(!_resReady()) return;
-  try{
-    const { count, error } = await sb.from('resonances')
-      .select('*',{count:'exact',head:true}).eq('section_id',id);
-    if(error) throw error;
-    _resPaint(id, count||0, !!_lsGet('res_'+id));
-  }catch(e){ /* leise — Zähler bleibt leer */ }
-}
-async function resTap(btn){
-  const row = btn.closest('.res-row');
-  if(!row || !_resReady()) return;
-  const id = row.dataset.sec;
-  if(_lsGet('res_'+id)) return;            // eine Resonanz pro Gerät
-  _lsSet('res_'+id,'1');
-  _resPaint(id, (_resCounts[id]||0)+1, true); // optimistisches UI
-  try{
-    const lang = document.body.classList.contains('en') ? 'en' : 'de';
-    const { error } = await sb.from('resonances').insert({ section_id:id, lang:lang });
-    if(error) throw error;
-  }catch(e){ /* leise — der optimistische Zähler bleibt stehen */ }
-}
-
-// ── Polls: mehrere Umfragen, je eine pro .mi-poll ──────────────────
-// Schlüssel steht als data-poll am Container, Optionen als data-vote
-// an den Buttons. Balkenbeschriftung kommt aus dem Buttontext selbst —
-// dadurch ist sie automatisch in der richtigen Sprache.
-function _pollKeys(box){
-  return Array.from(box.querySelectorAll('.mi-opt')).map(b=>b.dataset.vote);
-}
-async function pollVote(btn){
-  const box = btn.closest('.mi-poll');
-  if(!box || !_resReady()) return;
-  const key = box.dataset.poll || 'heute';
-  if(_lsGet('poll_'+key)) return;
-  const choice = btn.dataset.vote;
-  _lsSet('poll_'+key, choice);
-  // Beide Sprachfassungen derselben Umfrage sperren und Wahl markieren
-  document.querySelectorAll('.mi-poll[data-poll="'+key+'"] .mi-opt').forEach(b=>{
-    b.disabled = true;
-    b.classList.toggle('mine', b.dataset.vote===choice);
-  });
-  try{
-    const lang = document.body.classList.contains('en') ? 'en' : 'de';
-    const { error } = await sb.from('resonances')
-      .insert({ section_id: choice, lang: lang });
-    if(error) throw error;
-  }catch(e){ /* leise */ }
-  _pollShow(key);
-}
-async function _pollShow(key){
-  if(!_resReady()) return;
-  const boxes = document.querySelectorAll('.mi-poll[data-poll="'+key+'"]');
-  if(!boxes.length) return;
-  const ids = _pollKeys(boxes[0]);
-  const counts = {};
-  try{
-    for(const id of ids){
-      const { count, error } = await sb.from('resonances')
-        .select('*',{count:'exact',head:true}).eq('section_id',id);
-      if(error) throw error;
-      counts[id] = count||0;
-    }
-  }catch(e){ return; } // leise — Poll bleibt im Button-Zustand
-  const total = ids.reduce((s,id)=>s+(counts[id]||0),0);
-  const mine = _lsGet('poll_'+key);
-  boxes.forEach(poll=>{
-    const en = !!poll.closest('.en-text');
-    const opts = Array.from(poll.querySelectorAll('.mi-opt'));
-    let html = '';
-    opts.forEach(b=>{
-      const id = b.dataset.vote, n = counts[id]||0;
-      const pct = total ? Math.round(n*100/total) : 0;
-      html += '<div class="mi-bar-row'+(id===mine?' mine':'')+'">'+
-        '<span class="mi-bar-label">'+_esc(b.textContent.trim())+'</span>'+
-        '<span class="mi-bar"><span class="mi-bar-fill" style="width:'+pct+'%"></span></span>'+
-        '<span class="mi-bar-pct">'+pct+'%</span></div>';
-    });
-    html += '<div class="mi-total">'+total+' '+(en?'votes':'Stimmen')+'</div>';
-    const res = poll.querySelector('.mi-res');
-    if(res){ res.innerHTML = html; res.hidden = false; }
-    const wrap = poll.querySelector('.mi-opts');
-    if(wrap) wrap.hidden = true;
-  });
-}
-
 // ── Wandfrage: ein Satz → Atemwand (Tabelle breaths, Spalte context) ──
 async function wandGive(btn){
   const wand = btn.closest('.wand');
@@ -5529,7 +5137,30 @@ async function wandGive(btn){
   }
 }
 
-// ── Init: Scroll-Reveal, Degradation, lazy Zähler ──
+// ── Gefühls-Feld: ein Satz → Atemwand (breaths, context 'gefuehl') ──
+async function feelGive(btn){
+  const box = btn.closest('.feel');
+  if(!box || !_resReady()) return;
+  const input = box.querySelector('.feel-in');
+  const txt = (input && input.value || '').trim();
+  if(!txt) return;
+  btn.disabled = true;
+  const err = box.querySelector('.feel-err'); if(err) err.hidden = true;
+  try{
+    const { error } = await sb.from('breaths').insert({ text: txt, context: box.dataset.context });
+    if(error) throw error;
+    box.querySelector('.feel-form').hidden = true;
+    box.querySelector('.feel-ok').hidden = false;
+    // nach kurzer Zeit wieder öffnen — die Seite lädt sich weiter
+    setTimeout(()=>{ input.value=''; box.querySelector('.feel-form').hidden=false; box.querySelector('.feel-ok').hidden=true; btn.disabled=false; }, 4000);
+    if (typeof loadBreaths === 'function') loadBreaths();
+  }catch(e){
+    btn.disabled = false;
+    if(err) err.hidden = false; // leise — keine Konsolenfehler
+  }
+}
+
+// ── Init: Scroll-Reveal, Degradation, Gefühls-Feld ──
 (function(){
   // Scroll-Reveal für Kernsätze und Destillate — einmalig pro Element
   const revEls = document.querySelectorAll('.st-e0,.st-e1');
@@ -5546,43 +5177,23 @@ async function wandGive(btn){
     revEls.forEach(el=>io.observe(el));
   }
 
-  // Ohne konfigurierten Supabase-Client: Resonanz-UI vollständig ausblenden.
+  // Ohne konfigurierten Supabase-Client: Eingabefelder (Wandfrage, Gefühls-Feld) ausblenden.
   // Umschalter, Satzschalter, Reveals und Tiefer-Toggles laufen immer.
   if(!_resReady()){
-    document.querySelectorAll('.res-row,.mi-poll,.wand').forEach(el=>{ el.style.display='none'; });
+    document.querySelectorAll('.wand,.feel').forEach(el=>{ el.style.display='none'; });
     return;
   }
 
-  // Zähler lazy: erst beim ersten Sichtbarwerden der Station laden
-  const fetched = {};
-  if('IntersectionObserver' in window){
-    const cio = new IntersectionObserver((entries)=>{
-      entries.forEach(en=>{
-        if(!en.isIntersecting) return;
-        // Erst zählen, dann abmelden — sonst geht der Eintrag verloren,
-        // wenn die Station beim Laden noch in einem display:none-Tab liegt.
-        if(en.target.classList.contains('mi-poll')){
-          const k = en.target.dataset.poll || 'heute';
-          if(_lsGet('poll_'+k)) _pollShow(k); // Gerät hat schon gestimmt
-          cio.unobserve(en.target);
-          return;
-        }
-        const id = en.target.dataset.sec;
-        if(id && !fetched[id]){ fetched[id]=1; _resFetch(id); }
-        cio.unobserve(en.target);
-      });
+  // Gefühls-Feld: Enter im Eingabefeld löst «Geben» aus
+  document.querySelectorAll('.feel-in').forEach(inp=>{
+    inp.addEventListener('keydown', e=>{
+      if(e.key !== 'Enter') return;
+      e.preventDefault();
+      const form = inp.closest('.feel-form');
+      const btn = form && form.querySelector('.atem-btn');
+      if(btn && !btn.disabled) feelGive(btn);
     });
-    document.querySelectorAll('.res-row,.mi-poll').forEach(el=>cio.observe(el));
-  } else {
-    document.querySelectorAll('.res-row').forEach(row=>{
-      const id = row.dataset.sec;
-      if(id && !fetched[id]){ fetched[id]=1; _resFetch(id); }
-    });
-    document.querySelectorAll('.mi-poll').forEach(p=>{
-      const k = p.dataset.poll || 'heute';
-      if(_lsGet('poll_'+k)) _pollShow(k);
-    });
-  }
+  });
 })();
 </script>
 
