@@ -650,27 +650,9 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 .sw-btn.sw-old.active{background:var(--bark);border-color:var(--bark)}
 .story-panel{display:none}
 .story-panel.on{display:block;animation:fadeIn .3s ease}
-/* Mikro-Interaktion: Poll (St. 1) */
-.mi-poll{background:var(--paper);border:1px solid rgba(78,130,32,.2);border-radius:10px;padding:22px 24px;margin:34px 0 0}
-.mi-q,.wand-q{font-family:var(--f-display);font-size:1.14rem;font-weight:600;color:var(--moss);margin:0 0 13px}
-.mi-opts{display:flex;gap:10px;flex-wrap:wrap}
-.mi-opt{font-family:var(--f-body);font-style:italic;font-size:.92rem;color:var(--stone);background:none;border:1px solid var(--linen);border-radius:18px;padding:9px 18px;min-height:40px;cursor:pointer;transition:all .2s}
-.mi-opt:hover:not(:disabled){color:var(--moss);border-color:var(--leaf)}
-.mi-opt:disabled{cursor:default;opacity:.55}
-.mi-opt.mine{color:var(--moss);border-color:var(--leaf);opacity:1}
-.mi-bar-row{display:grid;grid-template-columns:minmax(88px,auto) 1fr 44px;gap:10px;align-items:center;margin:8px 0;font-size:.92rem}
-.mi-bar-row.mine .mi-bar-label{font-weight:600;color:var(--moss)}
-.mi-bar{height:8px;background:var(--linen);border-radius:4px;overflow:hidden}
-.mi-bar-fill{display:block;height:100%;background:var(--leaf);border-radius:4px}
-.mi-bar-pct{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);text-align:right}
-.mi-total{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);margin-top:10px}
-/* Mikro-Interaktion: Satzschalter (St. 3) */
-.mi-flipwrap{margin:30px 0 0;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center}
-.mi-flip{background:rgba(95,160,36,.07);border:1px dashed rgba(53,108,26,.35);border-radius:10px;padding:15px 22px;min-height:40px;max-width:100%;cursor:pointer;font-family:var(--f-display);font-style:italic;font-size:clamp(1.15rem,3vw,1.45rem);line-height:1.45;color:var(--bark);transition:color .2s,background .2s}
-.mi-flip.proc{color:var(--moss);background:rgba(95,160,36,.13)}
-.mi-hint{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
-/* Mikro-Interaktion: Wandfrage (St. 2, 6, 7) */
-.wand{margin:30px 0 0}
+/* Wandfrage am Stationsende (alle Inhalts-Tabs) */
+.wand-q{font-family:var(--f-display);font-size:1.14rem;font-weight:600;color:var(--moss);margin:0 0 13px}
+.wand{max-width:var(--measure);margin:26px auto 0}
 .wand-form{display:flex;gap:10px;flex-wrap:wrap}
 .wand-form .atem-input{flex:1 1 220px;width:auto}
 .wand-ok{font-size:.9rem;font-style:italic;color:var(--leaf);margin-top:6px}
@@ -686,8 +668,8 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 .res-row.res-done .res-leaf .lf{fill:var(--leaf)}
 .res-count{font-family:var(--f-mono);font-size:.72rem;color:var(--stone);min-width:1.2em}
 /* CTA-Reihe (Schluss) */
-.cta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;max-width:var(--measure);margin:34px auto 0}
-.cta-card{display:block;background:var(--paper);border:1px solid rgba(78,130,32,.25);border-left:4px solid var(--leaf);border-radius:10px;padding:20px 22px;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;max-width:var(--measure);margin:34px auto 0}
+.cta-card{flex:1 1 240px;display:block;background:var(--paper);border:1px solid rgba(78,130,32,.25);border-left:4px solid var(--leaf);border-radius:10px;padding:20px 22px;text-decoration:none;transition:border-color .2s,box-shadow .2s}
 .cta-card:hover{border-color:var(--leaf);box-shadow:0 2px 8px rgba(25,45,12,.08)}
 .cta-card .cta-t{display:block;font-family:var(--f-display);font-size:1.14rem;font-weight:600;color:var(--moss);margin-bottom:4px}
 .cta-card .cta-s{display:block;font-size:.85rem;font-style:italic;color:var(--stone)}
@@ -701,7 +683,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 }
 @media(max-width:640px){
   .st-e0{min-height:min(40vh,300px);min-height:min(40svh,300px);gap:16px}
-  .mi-poll{padding:18px 18px}
 }
 </style>
 
@@ -829,8 +810,8 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <span class="en-text">Foundations &amp; Sources</span>
   </a>
   <a class="cn-item" data-step="4" data-section="breath" href="#" onclick="setSection('breath'); return false;">
-    <span class="de-text">Teile einen Atemzug</span>
-    <span class="en-text">Share a breath</span>
+    <span class="de-text">Atem &amp; Gabe</span>
+    <span class="en-text">Breath &amp; Gift</span>
   </a>
 </div>
 
@@ -927,19 +908,18 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
 </div>
 </div>
-
-    <!-- Poll: Welche Geschichte hast du heute gelebt? -->
-    <div class="mi-poll" data-poll="heute">
-      <p class="mi-q">Welche Geschichte hast du heute gelebt?</p>
-      <div class="mi-opts">
-        <button class="mi-opt" type="button" data-vote="poll-heute-alt" onclick="pollVote(this)">Die alte</button>
-        <button class="mi-opt" type="button" data-vote="poll-heute-neu" onclick="pollVote(this)">Die neue</button>
-        <button class="mi-opt" type="button" data-vote="poll-heute-beide" onclick="pollVote(this)">Beide</button>
-      </div>
-      <div class="mi-res" hidden></div>
-    </div>
   </div>
 
+  <!-- Wandfrage → Atemwand (context: geschichten) -->
+  <div class="wand" data-context="geschichten">
+    <p class="wand-q">Ist diese Gegenüberstellung stimmig?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="st-geschichten">
     <span class="res-hint">Tippe das Blatt, wenn etwas in dir anklingt — anonym.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -955,16 +935,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Sechs von neun planetaren Grenzen sind überschritten.<cite data-ref="richardson-boundaries"></cite> Zugleich erklärt die WHO Einsamkeit zur globalen Gesundheitspriorität.<cite data-ref="who-loneliness"></cite> Die Logik des Mehr trägt nicht mehr — draussen nicht und drinnen nicht. Und doch verpuffen kluge Reformen, als arbeiteten sie gegen etwas Unsichtbares. Sie tun es: gegen eine Geschichte, die niemand ausspricht, weil alle sie für die Wirklichkeit halten.<cite data-ref="quinn-ishmael"></cite></p>
-    <!-- Wandfrage → Atemwand (context: riss) -->
-    <div class="wand" data-context="riss">
-      <p class="wand-q">Wo hast du den Riss zuletzt gespürt?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
-      </div>
-      <p class="wand-ok" hidden>Angekommen. Danke.</p>
-      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -982,6 +952,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Damit liegt die eigentliche Frage tiefer als Politik und Ökologie. Sie lautet nicht: Welche Geschichte gefällt uns besser? Sondern: Was halten wir überhaupt für <em>wirklich</em>? Genau dort beginnt die neue Geschichte.</p>
   </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: riss) -->
+  <div class="wand" data-context="riss">
+    <p class="wand-q">Wo überzeugt dich diese Diagnose nicht?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="st-riss">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -997,11 +977,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Alfred North Whitehead hat es 1929 ausgearbeitet: Die Grundeinheiten der Wirklichkeit sind keine Substanzen, sondern Werdens-Momente, die ihre Vergangenheit fühlend aufgreifen und sich zu etwas Neuem verdichten.<cite data-ref="whitehead-pr"></cite> Subjekt und Objekt sind keine zwei Arten von Dingen, sondern zwei Phasen desselben Ereignisses. Und was geschehen ist, bleibt geschehen — Whitehead nennt es objective immortality. Bedeutung muss nicht aufgeschoben werden. Sie wohnt im Augenblick selbst.</p>
-    <!-- Satzschalter: Substanz-Form ↔ Prozess-Form -->
-    <div class="mi-flipwrap">
-      <button class="mi-flip" type="button" data-i="0" onclick="flipSentence(this)">Ich habe ein Leben.</button>
-      <span class="mi-hint">tippen</span>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1020,6 +995,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="paraphrase-note">— A. N. Whitehead, <em>Process and Reality</em> (Corrected Edition 1978), S. 167</span>
     </div>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: ereignis) -->
+  <div class="wand" data-context="ereignis">
+    <p class="wand-q">Was spricht dagegen, die Welt als Ereignis zu denken?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="st-ereignis">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -1054,6 +1039,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </div>
     <p>Den Schlusspunkt setzen Frank, Gleiser und Thompson 2024 mit dem „blinden Fleck": Jede Messung setzt die Erfahrung des Beobachters voraus — und kann sie nie einholen.<cite data-ref="frank-blindspot"></cite> Was die alte Geschichte aus der Welt verbannt hatte, kehrt zurück: nicht als Mystik, sondern als Bedingung allen Messens. Die Physik widerlegt die neue Geschichte nicht. Sie ist ihr Zeuge — ein später. Andere waren früher da.</p>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: physik) -->
+  <div class="wand" data-context="physik">
+    <p class="wand-q">Kennst du dich mit dieser Deutung der Physik aus?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="st-zeuge">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -1106,6 +1101,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Diese Stimmen kommen aus verschiedenen Völkern, Sprachen und Orten — verbunden nicht durch eine harmonisierte „Weltweisheit", sondern durch einen Refrain: Der Mensch steht nicht über der Welt; er ist in ihr verwandt, und Bedeutung wohnt diesseits des Todes. Weitere Traditionen — Deloria, Krenak, Yunkaporta, <em>sumak kawsay</em>, <em>whakapapa</em> — stehen mit Primärquellen in <a href="#" onclick="showTab('f1'); return false;" style="color:var(--clay);font-weight:600">Tab F1</a>, jede in ihrer eigenen Stimme. Bleibt eine Frage: Warum fällt uns Übrigen das Loslassen so schwer?</p>
   </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: verwandt) -->
+  <div class="wand" data-context="verwandt">
+    <p class="wand-q">Wird hier zu leicht geborgt? Wessen Stimme fehlt?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="st-verwandt">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -1121,16 +1126,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Ernest Becker hat es 1973 präzise beschrieben: Der Wachstumsdrang moderner Zivilisation ist nicht ökonomisch fundiert, sondern psychisch — eine kollektive Strategie, dem eigenen Tod nicht ins Auge zu sehen.<cite data-ref="becker-denial"></cite> Reichtum, Ruhm, Vermächtnis: Unsterblichkeitsprojekte. Wo sie zu schwer werden, übernimmt die Ablenkung. Deshalb verpuffen kluge Reformen an der Oberfläche. Doch wo der Augenblick selbst Bestand hat — objective immortality —, wird der Turm nicht verboten. Er wird überflüssig.<cite data-ref="whitehead-pr"></cite></p>
-    <!-- Wandfrage → Atemwand (context: turm) -->
-    <div class="wand" data-context="turm">
-      <p class="wand-q">Was ist dein Turm?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
-      </div>
-      <p class="wand-ok" hidden>Angekommen. Danke.</p>
-      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1145,6 +1140,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Ernest Beckers Antwort von 1973 ist unbequem: Der Wachstumszwang moderner Zivilisation ist nicht ökonomisch fundiert, sondern psychisch. Wir sind die Spezies, die weiss, dass sie sterben wird — und die Wachstumslogik ist eine kollektive Strategie, dieser Tatsache nicht ins Auge zu sehen.<cite data-ref="becker-denial"></cite> Die Fluchtwege nennt er Unsterblichkeitsprojekte: Reichtum, Ruhm, Vermächtnis. Wo sie zu schwer werden, übernimmt die Ablenkung.</p>
     <p>Das erklärt, warum gute Argumente so oft abprallen: Sie zielen auf die Oberfläche, der Antrieb liegt tiefer. Und genau hier greift die neue Geschichte. Wo jeder gefühlte Augenblick bereits Bestand hat — objective immortality —, wird der Turm nicht verboten. Er wird überflüssig. Die Wachstumslogik verliert ihren Treibstoff, und der Weg zu einer anderen Politik wird begehbar. Wie sich das anfühlen kann? Nicht nach Verzicht.</p>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: turm) -->
+  <div class="wand" data-context="turm">
+    <p class="wand-q">Welchen Turm würdest du verteidigen — und warum?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="st-turm">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -1161,16 +1166,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Solarpunk entstand als bewusst optimistische Antwort auf die Dystopie-Müdigkeit der Gegenwart.<cite data-ref="solarpunk-manifesto"></cite> Die Bewegung darf utopisch sein oder mit den Mühen des Wegs ringen — aber nie dystopisch: Die Antwort muss schön und lebenswert sein, nicht blosser Verzicht. Adam Flynn dreht das Silicon-Valley-Mantra um: leise bewegen und Dinge pflanzen.<cite data-ref="flynn-notes"></cite> Pflanzen. Teilen. Reparieren. Singen. Wieder pflanzen.</p>
-    <!-- Wandfrage → Atemwand (context: pflanzen) -->
-    <div class="wand" data-context="pflanzen">
-      <p class="wand-q">Was pflanzt du?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
-      </div>
-      <p class="wand-ok" hidden>Angekommen. Danke.</p>
-      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1185,6 +1180,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Wenn die neue Geschichte einen Klang hat, dann diesen. Solarpunk entstand ab etwa 2008 als bewusst optimistische Antwort auf die Dystopie-Müdigkeit der Gegenwart — mit einer Leitfrage statt einer Drohung: <em>„What does a sustainable civilization look like, and how can we get there?"</em><cite data-ref="solarpunk-manifesto"></cite> Utopisch dürfen die Geschichten sein, ringend auch. Nur dystopisch nicht: Die Antwort muss schön und lebenswert sein, nicht blosser Verzicht. Adam Flynn dreht das Silicon-Valley-Mantra um: <em>„Solarpunk should move quietly and plant things."</em><cite data-ref="flynn-notes"></cite></p>
     <p>Der Ton ist ansteckend: „wir" statt „man", aktiv statt Konjunktiv, sinnlich statt abstrakt. Freude wird zur politischen Haltung — nicht weil die Krise klein wäre, sondern weil Verzweiflung nichts baut. Pflanzen. Teilen. Reparieren. Singen. Wieder pflanzen. Bleibt das Wie — dafür gibt es keinen Masterplan, aber eine Karte: die Roadmap.</p>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: pflanzen) -->
+  <div class="wand" data-context="pflanzen">
+    <p class="wand-q">Pflanzt du auch etwas für uns?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="st-freude">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -1204,7 +1209,18 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Eine neue Geschichte ist keine bessere Theorie. Sie ist eine andere Weise, am Morgen aufzuwachen.<br><br>Der Baum ist ein Gegenüber. Die Ernte ist ein Geschenk. Der Atemzug zählt. Die Welt hört zu. Und wir — wir sind <em>mittendrin</em>, nicht darüber.<br><br>Wir müssen nicht mehr. Wir dürfen sein. Wir dürfen uns neugierig immer wieder neu erfinden. — Und: wir <em>gehören</em> zur Welt, wir sind hier willkommen, genauso wie alle Anderen auch willkommen sind.</p>
   </div>
 
-  <!-- CTA-Reihe: drei Wege weiter -->
+  <!-- Wandfrage → Atemwand (context: weg) -->
+  <div class="wand" data-context="weg">
+    <p class="wand-q">Was fehlt dieser Geschichte noch?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
+
+  <!-- CTA-Reihe: vier Wege weiter -->
   <div class="cta-row">
     <a class="cta-card" href="#" onclick="showTab('i'); return false;">
       <span class="cta-t">Der Weg dorthin →</span>
@@ -1217,6 +1233,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <a class="cta-card" href="#" onclick="showTab('atem-wall'); return false;">
       <span class="cta-t">Die Atemwand →</span>
       <span class="cta-s">Was andere hier gelassen haben.</span>
+    </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
     </a>
   </div>
 
@@ -1290,19 +1310,18 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
 </div>
 </div>
-
-    <!-- Poll: Which story did you live today? -->
-    <div class="mi-poll" data-poll="heute">
-      <p class="mi-q">Which story did you live today?</p>
-      <div class="mi-opts">
-        <button class="mi-opt" type="button" data-vote="poll-heute-alt" onclick="pollVote(this)">The old one</button>
-        <button class="mi-opt" type="button" data-vote="poll-heute-neu" onclick="pollVote(this)">The new one</button>
-        <button class="mi-opt" type="button" data-vote="poll-heute-beide" onclick="pollVote(this)">Both</button>
-      </div>
-      <div class="mi-res" hidden></div>
-    </div>
   </div>
 
+  <!-- Wandfrage → Atemwand (context: geschichten) -->
+  <div class="wand" data-context="geschichten">
+    <p class="wand-q">Does this contrast hold?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="st-geschichten">
     <span class="res-hint">Tap the leaf when something stirs — anonymous.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -1318,16 +1337,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Six of nine planetary boundaries are crossed.<cite data-ref="richardson-boundaries"></cite> At the same time, the WHO has declared loneliness a global health priority.<cite data-ref="who-loneliness"></cite> The logic of More no longer holds — not outside, not inside. And still, clever reforms fizzle, as if they were working against something invisible. They are: against a story no one speaks aloud, because everyone mistakes it for reality.<cite data-ref="quinn-ishmael"></cite></p>
-    <!-- Wandfrage → Atemwand (context: riss) -->
-    <div class="wand" data-context="riss">
-      <p class="wand-q">Where did you last feel the crack?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
-      </div>
-      <p class="wand-ok" hidden>Received. Thank you.</p>
-      <p class="wand-err" hidden>Could not be saved.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1345,6 +1354,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Which places the real question deeper than politics and ecology. It is not: which story do we like better? It is: what do we take to be <em>real</em> in the first place? That is exactly where the new story begins.</p>
   </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: riss) -->
+  <div class="wand" data-context="riss">
+    <p class="wand-q">Where does this diagnosis fail to convince you?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="st-riss">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -1360,11 +1379,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Alfred North Whitehead worked it out in 1929: the basic units of reality are not substances but moments of becoming that feelingly take up their past and condense it into something new.<cite data-ref="whitehead-pr"></cite> Subject and object are not two kinds of things but two phases of the same event. And what has happened remains — Whitehead calls it objective immortality. Meaning need not be deferred. It lives in the moment itself.</p>
-    <!-- Satzschalter: Substanz-Form ↔ Prozess-Form -->
-    <div class="mi-flipwrap">
-      <button class="mi-flip" type="button" data-i="0" onclick="flipSentence(this)">I have a life.</button>
-      <span class="mi-hint">tap</span>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1383,6 +1397,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="paraphrase-note">— A. N. Whitehead, <em>Process and Reality</em> (Corrected Ed. 1978), p. 167</span>
     </div>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: ereignis) -->
+  <div class="wand" data-context="ereignis">
+    <p class="wand-q">What speaks against thinking the world as events?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="st-ereignis">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -1417,6 +1441,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     </div>
     <p>The closing word comes from Frank, Gleiser and Thompson in 2024, with the "blind spot": every measurement presupposes the experience of the observer — and can never catch up with it.<cite data-ref="frank-blindspot"></cite> What the old story had banished from the world returns — not as mysticism, but as the condition of all measuring. Physics does not refute the new story. It is its witness — a late one. Others were there earlier.</p>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: physik) -->
+  <div class="wand" data-context="physik">
+    <p class="wand-q">Are you familiar with this reading of physics?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="st-zeuge">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -1469,6 +1503,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>These voices come from different peoples, languages and places — joined not by a harmonized "world wisdom" but by a refrain: the human being does not stand above the world; we are kin within it, and meaning lives on this side of death. Further traditions — Deloria, Krenak, Yunkaporta, <em>sumak kawsay</em>, <em>whakapapa</em> — stand with primary sources in <a href="#" onclick="showTab('f1'); return false;" style="color:var(--clay);font-weight:600">Tab F1</a>, each in its own voice. Which leaves one question: why do the rest of us find letting go so hard?</p>
   </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: verwandt) -->
+  <div class="wand" data-context="verwandt">
+    <p class="wand-q">Is this borrowing too easy? Whose voice is missing?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="st-verwandt">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -1484,16 +1528,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Ernest Becker described it precisely in 1973: modern civilization's drive to grow is not economic but psychic — a collective strategy for not looking one's own death in the eye.<cite data-ref="becker-denial"></cite> Wealth, fame, legacy: immortality projects. Where they grow too heavy, distraction takes over. That is why clever reforms bounce off the surface. But where the moment itself endures — objective immortality — the tower is not forbidden. It becomes unnecessary.<cite data-ref="whitehead-pr"></cite></p>
-    <!-- Wandfrage → Atemwand (context: turm) -->
-    <div class="wand" data-context="turm">
-      <p class="wand-q">What is your tower?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
-      </div>
-      <p class="wand-ok" hidden>Received. Thank you.</p>
-      <p class="wand-err" hidden>Could not be saved.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1508,6 +1542,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>Ernest Becker's answer of 1973 is uncomfortable: modern civilization's compulsion to grow is not economic but psychic. We are the species that knows it will die — and the logic of growth is a collective strategy for not looking that fact in the eye.<cite data-ref="becker-denial"></cite> He calls the escape routes immortality projects: wealth, fame, legacy. Where they grow too heavy, distraction takes over.</p>
     <p>Which explains why good arguments so often bounce off: they aim at the surface while the drive lies deeper. And exactly here the new story takes hold. Where every felt moment already endures — objective immortality — the tower is not forbidden. It becomes unnecessary. The logic of growth loses its fuel, and the way toward a different politics becomes walkable. What might that feel like? Not like renunciation.</p>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: turm) -->
+  <div class="wand" data-context="turm">
+    <p class="wand-q">Which tower would you defend, and why?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="st-turm">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -1524,16 +1568,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Solarpunk arose as a deliberately optimistic answer to our dystopia fatigue.<cite data-ref="solarpunk-manifesto"></cite> The movement may be utopian or wrestle with the labors of the way — but never dystopian: the answer must be beautiful and livable, not mere renunciation. Adam Flynn inverts the Silicon Valley mantra: move quietly and plant things.<cite data-ref="flynn-notes"></cite> Plant. Share. Repair. Sing. Plant again.</p>
-    <!-- Wandfrage → Atemwand (context: pflanzen) -->
-    <div class="wand" data-context="pflanzen">
-      <p class="wand-q">What are you planting?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
-      </div>
-      <p class="wand-ok" hidden>Received. Thank you.</p>
-      <p class="wand-err" hidden>Could not be saved.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Tiefer</span><span class="en-text">Deeper</span></span><span class="lbl-less"><span class="de-text">Weniger</span><span class="en-text">Less</span></span>
@@ -1548,6 +1582,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>If the new story has a sound, this is it. Solarpunk emerged from around 2008 as a deliberately optimistic answer to our dystopia fatigue — with a guiding question instead of a threat: <em>"What does a sustainable civilization look like, and how can we get there?"</em><cite data-ref="solarpunk-manifesto"></cite> The stories may be utopian, or wrestle with the labors of the way. Only never dystopian: the answer must be beautiful and livable, not mere renunciation. Adam Flynn inverts the Silicon Valley mantra: <em>"Solarpunk should move quietly and plant things."</em><cite data-ref="flynn-notes"></cite></p>
     <p>The tone is contagious: "we" instead of "one," active instead of subjunctive, sensuous instead of abstract. Joy becomes a political stance — not because the crisis is small, but because despair builds nothing. Plant. Share. Repair. Sing. Plant again. Which leaves the how — and for that there is no master plan, but there is a map: the roadmap.</p>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: pflanzen) -->
+  <div class="wand" data-context="pflanzen">
+    <p class="wand-q">Are you planting something for us too?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="st-freude">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -1567,7 +1611,18 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <p>A new story is not a better theory. It is a different way of waking up in the morning — a different ontology of the ordinary.<br><br>The tree is a counterpart. The harvest is a gift. Each breath is an event. The world is not a stage for human action but a subject in its own right — listening, responding, co-creating. And we — we are <em>inside</em> it, not above it, not separate from it.<br><br>We do not need to do more. We are allowed to be. We are allowed to reinvent ourselves again and again, with curiosity and without guilt. — And: we <em>belong</em> to this world. We are welcome here — just as the rain, the beech, the mycelium, and all the others who have always been welcome too.</p>
   </div>
 
-  <!-- CTA-Reihe: drei Wege weiter -->
+  <!-- Wandfrage → Atemwand (context: weg) -->
+  <div class="wand" data-context="weg">
+    <p class="wand-q">What is this story still missing?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
+
+  <!-- CTA-Reihe: vier Wege weiter -->
   <div class="cta-row">
     <a class="cta-card" href="#" onclick="showTab('i'); return false;">
       <span class="cta-t">The way there →</span>
@@ -1580,6 +1635,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <a class="cta-card" href="#" onclick="showTab('atem-wall'); return false;">
       <span class="cta-t">The breath wall →</span>
       <span class="cta-s">What others have left here.</span>
+    </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
     </a>
   </div>
 
@@ -1626,16 +1685,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Ein Bauphysiker prüft zum siebten Mal die Statik eines Hochhauses, das die Welt nicht braucht. Die Zahlen stimmen. Etwas anderes stimmt nicht. In einer einzigen Nacht wird ihm die Geschichte durchsichtig, in der er zwanzig Jahre gearbeitet hat — und er schreibt eine E-Mail, deren Folgen er nicht absehen kann.</p>
-    <!-- Wandfrage → Atemwand (context: mail) -->
-    <div class="wand" data-context="mail">
-      <p class="wand-q">Welche E-Mail hast du noch nicht geschrieben?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
-      </div>
-      <p class="wand-ok" hidden>Angekommen. Danke.</p>
-      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Die ganze Geschichte lesen</span><span class="en-text">Read the whole story</span></span><span class="lbl-less"><span class="de-text">Zuklappen</span><span class="en-text">Close</span></span>
@@ -1714,6 +1763,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="anote">Levin und seine Familie sind erdacht; die zitierten Theoretiker und ihre Quellen sind es nicht.</div>
   </div>
+  <!-- Wandfrage → Atemwand (context: mail) -->
+  <div class="wand" data-context="mail">
+    <p class="wand-q">Welche E-Mail hast du noch nicht geschrieben?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="er-nacht">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -1729,16 +1788,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Ein Rückblick aus dem Jahr 2047 auf ein Jahrzehnt der Erschöpfung — und auf das, was danach kam: eine Steuer, die Vermögen entkonzentrierte, eine Schule ohne Zaun, ein Raum im Haus, in dem gestorben wird. Sechs Kapitel über eine Gesellschaft, die aufgehört hat, sich selbst zu belügen.</p>
-    <!-- Poll: Hältst du diese Wende für möglich? -->
-    <div class="mi-poll" data-poll="wende">
-      <p class="mi-q">Hältst du diese Wende für möglich?</p>
-      <div class="mi-opts">
-        <button class="mi-opt" type="button" data-vote="poll-wende-nein" onclick="pollVote(this)">Nein</button>
-        <button class="mi-opt" type="button" data-vote="poll-wende-ja" onclick="pollVote(this)">Ja, aber nicht so</button>
-        <button class="mi-opt" type="button" data-vote="poll-wende-begonnen" onclick="pollVote(this)">Sie hat begonnen</button>
-      </div>
-      <div class="mi-res" hidden></div>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Die ganze Geschichte lesen</span><span class="en-text">Read the whole story</span></span><span class="lbl-less"><span class="de-text">Zuklappen</span><span class="en-text">Close</span></span>
@@ -1827,6 +1876,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="anote">Fiktiv und prospektiv erzählt; die Zahlen sind illustrativ, nicht prognostisch.</div>
   </div>
+  <!-- Wandfrage → Atemwand (context: schwelle) -->
+  <div class="wand" data-context="schwelle">
+    <p class="wand-q">Welche Wende hältst du für unwahrscheinlich — und welche für überfällig?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="er-schwelle">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -1842,16 +1901,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>Eine Neunzehnjährige im Aaretal, um 2070. Ihre Grossmutter zeigt ihr Bilder aus den 2020er Jahren — Supermärkte, die um Mitternacht leuchteten wie Kathedralen — und sie fragt jedes Mal dasselbe: Was suchten sie? Eine kurze Erzählung über den ersten Frost als Ereignis.</p>
-    <!-- Wandfrage → Atemwand (context: frost) -->
-    <div class="wand" data-context="frost">
-      <p class="wand-q">Was hast du zuletzt als Ereignis erlebt statt als Sache?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Ein Satz genügt — anonym.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
-      </div>
-      <p class="wand-ok" hidden>Angekommen. Danke.</p>
-      <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Die ganze Geschichte lesen</span><span class="en-text">Read the whole story</span></span><span class="lbl-less"><span class="de-text">Zuklappen</span><span class="en-text">Close</span></span>
@@ -1895,6 +1944,20 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Der Weg dorthin →</span>
       <span class="cta-s">Vier Schichten, sechs Jahrzehnte.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
+  </div>
+  <!-- Wandfrage → Atemwand (context: frost) -->
+  <div class="wand" data-context="frost">
+    <p class="wand-q">Was hast du zuletzt als Ereignis erlebt statt als Sache?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="er-enkelin">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -1921,16 +1984,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>A structural engineer checks the load calculations for a tower the world does not need — for the seventh time. The numbers are right. Something else is not. In a single night the story he has worked inside for twenty years turns transparent, and he writes an email whose consequences he cannot foresee.</p>
-    <!-- Wall question → breath wall (context: mail) -->
-    <div class="wand" data-context="mail">
-      <p class="wand-q">Which email have you not yet written?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
-      </div>
-      <p class="wand-ok" hidden>Received. Thank you.</p>
-      <p class="wand-err" hidden>Could not be saved.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Die ganze Geschichte lesen</span><span class="en-text">Read the whole story</span></span><span class="lbl-less"><span class="de-text">Zuklappen</span><span class="en-text">Close</span></span>
@@ -2009,6 +2062,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="anote">Levin and his family are imagined; the theorists cited and their sources are not.</div>
   </div>
+  <!-- Wandfrage → Atemwand (context: mail) -->
+  <div class="wand" data-context="mail">
+    <p class="wand-q">Which email have you not yet written?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="er-nacht">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -2024,16 +2087,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>A look back from 2047 at a decade of exhaustion — and at what followed: a tax that de-concentrated wealth, a school without a fence, a room in the house where people die. Six chapters on a society that stopped lying to itself.</p>
-    <!-- Poll: Do you think this turn is possible? -->
-    <div class="mi-poll" data-poll="wende">
-      <p class="mi-q">Do you think this turn is possible?</p>
-      <div class="mi-opts">
-        <button class="mi-opt" type="button" data-vote="poll-wende-nein" onclick="pollVote(this)">No</button>
-        <button class="mi-opt" type="button" data-vote="poll-wende-ja" onclick="pollVote(this)">Yes, but not like this</button>
-        <button class="mi-opt" type="button" data-vote="poll-wende-begonnen" onclick="pollVote(this)">It has begun</button>
-      </div>
-      <div class="mi-res" hidden></div>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Die ganze Geschichte lesen</span><span class="en-text">Read the whole story</span></span><span class="lbl-less"><span class="de-text">Zuklappen</span><span class="en-text">Close</span></span>
@@ -2122,6 +2175,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="anote">Fictional and prospective; the figures are illustrative, not predictive.</div>
   </div>
+  <!-- Wandfrage → Atemwand (context: schwelle) -->
+  <div class="wand" data-context="schwelle">
+    <p class="wand-q">Which turn seems implausible to you — and which overdue?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="er-schwelle">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -2137,16 +2200,6 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   </div>
   <div class="st-e1">
     <p>A nineteen-year-old in the Aare valley, around 2070. Her grandmother shows her images from the 2020s — supermarkets glowing like cathedrals at midnight — and each time she asks the same thing: what were they looking for? A short story about the first frost as an event.</p>
-    <!-- Wall question → breath wall (context: frost) -->
-    <div class="wand" data-context="frost">
-      <p class="wand-q">What did you last experience as an event rather than a thing?</p>
-      <div class="wand-form">
-        <input class="atem-input wand-in" type="text" maxlength="140" placeholder="One sentence is enough — anonymous.">
-        <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
-      </div>
-      <p class="wand-ok" hidden>Received. Thank you.</p>
-      <p class="wand-err" hidden>Could not be saved.</p>
-    </div>
   </div>
   <button class="st-more" type="button" onclick="toggleDepth(this)" aria-expanded="false">
     <span class="lbl-more"><span class="de-text">Die ganze Geschichte lesen</span><span class="en-text">Read the whole story</span></span><span class="lbl-less"><span class="de-text">Zuklappen</span><span class="en-text">Close</span></span>
@@ -2190,6 +2243,20 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">The way there →</span>
       <span class="cta-s">Four layers, six decades.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
+    </a>
+  </div>
+  <!-- Wandfrage → Atemwand (context: frost) -->
+  <div class="wand" data-context="frost">
+    <p class="wand-q">What did you last experience as an event rather than a thing?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="er-enkelin">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -2315,6 +2382,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
 
     </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: philosophie) -->
+  <div class="wand" data-context="philosophie">
+    <p class="wand-q">Welche Stimme wird hier falsch gelesen — oder fehlt?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="gr-westlich">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -2505,6 +2582,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
 
     </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: wissenschaft) -->
+  <div class="wand" data-context="wissenschaft">
+    <p class="wand-q">Wird die Wissenschaft hier überdehnt? Wo genau?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="gr-wissenschaft">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -2723,6 +2810,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: indigen) -->
+  <div class="wand" data-context="indigen">
+    <p class="wand-q">Wird hier respektvoll Bezug genommen? Wessen Stimme fehlt?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="gr-indigen">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -2882,6 +2979,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: bruecken) -->
+  <div class="wand" data-context="bruecken">
+    <p class="wand-q">Wer baut Brücken, die hier nicht genannt sind?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="gr-bruecken">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -2955,6 +3062,20 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Die Belege →</span>
       <span class="cta-s">Literaturverzeichnis und Quellenverifikation.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
+  </div>
+  <!-- Wandfrage → Atemwand (context: stimmen) -->
+  <div class="wand" data-context="stimmen">
+    <p class="wand-q">Welche Bewegung oder Stimme fehlt in dieser Reihe?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="gr-politisch">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -3045,6 +3166,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
 
     </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: philosophie) -->
+  <div class="wand" data-context="philosophie">
+    <p class="wand-q">Which voice is misread here — or missing?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="gr-westlich">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -3233,6 +3364,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: wissenschaft) -->
+  <div class="wand" data-context="wissenschaft">
+    <p class="wand-q">Is the science being stretched here? Where exactly?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="gr-wissenschaft">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -3355,6 +3496,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
         </div></div>
       </div>
     </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: indigen) -->
+  <div class="wand" data-context="indigen">
+    <p class="wand-q">Is this reference respectful? Whose voice is missing?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="gr-indigen">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -3497,6 +3648,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
 
     </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: bruecken) -->
+  <div class="wand" data-context="bruecken">
+    <p class="wand-q">Who builds bridges not named here?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="gr-bruecken">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -3570,6 +3731,20 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">The evidence →</span>
       <span class="cta-s">Bibliography and source verification.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
+    </a>
+  </div>
+  <!-- Wandfrage → Atemwand (context: stimmen) -->
+  <div class="wand" data-context="stimmen">
+    <p class="wand-q">Which movement or voice is missing from this line-up?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="gr-politisch">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -3605,6 +3780,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <div class="review-banner" style="margin-top:30px">Letzte Überprüfung: <strong>30. April 2026</strong> · Diese Bibliographie listet die zentralen, in dieser Seite zitierten oder paraphrasierten Werke. Sie erhebt keinen Anspruch auf Vollständigkeit für die jeweiligen Forschungsfelder.</div>
   </div>
 
+  <!-- Wandfrage → Atemwand (context: quellen) -->
+  <div class="wand" data-context="quellen">
+    <p class="wand-q">Fehlt ein Beleg, ist einer falsch zitiert oder überholt? Sag es hier.</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="gr-quellen">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -3654,6 +3839,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Teile einen Atemzug →</span>
       <span class="cta-s">Was andere hier gelassen haben.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
   </div>
 
 </div>
@@ -3673,6 +3862,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <div class="review-banner" style="margin-top:30px">Last review: <strong>30 April 2026</strong> · This bibliography lists the central works cited or paraphrased in this site. It is not intended as exhaustive coverage of the relevant fields.</div>
   </div>
 
+  <!-- Wandfrage → Atemwand (context: quellen) -->
+  <div class="wand" data-context="quellen">
+    <p class="wand-q">A source missing, misquoted, or outdated? Say so here.</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="gr-quellen">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -3721,6 +3920,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
     <a class="cta-card" href="#" onclick="setSection('breath'); return false;">
       <span class="cta-t">Share a breath →</span>
       <span class="cta-s">What others have left here.</span>
+    </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
     </a>
   </div>
 
@@ -3781,6 +3984,10 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <a class="cta-card" href="#" onclick="setSection('story'); return false;">
         <span class="cta-t"><span class="de-text">Zurück an den Anfang →</span><span class="en-text">Back to the beginning →</span></span>
         <span class="cta-s"><span class="de-text">Die Geschichte, von vorn.</span><span class="en-text">The story, from the start.</span></span>
+      </a>
+      <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+        <span class="cta-t"><span class="de-text">Eine Gabe schenken →</span><span class="en-text">Give a gift →</span></span>
+        <span class="cta-s"><span class="de-text">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span><span class="en-text">A voice, a practice, a source this page is missing.</span></span>
       </a>
     </div>
     <div class="res-row" data-sec="at-wand">
@@ -3933,6 +4140,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   <div class="st-e2">
     <p>Diese Roadmap ist kein technokratischer Stufenplan, keine Parteiplattform und kein abschliessender Heilsweg — sondern ein konsistenter Rahmen, der die vier Ebenen in Beziehung setzt, damit Akteure auf jeder Ebene erkennen können, ob ihr Tun mit dem zusammenwirkt, was andere tun. Warum die Reihenfolge wichtig ist und woran frühere Reformen scheiterten, entfaltet Tab II.</p>
   </div>
+  <!-- Wandfrage → Atemwand (context: erfolg) -->
+  <div class="wand" data-context="erfolg">
+    <p class="wand-q">Ist das ein brauchbarer Massstab für Erfolg — oder zu weich?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="rm-warum">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -3987,6 +4204,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: ontologie) -->
+  <div class="wand" data-context="ontologie">
+    <p class="wand-q">Ändert eine Geschichte über die Welt wirklich, wie Menschen handeln?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="rm-ontologie">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -4045,6 +4272,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: psyche) -->
+  <div class="wand" data-context="psyche">
+    <p class="wand-q">Ist die Angst vor dem Tod wirklich der Motor des Wachstums?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="rm-psyche">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -4114,6 +4351,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: institution) -->
+  <div class="wand" data-context="institution">
+    <p class="wand-q">Welche Institution fehlt hier — oder ist falsch beschrieben?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="rm-institution">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -4194,6 +4441,20 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Zeit &amp; Prinzipien →</span>
       <span class="cta-s">Vier Phasen, drei Quertheme, acht Prinzipien.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
+  </div>
+  <!-- Wandfrage → Atemwand (context: struktur) -->
+  <div class="wand" data-context="struktur">
+    <p class="wand-q">Welche dieser Massnahmen hält der realen Macht nicht stand?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="rm-struktur">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -4258,6 +4519,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
   <div class="st-e2">
     <p>This roadmap is not a technocratic step-plan, not a party platform, not a final path to salvation — it is a consistent framework that places the four levels in relation to one another, so that actors at every level can recognise whether what they do aligns with what others do. Why the ordering matters, and why earlier reforms have failed, is unfolded in Tab II.</p>
   </div>
+  <!-- Wandfrage → Atemwand (context: erfolg) -->
+  <div class="wand" data-context="erfolg">
+    <p class="wand-q">Is this a workable measure of success — or too soft?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="rm-warum">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -4312,6 +4583,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: ontologie) -->
+  <div class="wand" data-context="ontologie">
+    <p class="wand-q">Does a story about the world really change how people act?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="rm-ontologie">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -4370,6 +4651,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: psyche) -->
+  <div class="wand" data-context="psyche">
+    <p class="wand-q">Is fear of death really the engine of growth?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="rm-psyche">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -4439,6 +4730,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  </div>
+  <!-- Wandfrage → Atemwand (context: institution) -->
+  <div class="wand" data-context="institution">
+    <p class="wand-q">Which institution is missing here — or described wrongly?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="rm-institution">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -4519,6 +4820,20 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Time &amp; principles →</span>
       <span class="cta-s">Four phases, three cross-cutting problems, eight principles.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
+    </a>
+  </div>
+  <!-- Wandfrage → Atemwand (context: struktur) -->
+  <div class="wand" data-context="struktur">
+    <p class="wand-q">Which of these measures does not survive contact with real power?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="rm-struktur">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -4674,6 +4989,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: zeit) -->
+  <div class="wand" data-context="zeit">
+    <p class="wand-q">Wo ist dieser Zeitplan naiv?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="rm-zeit">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -4719,6 +5044,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: haken) -->
+  <div class="wand" data-context="haken">
+    <p class="wand-q">Welches Problem fehlt in dieser Liste?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
+  </div>
   <div class="res-row" data-sec="rm-haken">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="Das wirkt in mir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -4756,6 +5091,20 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Woher das kommt →</span>
       <span class="cta-s">Stimmen, Quellen, Belege.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Eine Gabe schenken →</span>
+      <span class="cta-s">Eine Stimme, eine Praxis, eine Quelle, die hier fehlt.</span>
+    </a>
+  </div>
+  <!-- Wandfrage → Atemwand (context: anfang) -->
+  <div class="wand" data-context="anfang">
+    <p class="wand-q">Wo beginnst du — und was steht dir im Weg?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Einwand, Ergänzung, eigener Gedanke — ein Satz genügt, anonym.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Geben</button>
+    </div>
+    <p class="wand-ok" hidden>Angekommen. Danke.</p>
+    <p class="wand-err" hidden>Konnte nicht gespeichert werden.</p>
   </div>
   <div class="res-row" data-sec="rm-prinzipien">
     <span class="res-hint">Klingt etwas an? Tippe das Blatt.</span>
@@ -4890,6 +5239,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: zeit) -->
+  <div class="wand" data-context="zeit">
+    <p class="wand-q">Where is this timeline naive?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="rm-zeit">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -4935,6 +5294,16 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       </div>
     </div>
   </div>
+  <!-- Wandfrage → Atemwand (context: haken) -->
+  <div class="wand" data-context="haken">
+    <p class="wand-q">Which problem is missing from this list?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
+  </div>
   <div class="res-row" data-sec="rm-haken">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
     <button class="res-leaf" type="button" onclick="resTap(this)" aria-label="This resonates with me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="lf" d="M18.5 4.5C11 4.5 6 9.5 6 15.5c0 1.8.5 3.2 1.4 4C14 19.5 18.5 13.5 18.5 4.5z"/><path d="M7.4 19.5C9.5 14 13.5 9 18.5 4.5"/></svg></button>
@@ -4972,6 +5341,20 @@ body.breath .cn-item.cn-active{color:var(--sky);border-bottom-color:rgba(70,144,
       <span class="cta-t">Where this comes from →</span>
       <span class="cta-s">Voices, sources, evidence.</span>
     </a>
+    <a class="cta-card" href="#" onclick="showTab('atem-gift'); return false;">
+      <span class="cta-t">Give a gift →</span>
+      <span class="cta-s">A voice, a practice, a source this page is missing.</span>
+    </a>
+  </div>
+  <!-- Wandfrage → Atemwand (context: anfang) -->
+  <div class="wand" data-context="anfang">
+    <p class="wand-q">Where do you begin — and what stands in your way?</p>
+    <div class="wand-form">
+      <input class="atem-input wand-in" type="text" maxlength="140" placeholder="Objection, addition, your own thought — one sentence is enough, anonymous.">
+      <button class="atem-btn" type="button" onclick="wandGive(this)">Give</button>
+    </div>
+    <p class="wand-ok" hidden>Received. Thank you.</p>
+    <p class="wand-err" hidden>Could not be saved.</p>
   </div>
   <div class="res-row" data-sec="rm-prinzipien">
     <span class="res-hint">Something stirring? Tap the leaf.</span>
@@ -5340,7 +5723,22 @@ async function loadBreaths(){
   }
 }
 // Kontext-Labels der Wandfragen (beide Sprachen als Spans — reagiert auf setLang)
-const _ctxLabels = { riss:['Riss','Crack'], turm:['Turm','Tower'], pflanzen:['Pflanzen','Planting'] };
+const _ctxLabels = {
+  // Tab A
+  geschichten:['Geschichte','Story'], riss:['Riss','Crack'], ereignis:['Ereignis','Event'],
+  physik:['Physik','Physics'], verwandt:['Verwandt','Kin'], turm:['Turm','Tower'],
+  pflanzen:['Pflanzen','Planting'], weg:['Weg','Way'],
+  // Tab B
+  mail:['E-Mail','Email'], schwelle:['Schwelle','Threshold'], frost:['Ereignis','Event'],
+  // Roadmap
+  erfolg:['Erfolg','Success'], ontologie:['Ontologie','Ontology'], psyche:['Psyche','Psyche'],
+  institution:['Institution','Institution'], struktur:['Struktur','Structure'],
+  zeit:['Zeit','Time'], haken:['Haken','Catch'], anfang:['Anfang','Beginning'],
+  // Grundlagen
+  philosophie:['Philosophie','Philosophy'], wissenschaft:['Wissenschaft','Science'],
+  indigen:['Indigen','Indigenous'], bruecken:['Brücken','Bridges'], stimmen:['Stimmen','Voices'],
+  quellen:['Quellen','Sources']
+};
 function renderBreaths(rows){
   const wall = document.getElementById('breath-wall');
   if(!rows.length){
@@ -5468,23 +5866,6 @@ function switchStory(btn, which){
   e1.querySelectorAll('.story-panel').forEach(p=>p.classList.toggle('on', p.dataset.panel===which));
 }
 
-// ── Satzschalter (St. 3): rotiert durch 3 Satzpaare (Substanz ↔ Prozess) ──
-const _flipSaetze = {
-  de: ['Ich habe ein Leben.','Ich bin ein Geschehen.',
-       'Der Baum ist ein Ding.','Der Baum ist ein Ereignis, das dreihundert Jahre dauert.',
-       'Der Moment vergeht.','Der Moment bleibt — als das, was er der Welt hinzugefügt hat.'],
-  en: ['I have a life.','I am a happening.',
-       'The tree is a thing.','The tree is an event lasting three hundred years.',
-       'The moment passes.','The moment remains — as what it added to the world.']
-};
-function flipSentence(btn){
-  const arr = _flipSaetze[btn.closest('.en-text') ? 'en' : 'de'];
-  const i = (parseInt(btn.dataset.i||'0',10)+1) % arr.length;
-  btn.dataset.i = i;
-  btn.textContent = arr[i];
-  btn.classList.toggle('proc', i%2===1); // Prozess-Form hervorheben
-}
-
 // ── Resonanz-Blatt: anonymes «Das wirkt in mir» ──
 var _resCounts = {};
 function _resPaint(id, n, done){
@@ -5515,69 +5896,6 @@ async function resTap(btn){
     const { error } = await sb.from('resonances').insert({ section_id:id, lang:lang });
     if(error) throw error;
   }catch(e){ /* leise — der optimistische Zähler bleibt stehen */ }
-}
-
-// ── Polls: mehrere Umfragen, je eine pro .mi-poll ──────────────────
-// Schlüssel steht als data-poll am Container, Optionen als data-vote
-// an den Buttons. Balkenbeschriftung kommt aus dem Buttontext selbst —
-// dadurch ist sie automatisch in der richtigen Sprache.
-function _pollKeys(box){
-  return Array.from(box.querySelectorAll('.mi-opt')).map(b=>b.dataset.vote);
-}
-async function pollVote(btn){
-  const box = btn.closest('.mi-poll');
-  if(!box || !_resReady()) return;
-  const key = box.dataset.poll || 'heute';
-  if(_lsGet('poll_'+key)) return;
-  const choice = btn.dataset.vote;
-  _lsSet('poll_'+key, choice);
-  // Beide Sprachfassungen derselben Umfrage sperren und Wahl markieren
-  document.querySelectorAll('.mi-poll[data-poll="'+key+'"] .mi-opt').forEach(b=>{
-    b.disabled = true;
-    b.classList.toggle('mine', b.dataset.vote===choice);
-  });
-  try{
-    const lang = document.body.classList.contains('en') ? 'en' : 'de';
-    const { error } = await sb.from('resonances')
-      .insert({ section_id: choice, lang: lang });
-    if(error) throw error;
-  }catch(e){ /* leise */ }
-  _pollShow(key);
-}
-async function _pollShow(key){
-  if(!_resReady()) return;
-  const boxes = document.querySelectorAll('.mi-poll[data-poll="'+key+'"]');
-  if(!boxes.length) return;
-  const ids = _pollKeys(boxes[0]);
-  const counts = {};
-  try{
-    for(const id of ids){
-      const { count, error } = await sb.from('resonances')
-        .select('*',{count:'exact',head:true}).eq('section_id',id);
-      if(error) throw error;
-      counts[id] = count||0;
-    }
-  }catch(e){ return; } // leise — Poll bleibt im Button-Zustand
-  const total = ids.reduce((s,id)=>s+(counts[id]||0),0);
-  const mine = _lsGet('poll_'+key);
-  boxes.forEach(poll=>{
-    const en = !!poll.closest('.en-text');
-    const opts = Array.from(poll.querySelectorAll('.mi-opt'));
-    let html = '';
-    opts.forEach(b=>{
-      const id = b.dataset.vote, n = counts[id]||0;
-      const pct = total ? Math.round(n*100/total) : 0;
-      html += '<div class="mi-bar-row'+(id===mine?' mine':'')+'">'+
-        '<span class="mi-bar-label">'+_esc(b.textContent.trim())+'</span>'+
-        '<span class="mi-bar"><span class="mi-bar-fill" style="width:'+pct+'%"></span></span>'+
-        '<span class="mi-bar-pct">'+pct+'%</span></div>';
-    });
-    html += '<div class="mi-total">'+total+' '+(en?'votes':'Stimmen')+'</div>';
-    const res = poll.querySelector('.mi-res');
-    if(res){ res.innerHTML = html; res.hidden = false; }
-    const wrap = poll.querySelector('.mi-opts');
-    if(wrap) wrap.hidden = true;
-  });
 }
 
 // ── Wandfrage: ein Satz → Atemwand (Tabelle breaths, Spalte context) ──
@@ -5623,9 +5941,9 @@ async function wandGive(btn){
   }
 
   // Ohne konfigurierten Supabase-Client: Resonanz-UI vollständig ausblenden.
-  // Umschalter, Satzschalter, Reveals und Tiefer-Toggles laufen immer.
+  // Umschalter, Reveals und Tiefer-Toggles laufen immer.
   if(!_resReady()){
-    document.querySelectorAll('.res-row,.mi-poll,.wand').forEach(el=>{ el.style.display='none'; });
+    document.querySelectorAll('.res-row,.wand').forEach(el=>{ el.style.display='none'; });
     return;
   }
 
@@ -5637,26 +5955,16 @@ async function wandGive(btn){
         if(!en.isIntersecting) return;
         // Erst zählen, dann abmelden — sonst geht der Eintrag verloren,
         // wenn die Station beim Laden noch in einem display:none-Tab liegt.
-        if(en.target.classList.contains('mi-poll')){
-          const k = en.target.dataset.poll || 'heute';
-          if(_lsGet('poll_'+k)) _pollShow(k); // Gerät hat schon gestimmt
-          cio.unobserve(en.target);
-          return;
-        }
         const id = en.target.dataset.sec;
         if(id && !fetched[id]){ fetched[id]=1; _resFetch(id); }
         cio.unobserve(en.target);
       });
     });
-    document.querySelectorAll('.res-row,.mi-poll').forEach(el=>cio.observe(el));
+    document.querySelectorAll('.res-row').forEach(el=>cio.observe(el));
   } else {
     document.querySelectorAll('.res-row').forEach(row=>{
       const id = row.dataset.sec;
       if(id && !fetched[id]){ fetched[id]=1; _resFetch(id); }
-    });
-    document.querySelectorAll('.mi-poll').forEach(p=>{
-      const k = p.dataset.poll || 'heute';
-      if(_lsGet('poll_'+k)) _pollShow(k);
     });
   }
 })();
