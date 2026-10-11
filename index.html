@@ -211,6 +211,24 @@ footer{background:var(--forest);color:rgba(245,240,226,.45);padding:36px 0;text-
 .fn{font-size:.82rem;line-height:1.65}
 .rl{display:inline-block;margin-top:16px;padding:8px 22px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:20px;color:rgba(245,240,226,.65);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-decoration:none;cursor:default;transition:all .2s}
 .rl:hover{background:rgba(255,255,255,.12);color:var(--cream)}
+/* ── Kolophon & Zitier-Box im Footer ── */
+.colophon{max-width:var(--frame);margin:34px auto 0;padding:26px var(--gut) 0;border-top:1px solid rgba(255,255,255,.1);text-align:left;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+.col-who{flex:1 1 300px;min-width:255px}
+.col-name{font-family:var(--f-display);font-size:clamp(1.05rem,2.4vw,1.2rem);font-style:italic;color:rgba(245,240,226,.8);margin-bottom:5px}
+.col-cred{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.05em;color:rgba(245,240,226,.4);margin-bottom:8px}
+.col-role{font-size:.8rem;line-height:1.65;color:rgba(245,240,226,.5)}
+.col-role em{color:rgba(245,240,226,.62);font-style:italic}
+.col-gift{font-size:.8rem;line-height:1.7;color:rgba(245,240,226,.52);margin-top:12px;padding-left:11px;border-left:2px solid rgba(125,186,82,.35)}
+.col-gift a{color:rgba(245,240,226,.62);text-decoration:none;border-bottom:1px solid rgba(125,186,82,.3)}
+.col-legal{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.05em;line-height:1.9;color:rgba(245,240,226,.3);margin-top:12px}
+.col-legal a{color:rgba(245,240,226,.45);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);transition:color .2s}
+.col-legal a:hover{color:rgba(245,240,226,.75)}
+.col-cite{flex:1 1 340px;min-width:275px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:15px 17px}
+.col-cite h4{font-family:var(--f-mono);font-size:.63rem;text-transform:uppercase;letter-spacing:.11em;color:rgba(245,240,226,.45);font-weight:600;margin:0 0 9px}
+.col-cite p{font-family:var(--f-body);font-size:clamp(.72rem,1.6vw,.78rem);line-height:1.75;color:rgba(245,240,226,.62);margin:0;hyphens:auto}
+.cite-copy{margin-top:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;color:rgba(245,240,226,.6);font-family:var(--f-mono);font-size:.63rem;letter-spacing:.06em;padding:5px 15px;cursor:pointer;transition:all .2s}
+.cite-copy:hover{background:rgba(255,255,255,.13);color:rgba(245,240,226,.85)}
+@media(max-width:640px){.colophon{flex-direction:column;gap:20px;padding-top:22px}}
 
 /* ── FOOTNOTES & SOURCE-CRITICAL ELEMENTS ── */
 cite[data-ref],cite{font-style:normal}
@@ -777,8 +795,8 @@ body.breath .feel{display:none}   /* nicht auf Atemwand/Gabe */
       </div>
     </div>
     <div class="site-meta">
-      <span class="de-text">· Eine lebende Seite — Texte entstehen mit Claude AI, werden von Flavio Lanfranconi überarbeitet und wachsen weiter.</span>
-      <span class="en-text">· A living page — texts are drafted with Claude AI, edited by Flavio Lanfranconi, and continue to grow.</span>
+      <span class="de-text">· Geschrieben und herausgegeben von Dr. Flavio Lanfranconi · entwickelt mit KI-Unterstützung (Claude) · eine lebende Seite, die weiterwächst.</span>
+      <span class="en-text">· Written and edited by Dr. Flavio Lanfranconi · developed with AI assistance (Claude) · a living page that keeps growing.</span>
     </div>
   </div>
 </header>
@@ -4422,7 +4440,7 @@ body.breath .feel{display:none}   /* nicht auf Atemwand/Gabe */
 
   <div class="closing-call">
     <p>Eine Roadmap ist kein Plan. Sie ist eine Einladung, in der eigenen Reichweite zu beginnen — in der Sprache, im Gespräch, in der Gemeinde, im Beruf, in der Politik. Jede Konkreszenz zählt. Jeder gefühlte Moment ist ein Beitrag zur objektiven Geschichte des Universums. Es gibt nichts Grösseres zu tun und nichts Kleineres.</p>
-    <cite>— Dr. Lanfranconi · Processing Reality (2024)</cite>
+    <cite>— Flavio Lanfranconi · Processing Reality (2024)</cite>
   </div>
   <div class="cta-row">
     <a class="cta-card" href="#" onclick="setSection('foundations'); return false;">
@@ -4627,7 +4645,7 @@ body.breath .feel{display:none}   /* nicht auf Atemwand/Gabe */
 
   <div class="closing-call">
     <p>A roadmap is not a plan. It is an invitation to begin within one's own reach — in language, in conversation, in community, in profession, in politics. Every concrescence counts. Every felt moment is a contribution to the objective history of the universe. There is nothing greater to do, and nothing smaller.</p>
-    <cite>— Dr. Lanfranconi · Processing Reality (2024)</cite>
+    <cite>— Flavio Lanfranconi · Processing Reality (2024)</cite>
   </div>
   <div class="cta-row">
     <a class="cta-card" href="#" onclick="setSection('foundations'); return false;">
@@ -4768,6 +4786,41 @@ body.breath .feel{display:none}   /* nicht auf Atemwand/Gabe */
         <span class="en-text">↗ To the Foundations</span>
       </a>
     </div>
+    <!-- ── KOLOPHON: sektionsübergreifend, Identität & Zitierbarkeit ── -->
+    <div class="colophon">
+      <div class="col-who">
+        <div class="col-name">Dr. Flavio Lanfranconi</div>
+        <div class="col-cred">
+          <span class="de-text">Dr. sc. nat., Physik, Universität Zürich, 2018</span>
+          <span class="en-text">Dr. sc. nat., Physics, University of Zurich, 2018</span>
+        </div>
+        <div class="col-role">
+          <span class="de-text">Physiker und Lehrer · Autor und Herausgeber von <em>Processing Reality</em> · Zürich, Schweiz</span>
+          <span class="en-text">Physicist and teacher · author and editor of <em>Processing Reality</em> · Zurich, Switzerland</span>
+        </div>
+        <div class="col-gift">
+          <span class="de-text">Diese Seite ist eine Gabe. Alle eigenen Texte stehen unter <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank" rel="noopener">CC&nbsp;BY-SA&nbsp;4.0</a>: frei zu lesen, zu teilen, zu übersetzen und weiterzuentwickeln — unter der einen Bedingung, dass das Ergebnis eine Gabe bleibt. Zitierte Quellen bleiben bei ihren Urheber*innen.</span>
+          <span class="en-text">This page is a gift. All original texts are licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-SA&nbsp;4.0</a>: free to read, share, translate and build upon — on the single condition that what results stays a gift. Cited sources remain with their authors.</span>
+        </div>
+        <div class="col-legal">
+          <span class="de-text">© 2024–2026 Flavio Lanfranconi · <a href="mailto:flavio.lanfranconi@gmail.com">Kontakt</a></span>
+          <span class="en-text">© 2024–2026 Flavio Lanfranconi · <a href="mailto:flavio.lanfranconi@gmail.com">Contact</a></span>
+        </div>
+      </div>
+      <div class="col-cite">
+        <h4>
+          <span class="de-text">Diese Seite zitieren</span>
+          <span class="en-text">Cite this page</span>
+        </h4>
+        <!-- Stand-Datum bei jeder grösseren Überarbeitung nachführen -->
+        <p id="cite-de" class="de-text">Lanfranconi, Flavio. 2026. „Eine neue Geschichte: Über Sinn im unmittelbaren Erfahren.“ <em>Processing Reality</em>. Zuletzt geändert 11. Oktober 2026. https://processingreality.org.</p>
+        <p id="cite-en" class="en-text">Lanfranconi, Flavio. 2026. “A New Story: On Meaning in Immediate Experience.” <em>Processing Reality</em>. Last modified October 11, 2026. https://processingreality.org.</p>
+        <button class="cite-copy" onclick="copyCitation(this)">
+          <span class="de-text">Zitat kopieren</span>
+          <span class="en-text">Copy citation</span>
+        </button>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -4792,6 +4845,29 @@ function setLang(lang) {
   try{localStorage.setItem('lang',lang);}catch(e){}
   if (typeof _renderBibAfterLang === 'function') _renderBibAfterLang(lang);
   if (typeof _applyPlaceholders === 'function') _applyPlaceholders();
+}
+
+// Zitierangabe in der aktiven Sprache in die Zwischenablage kopieren.
+// Degradiert leise: ohne Clipboard-API bleibt der Text markierbar.
+function copyCitation(btn){
+  if(btn.dataset.busy) return; // Klick während der Rückmeldung ignorieren, sonst bleibt sie stehen
+  var de = document.body.classList.contains('de');
+  var el = document.getElementById(de ? 'cite-de' : 'cite-en');
+  if(!el) return;
+  var txt = el.textContent.replace(/\s+/g,' ').trim();
+  var back = btn.innerHTML;
+  var ok  = de ? 'kopiert ✓' : 'copied ✓';
+  var err = de ? 'nicht kopiert' : 'copy failed';
+  var flash = function(msg){
+    btn.dataset.busy = '1';
+    btn.textContent = msg;
+    setTimeout(function(){ btn.innerHTML = back; delete btn.dataset.busy; }, 1800);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){ flash(ok); }, function(){ flash(err); });
+  } else {
+    flash(err);
+  }
 }
 
 // ── Tabs ──
